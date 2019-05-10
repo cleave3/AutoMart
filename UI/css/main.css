@@ -13,6 +13,7 @@ html,body{
     grid-gap: 5px;
     grid-template-areas:
     "nav nav nav nav"
+    "about-section about-section about-section contact-section"
     "showcase showcase showcase showcase"
     "main main main main"
     "article article side side"
@@ -80,8 +81,8 @@ label:hover{
 
 .menu a:hover{
     cursor: pointer;
-    color: blue;
-    border-bottom: 5px solid blue;
+    color: rgb(87, 31, 31);
+    border-bottom: 3px solid rgb(87, 31, 31);;
 }
 .current{
     border-bottom: 5px solid green;
@@ -192,6 +193,35 @@ label:hover{
 .footer-items a:hover{
     color: gray;
 }
+/*****CONTACT *****/
+.contact-section{
+    grid-area: contact-section;
+    padding: 20px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+.contact-section p{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+/*** ABOUT ***/
+.about-section{
+    grid-area: about-section; 
+    padding: 20px;
+    text-align: center;
+}
+.about-section div{
+    display: flex;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.about-section img{
+    width: 250px;
+    height: 250px;
+}
 
 /**** MOBILE VIEW ***/
 @media (max-width: 720px) {
@@ -220,10 +250,10 @@ label:hover{
     }
     .menu a:hover{
         cursor: pointer;
-        color: blue;
+        color: rgb(87, 31, 31);;
         background-color: rgb(207, 198, 198);
-        border-left: 5px solid blue;
-        border-right: 5px solid blue;
+        border-left: 3px solid rgb(87, 31, 31);
+        border-right: 3px solid rgb(87, 31, 31);;
         border-bottom: none;
     }
     .current{
@@ -233,6 +263,7 @@ label:hover{
     }
     .container{
         width: 98%;
+        min-height: 100vh;
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -240,13 +271,14 @@ label:hover{
         grid-gap: 5px;
         grid-template-areas:
         "nav nav nav nav"
+        "about-section about-section about-section about-section"
+        "contact-section contact-section contact-section contact-section"
         "showcase showcase showcase showcase"
         "main main main main"
         "article article article article"
         "side side side side"
         "footer footer footer footer";
     }
-    
     .showcase{
         grid-area: showcase;
         background: linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url(../images/car3.jpg) no-repeat;
@@ -257,6 +289,20 @@ label:hover{
     .each-car-img {
         height: 59px;
         width: 65px;
+    }
+    .about-section img{
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media(max-width: 420px) {
+    .about-section div{
+        flex-wrap: wrap;
+    }
+    .about-section img{
+        width: 150px;
+        height: 150px;
     }
 }
 
@@ -352,14 +398,14 @@ input:focus{
 	text-decoration: none;
 }
 
-.message a:active{
+.message a:active:visited{
 	color: red;
 }
 .loginForm{
 	display: none;
 }
 
-/**** ANIMATION ****/
+/**** MODAL ANIMATION ****/
 .animate {
 	-webkit-animation: animatezoom 0.6s;
 	animation: animatezoom 0.6s;
