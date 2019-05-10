@@ -18,7 +18,7 @@ html,body{
     "article article side side"
     "footer footer footer footer"
 }
-#button{
+.button{
     padding: 15px;
     border: none;
     width: 150px;
@@ -27,7 +27,7 @@ html,body{
     font-weight: bold;
 }
 
-#button:hover{
+.button:hover{
     cursor: pointer;
     background-color:rgb(104, 16, 16);
 }
@@ -57,11 +57,11 @@ label:hover{
     margin: 0 auto;
  
 }
-.nav .icon-container{
+.nav .logo-container{
     float: left;
     margin-right: 20px;
 }
-.icon-container img{
+.logo-container img{
     width: 50px;
     height: 50px;
 }
@@ -74,7 +74,7 @@ label:hover{
     font-weight: bold;
 }
 
-.snl{
+.signup-login-container{
     float: right;
 }
 
@@ -123,7 +123,7 @@ label:hover{
 .each-car-img {
     height: 130px;
     width: 170px;
-    margin: 50px 20px;
+    margin: 50px 30px;
 }
 
 /*** ARTICLE ***/
@@ -208,7 +208,7 @@ label:hover{
         text-align: center;
         
     }
-    .snl{
+    .signup-login-container{
         float: none;
     }
     label{
@@ -246,12 +246,7 @@ label:hover{
         "side side side side"
         "footer footer footer footer";
     }
-    .footer #info{
-        flex-wrap: wrap;
-    }
-    #info-box{
-        text-align: center;
-    }
+    
     .showcase{
         grid-area: showcase;
         background: linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url(../images/car3.jpg) no-repeat;
@@ -265,3 +260,117 @@ label:hover{
     }
 }
 
+/******* MODAL AND SIGNUP AND LOGIN *********/
+.modal{
+	display: none;
+	background: rgba(0,0,0, 0.8);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.closeModal{
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 25px;
+	float: right;
+}
+
+.closeModal:hover,
+.closeModal:focus{
+	cursor: pointer;
+	color:white;
+    background: black;
+	text-decoration: none;
+	border-radius: 50%;
+}
+
+.frame{
+	margin: 30px auto;
+	max-width: 320px;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+form input{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	display: block;
+	width: 80%;
+	margin: 15px auto;
+	outline: 1;
+	background-color: rgba(19, 6, 6, 0.233);
+	border: none;
+	border-radius: 15px;
+	padding: 15px;
+}
+
+input::placeholder{
+	text-transform: capitalize;
+}
+
+input:hover,
+input:focus{
+	background-color: black;
+	color: white;
+}
+
+.submit{
+	border-radius: 30px;
+	box-sizing: border-box;
+	background-color: green;
+	border: none;
+	color: white;
+	font-weight: bold;
+}
+.submit:hover{
+	background-color: darkgreen;
+	cursor: pointer;
+}
+
+.img-container img{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+.img-container{
+	margin: 10px auto;
+	width: 80px;	
+}
+
+.message{
+	width: 90%;
+	margin: 0 auto 20px;
+	text-align: center;
+}
+.message a{
+	color: blue;
+	text-decoration: none;
+}
+
+.message a:active{
+	color: red;
+}
+.loginForm{
+	display: none;
+}
+
+/**** ANIMATION ****/
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom{
+	from {-webkit-transform: scale(0)}
+	to {-webkit-animation: scale(1)}
+}
+
+@keyframes animatezoom {
+	from {transform: scale(0)}
+	to {transform: scale(1)}
+}

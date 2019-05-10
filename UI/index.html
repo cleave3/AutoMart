@@ -10,18 +10,18 @@
 <body>
     <div class="container">
         <div class="nav">
-            <div class="icon-container">
+            <div class="logo-container">
                 <a href="./index.html"><img src="./images/logo.png"></a>
             </div>
             <label for="toggle">&#9776</label>
             <input type="checkbox" id="toggle">
             <div class="menu">
-                <a class="current" href="#">Home</a>
+                <a class="current" href="./index.html">Home</a>
                 <a href="#">Products</a>
                 <a href="#">Services</a>
-                <div class="snl">
-                <a href="#">Signup</a>
-                <a href="#">login</a>
+                <div class="signup-login-container">
+                <a id="nav-signup" href="#">Signup</a>
+                <a id="nav-login" href="#">login</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,43 @@
                 <img class="each-car-img" src="./images/jeep-front.png">
                 <img class="each-car-img" src="./images/civic-front.png">
             </div>
-            <button id="button">GET STARTED</button>
+            <button class="button" id="join">GET STARTED</button>
+            <div class="modal">
+                    <div class="frame animate">
+                        <p class="closeModal">&CircleTimes;</p>
+                        <div class="signupForm">
+                    <form>
+                        <div class="img-container">
+                        <img src="./images/logo.png">
+                        </div>
+                        <input type="text" name="first_name" placeholder="First Name">
+                        <input type="text" name="last_name" placeholder="Last Name">
+                        <input type="email" name="email" placeholder="email">
+                        <input type="email" name="address" placeholder="Address">
+                        <input type="password" name="password" placeholder="password">
+                        <input class="submit" type="submit" value="Create Account">
+                        <div class="message">
+                            Already have an account? Login
+                        <a href="#" id="login">here</a>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="loginForm">
+                    <form>
+                        <div class="img-container">
+                            <img src="./images/logo.png">
+                        </div>
+                        <input type="" name="" placeholder="username or email">
+                        <input type="password" name="password" placeholder="password">
+                        <input class="submit" type="submit" name="" value="Login">
+                    <div class="message">
+                            Dont't have an account? Signup
+                        <a href="#" id="signup">here</a>
+                    </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
         </div>
         <div class="article">
             <h1>AUTO MART</h1>
@@ -55,7 +91,7 @@
             <h1>The Smart Way To Sell Your Car</h1>
             <p>An innovative new approach to selling your car</p>
             <p>Saving your time, hassle, and money</p>
-            <a href="#"><button id="button">SELL MY CAR</button></a>
+            <a href="#"><button class="button">SELL MY CAR</button></a>
         </div>
         <div class="footer">
             <div class="footer-items">
@@ -69,5 +105,6 @@
             <p>&copy cleave 2019. All rights reserved</p>
         </div>
     </div>
+    <script src="./js/app.js"></script>
 </body>
 </html>
