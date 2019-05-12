@@ -325,10 +325,8 @@ label:hover{
 
 /******* MODAL AND SIGNUP AND LOGIN *********/
 .modal{
-	/* display: none; */
 	background: linear-gradient( rgba(0,0,0, 0.8), rgba(0,0,0,0.8)),url(../images/car3.jpg) no-repeat;
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
@@ -356,7 +354,7 @@ label:hover{
 	max-width: 320px;
 	background-color: white;
 	overflow: hidden;
-	border-radius: 5px;
+    border-radius: 5px;
 }
 .frame-login{
     margin: 100px auto;
