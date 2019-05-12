@@ -6,13 +6,14 @@ const infoBox = document.querySelectorAll('.display-box');
 
 infoBox.forEach(element => {
     element.addEventListener('click', (event) => {
-        window.location ='car_details.html';
         if(event.target.className == 'car-button'){
             // displayArea.style.display ='none';
             // details.style.display ='block';
             // details.insertAdjacentElement("afterbegin", element);
             // window.location ='index.html';
-            window.location ='car_details.html';
-        }
+            
+        }else {
+			window.location ='car_details.html';
+		}
     })
 })
