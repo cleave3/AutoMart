@@ -1,0 +1,147 @@
+html,body{
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 98%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 5px;
+    grid-template-areas:
+    "nav nav nav nav"
+    "searchbar searchbar searchbar searchbar"
+    "car-details car-details car-details car-details"
+    "display display display display"
+    "footer footer footer footer"
+}
+
+/** SEARCH BAR ***/
+.search-bar{
+    grid-area: searchbar;
+    background-color: rgb(8, 191, 207);
+    min-height: 50px;
+}
+
+.search-container{
+    margin: 20px auto;
+    width: 600px;
+}
+
+.search-container input{
+    border: 1px solid rgb(192, 28, 7);
+	padding: 15px;
+    width: 70%;
+}
+.search-container button{
+    padding: 15px;
+    border: none;
+    background-color: rgb(216, 3, 39);
+    color: white;
+}
+.search-container button:hover{
+    cursor: pointer;
+    background-color: rgb(66, 4, 4);
+}
+
+/***DISPLAY AREA***/
+.display-area{
+    grid-area: display;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 85vh;
+    margin: 10px auto;
+}
+
+.display-box{
+    width: 300px;
+    height: 350px;
+    margin: 15px auto;
+    text-align: center;
+    box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    margin-right: 8px;
+}
+.display-box:hover{
+    box-shadow: 5px 5px 5px 5px gray;
+}
+
+.display-box img{
+    width: 100%;
+    height: 200px;
+}
+
+.display-box p{
+    line-height: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.display-box button{
+    padding: 10px;
+    width: 50%;
+    border: none;
+    background-color: rgb(160, 11, 11);
+    color: white;
+    font-weight: bold;
+}
+
+.display-box button:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
+.back-button {
+    display: none;
+    text-decoration: none;
+    margin: 10px;
+}
+
+/******CAR DETAILS ******/
+.car-details{
+    grid-area: car-details;
+    text-align: center;
+}
+
+.car-details .display-box{
+    box-shadow: none;
+    height: 400px;
+    margin: 20px auto;
+    margin-bottom: 50px;
+}
+
+.car-details img{
+    width: 320px;
+    height: 250px;
+}
+
+.car-details .display-box button{
+    display: inline;
+}
+.car-details .display-box a{
+    text-decoration: none;
+}
+
+@media (max-width: 720px) {
+    .wrapper{
+        width: 98%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 5px;
+        grid-template-areas:
+        "nav nav nav nav"
+        "searchbar searchbar searchbar searchbar"
+        "car-details car-details car-details car-details"
+        "display display display display"
+        "footer footer footer footer"
+    }
+    .search-container{
+        margin: 20px auto;
+        width: 70%;
+    }
+    .display-box{
+        margin: 10px auto;
+    }
+}

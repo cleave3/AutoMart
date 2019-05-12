@@ -1,24 +1,18 @@
-/**** DISPLAY MODAL AND SWITCHING BETWEEN SIGNUP AND LOGIN *****/
-const signup = document.querySelectorAll('#nav-signup, #join, #signup');
-const login = document.querySelectorAll('#nav-login, #login');
-const close = document.querySelector('.closeModal');
+/******DISPLAY BOXES *********/
+const infoBox = document.querySelectorAll('.display-box');
+// const details = document.querySelector('.car-details');
+// const displayArea = document.querySelector('.display-area');
+// const back = document.querySelector('.back-button');
 
-signup.forEach(element => {
-	element.addEventListener('click', () => {
-		document.querySelector('.modal').style.display = 'block';
-		document.querySelector('.signupForm').style.display = 'block';
-		document.querySelector('.loginForm').style.display = 'none';
-	})
-});
-
-login.forEach(element => {
-	element.addEventListener('click', () => {
-		document.querySelector('.modal').style.display = 'block';
-		document.querySelector('.signupForm').style.display = 'none';
-		document.querySelector('.loginForm').style.display = 'block';
-	})
-});
-
-close.addEventListener('click', () => {
-	document.querySelector('.modal').style.display = 'none';;
+infoBox.forEach(element => {
+    element.addEventListener('click', (event) => {
+        window.location ='car_details.html';
+        if(event.target.className == 'car-button'){
+            // displayArea.style.display ='none';
+            // details.style.display ='block';
+            // details.insertAdjacentElement("afterbegin", element);
+            // window.location ='index.html';
+            window.location ='car_details.html';
+        }
+    })
 })
