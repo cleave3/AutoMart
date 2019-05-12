@@ -41,15 +41,17 @@ label{
     font-size: 35px;
     display: none;
     width: 35px;
+    color: white;
 }
 .nav{
     grid-area: nav;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(43, 41, 41);
 }
 
 label:hover{
     cursor: pointer;
-    color: blue;
+    color: gray;
 }
 
 .menu {
@@ -69,9 +71,8 @@ label:hover{
 .nav a{
     text-decoration: none;
     padding: 10px;
-    color: black;
+    color: white;
     margin: 0;
-    text-transform: uppercase;
     font-weight: bold;
 }
 
@@ -81,8 +82,7 @@ label:hover{
 
 .menu a:hover{
     cursor: pointer;
-    color: rgb(87, 31, 31);
-    border-bottom: 3px solid rgb(87, 31, 31);;
+    color: rgb(180, 17, 17);
 }
 .current{
     border-bottom: 5px solid green;
@@ -110,7 +110,7 @@ label:hover{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 30px;
     padding: 20px;
-    background-color: whitesmoke;
+    background-color: rgb(219, 212, 212);
 }
 
 .ads-images{
@@ -171,11 +171,10 @@ label:hover{
 .footer{
     grid-area: footer;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 30px;
-    padding: 20px;
     color: white;
     text-align: center;
     background-color: black;
+    width: 100%;
 }
 
 .footer-items{
@@ -193,73 +192,51 @@ label:hover{
 .footer-items a:hover{
     color: gray;
 }
+
 /*****CONTACT *****/
 .contact-section{
     grid-area: contact-section;
     padding: 20px;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: rgb(129, 125, 125);
 }
 .contact-section p{
     font-weight: bold;
     font-size: 20px;
 }
 
-
 /*** ABOUT ***/
 .about-section{
     grid-area: about-section; 
     padding: 20px;
     text-align: center;
+    background-color: whitesmoke;
 }
 .about-section div{
     display: flex;
     padding: 20px;
     margin: 0 auto;
 }
-
+.about-section p{
+    font-size: 20px;
+}
 .about-section img{
     width: 250px;
     height: 250px;
+}
+.about-menu{
+    float: right;
+}
+.about-menu a:hover{
+    cursor: pointer;
+    color: rgb(87, 31, 31);
+    border-bottom: 3px solid rgb(87, 31, 31);;
 }
 
 /**** MOBILE VIEW ***/
 @media (max-width: 720px) {
     .container{
         width: 100%;
-    }
-    .menu{
-        background-color: whitesmoke;
-        display: none;
-        width: 100%;
-    }
-    .menu a{
-        display: block;
-        text-align: center;
-        
-    }
-    .signup-login-container{
-        float: none;
-    }
-    label{
-        display: block;
-    }
-    #toggle:checked + .menu {
-        display: block;
-        transition: all .5s;
-    }
-    .menu a:hover{
-        cursor: pointer;
-        color: rgb(87, 31, 31);;
-        background-color: rgb(207, 198, 198);
-        border-left: 3px solid rgb(87, 31, 31);
-        border-right: 3px solid rgb(87, 31, 31);;
-        border-bottom: none;
-    }
-    .current{
-        border-left: 5px solid green;
-        border-right: 5px solid green;
-        border-bottom: none;
     }
     .container{
         width: 98%;
@@ -294,6 +271,46 @@ label:hover{
         width: 180px;
         height: 180px;
     }
+    .about-menu .current{
+        border-left: none;
+        border-right: none;
+        border-bottom: 5px solid green;
+     }
+}
+
+@media (max-width: 600px) {
+    .menu{
+        display: none;
+        width: 100%;
+    }
+    .menu a{
+        display: block;
+        text-align: center;
+        
+    }
+    .signup-login-container{
+        float: none;
+    }
+    label{
+        display: block;
+    }
+    #toggle:checked + .menu {
+        display: block;
+        transition: all .5s;
+    }
+    .menu a:hover{
+        cursor: pointer;
+        color: rgb(180, 17, 17);
+        background-color: rgb(207, 198, 198);
+        border-left: 3px solid rgb(180, 17, 17);
+        border-right: 3px solid rgb(180, 17, 17);
+        border-bottom: none;
+    }
+    .current{
+        border-left: 5px solid green;
+        border-right: 5px solid green;
+        border-bottom: none;
+    }
 }
 
 @media(max-width: 420px) {
@@ -308,8 +325,8 @@ label:hover{
 
 /******* MODAL AND SIGNUP AND LOGIN *********/
 .modal{
-	display: none;
-	background: rgba(0,0,0, 0.8);
+	/* display: none; */
+	background: linear-gradient( rgba(0,0,0, 0.8), rgba(0,0,0,0.8)),url(../images/car3.jpg) no-repeat;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -334,8 +351,15 @@ label:hover{
 	border-radius: 50%;
 }
 
-.frame{
+.frame-signup{
 	margin: 30px auto;
+	max-width: 320px;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 5px;
+}
+.frame-login{
+    margin: 100px auto;
 	max-width: 320px;
 	background-color: white;
 	overflow: hidden;
@@ -347,33 +371,31 @@ form input{
 	display: block;
 	width: 80%;
 	margin: 15px auto;
-	outline: 1;
-	background-color: rgba(19, 6, 6, 0.233);
-	border: none;
-	border-radius: 15px;
+	border: 1px solid rgb(14, 229, 248);
+	border-radius: 5px;
 	padding: 15px;
 }
 
 input::placeholder{
-	text-transform: capitalize;
+    text-transform: capitalize; 
+	color: black;
 }
 
 input:hover,
 input:focus{
-	background-color: black;
-	color: white;
+    background-color: rgba(245, 243, 243, 0.87);
+    outline: 0;
 }
 
 .submit{
-	border-radius: 30px;
-	box-sizing: border-box;
-	background-color: green;
+	background-color: rgb(93, 218, 240);
 	border: none;
 	color: white;
-	font-weight: bold;
+    font-weight: bold;
+    width: 90%;
 }
 .submit:hover{
-	background-color: darkgreen;
+	background-color: rgb(22, 132, 184);
 	cursor: pointer;
 }
 
@@ -398,11 +420,20 @@ input:focus{
 	text-decoration: none;
 }
 
-.message a:active:visited{
-	color: red;
+.cancel-botton{
+	background-color: rgb(179, 24, 31);
+	border: none;
+	color: white;
+    font-weight: bold;
+    float: right;
+    padding: 15px;
+    margin: 0 20px 10px;
 }
-.loginForm{
-	display: none;
+.cancel-botton:hover,
+.cancel-botton:focus{
+    background-color: rgb(100, 6, 10);
+    cursor: pointer;
+    outline: 0;
 }
 
 /**** MODAL ANIMATION ****/
