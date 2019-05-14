@@ -10,7 +10,7 @@ html,body{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
-    grid-gap: 5px;
+    grid-gap: 1px;
     grid-template-areas:
     "nav nav nav nav"
     "about-section about-section about-section contact-section"
@@ -244,7 +244,7 @@ label:hover{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: auto;
-        grid-gap: 5px;
+        grid-gap: 1px;
         grid-template-areas:
         "nav nav nav nav"
         "about-section about-section about-section about-section"

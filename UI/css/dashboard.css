@@ -1,0 +1,131 @@
+body,
+html{
+    height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.container{
+    width: 98%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1px;
+    grid-template-areas: 
+    "header header header header"
+    "sidenav main main main"
+    "footer footer footer footer"
+}
+
+/******* HEADER *******/
+.header{
+    grid-area: header;
+    background-color: gray;
+}
+.logo-container{
+    width: 50px;
+    margin: 0 auto;
+}
+.logo-container img{
+    width: 50px;
+    height: 50px;
+}
+
+/******* SIDENAV *******/
+.sidenav{
+    grid-area: sidenav;
+    background-color: rgb(8, 191, 207);
+}
+.sidenav a{
+    text-decoration: none;
+    text-align: left;
+    display: block;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 17px;
+}
+.sidenav a:hover{
+    background-color: rgb(7, 2, 54);
+    color: rgb(8, 191, 207);
+}
+#user-image-container{
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+}
+#user-image{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+/******* MAIN *******/
+.main{
+    grid-area: main;
+    min-height: 85vh;
+}
+.content-container{
+    width: 500px;
+    margin: 0 auto;
+}
+#ads-container{
+    min-width: 50%;
+    margin: 20px auto;
+}
+#ads-box img{
+    width: 100px;
+    height: 100px;
+}
+#ads-box{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 1px 2px 3px gray;
+    margin: 30px auto;
+    padding: 10px;
+    justify-content: center;
+    justify-items: center;
+}
+#ads-box:hover{
+    box-shadow: 5px 5px 5px 5px gray;
+    cursor: pointer;
+}
+
+/******* FOOTER *******/
+.footer{
+    grid-area: footer;
+    background-color: gray;
+    min-height: 2.5rem;
+    padding: 10px;
+}
+
+/**** MOBILE VIEWS ****/
+@media(max-width: 600px){
+    .container{
+        width: 98%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1px;
+        grid-template-areas: 
+        "header header header header"
+        "sidenav sidenav sidenav sidenav"
+        "main main main main"
+        "footer footer footer footer"
+    }
+    .sidenav a{
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        padding: 10px;
+        font-size: 17px;
+    }
+    .content-container{
+        width: 90%;
+    }
+}
+.current{
+    background-color: black;
+    color: white;
+}
