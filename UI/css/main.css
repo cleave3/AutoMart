@@ -48,7 +48,10 @@ label{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(43, 41, 41);
 }
-
+#nav-hide{
+    display: none;
+    float: none;
+}
 label:hover{
     cursor: pointer;
     color: gray;
@@ -73,7 +76,6 @@ label:hover{
     padding: 10px;
     color: white;
     margin: 0;
-    font-weight: bold;
 }
 
 .signup-login-container{
@@ -81,15 +83,18 @@ label:hover{
 }
 
 .dropdown{
-    float: left;
+    float: right;
     width: 30px;
     margin: 5px;
 }
 .dropdown-content{
     display: none;
     position: absolute;
-    background-color: whitesmoke;
+    background-color: white;
     min-width: 100px;
+    right: 15px;
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px black;
 }
 .dropdown-content a{
     display: block;
@@ -118,7 +123,7 @@ label:hover{
     color: rgb(180, 17, 17);
 }
 .current{
-    border-bottom: 5px solid green;
+    border-bottom: 3px solid green;
 }
 
 /*** SHOWCASE ***/
@@ -344,6 +349,12 @@ label:hover{
         border-left: 5px solid green;
         border-right: 5px solid green;
         border-bottom: none;
+    }
+    #nav-hide{
+        display: block;
+    }
+    .dropdown{
+        display: none;
     }
 }
 
