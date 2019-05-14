@@ -97,6 +97,7 @@ html,body{
     grid-area: car-details;
     text-align: center;
     min-height: 90vh;
+    margin-top: 50px;
 }
 .car-description-container{
     max-width: 500px;
@@ -116,14 +117,14 @@ html,body{
     width: 300px;
     height: 250px;
 }
-.car-details .car-button{
+.car-details .buy-button{
     padding: 15px;
     border: none;
     background-color: rgb(160, 11, 11);
     color: white;
     font-weight: bold;
 }
-.car-details .car-button:hover{
+.car-details .buy-button:hover{
     background-color: rgb(65, 3, 3);
     cursor: pointer;
 }
