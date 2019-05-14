@@ -80,6 +80,39 @@ label:hover{
     float: right;
 }
 
+.dropdown{
+    float: left;
+    width: 30px;
+    margin: 5px;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 100px;
+}
+.dropdown-content a{
+    display: block;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown-content a:hover{ 
+    background: black;
+    color: white;
+}
+.dropdown img{ 
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.dropdown img:hover{
+    cursor: pointer;
+}
+
 .menu a:hover{
     cursor: pointer;
     color: rgb(180, 17, 17);
@@ -280,7 +313,9 @@ label:hover{
 @media (max-width: 600px) {
     .menu{
         display: none;
-        width: 100%;
+        width: 94%;
+        position: absolute; 
+        background-color: rgb(43, 41, 41);
     }
     .menu a{
         display: block;

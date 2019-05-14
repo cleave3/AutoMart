@@ -42,11 +42,12 @@
 form input{
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	display: block;
-	width: 80%;
+	width: 90%;
 	margin: 15px auto;
 	border: 1px solid rgb(14, 229, 248);
 	border-radius: 5px;
 	padding: 15px;
+	box-sizing: border-box;
 }
 
 input::placeholder{
@@ -65,7 +66,6 @@ input:focus{
 	border: none;
 	color: white;
     font-weight: bold;
-    width: 90%;
 }
 .submit:hover{
 	background-color: rgb(22, 132, 184);
