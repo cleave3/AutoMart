@@ -46,12 +46,15 @@ html{
     padding: 15px;
     font-size: 17px;
 }
+#switch{
+    float: left;
+}
 .sidenav a:hover{
     background-color: rgb(7, 2, 54);
     color: rgb(8, 191, 207);
 }
 #user-image-container{
-    margin: 20px auto;
+    margin: 20px auto 50px;
     width: 100px;
     height: 100px;
 }
@@ -90,13 +93,58 @@ html{
     box-shadow: 5px 5px 5px 5px gray;
     cursor: pointer;
 }
+/*** ADMIN ADS DISPLAY AREA***/
+.display-area{
+    grid-area: display;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 85vh;
+    margin: 10px auto;
+}
+
+.display-box{
+    width: 200px;
+    height: 250px;
+    margin: 15px auto;
+    text-align: center;
+    box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    margin-right: 8px;
+}
+.display-box:hover{
+    box-shadow: 5px 5px 5px 5px gray;
+}
+
+.display-box img{
+    width: 100%;
+    height: 100px;
+}
+
+.display-box p{
+    line-height: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.display-box button{
+    padding: 10px;
+    width: 50%;
+    border: none;
+    background-color: rgb(160, 11, 11);
+    color: white;
+    font-weight: bold;
+}
+
+.display-box button:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
 
 /******* FOOTER *******/
 .footer{
     grid-area: footer;
     background-color: gray;
     min-height: 2.5rem;
-    padding: 10px;
+    width: 100%;
 }
 
 /**** MOBILE VIEWS ****/
@@ -123,6 +171,9 @@ html{
     }
     .content-container{
         width: 90%;
+    }
+    .display-box{
+        margin: 10px auto;
     }
 }
 .current{
