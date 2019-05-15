@@ -36,19 +36,11 @@
             </div>
         </div>
         <div class="ads-post-container">
-                <!-- <div class="signup-login-container dropdown">
-                    <img src="./images/panel.jpg">
-                    <div class="dropdown-content">
-                        <a id="dashboard" href="./user/dashboard.html">Dashboard</a>
-                        <a id="nav-signup" href="./signup.html">Signup</a>
-                        <a id="nav-login" href="./login.html">Login</a>
-                    </div>
-                </div> -->
             <div class="post-form-container">
                 <form id="sale-form">
-                    <label>OWNER</label>
+                    <label for="owner">OWNER</label>
                     <input id="owner_name" type="text" name="owner" placeholder="Owner Name" required>
-                    <label>MANUFACTURER</label>
+                    <label for="manufacturer">MANUFACTURER</label>
                     <select id="manufacturer">
                         <option>Please Select</option>
                         <option>Audi</option>
@@ -64,15 +56,15 @@
                         <option>Hyudai</option>
                         <option>Lexus</option>
                     </select>
-                    <label>MODEL</label>
+                    <label for="model">MODEL</label>
                     <input id="model" type="text" name="model" placeholder="Model" required>
-                    <label>Transmission Type</label>
+                    <label for="transmission">Transmission Type</label>
                     <select id="transmission">
                         <option>Please Select</option>
                         <option>Automatic</option>
                         <option>Manual</option>
                     </select>
-                    <label>BODY TYPE</label>
+                    <label for="body">BODY TYPE</label>
                     <select id="body">
                         <option>Please Select</option>
                         <option>Buses</option>
@@ -81,17 +73,18 @@
                         <option>Truck</option>
                         <option>Van</option>
                     </select>
-                    <label>STATE</label>
+                    <label for="state">STATE</label>
                     <select id="state">
                         <option>Please Select</option>
                         <option>New</option>
                         <option>Used</option>
                     </select>
-                    <label>price</label>
+                    <label for="price">price</label>
                     <input id="price" type="number" name="price" placeholder="Price" required>
-                    <label>Picture</label>
-                    <input id="car_pic" type="file" name="photo" required>
-                    <textarea placeholder="Description....."></textarea>
+                    <label for="image">image</label>
+                    <input id="image" type="url" name="photo" placeholder="Image URL" required>
+                    <label for="description">description</label>
+                    <textarea id="description" placeholder="Description....."></textarea>
                 </form>
                 <div class="post-button-container">
                     <button id="cancel-button">CANCEL</button>
