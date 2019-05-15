@@ -26,17 +26,21 @@ html,body{
 }
 
 .search-container{
-    margin: 20px auto;
-    width: 600px;
+    margin: 5px auto 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
 }
 
 .search-container input{
     border: 1px solid rgb(192, 28, 7);
-	padding: 15px;
-    width: 70%;
+    padding: 10px;  
+    width: 300px;
 }
 .search-container button{
-    padding: 15px;
+    padding: 10px;
+    width: 80px;
     border: none;
     background-color: rgb(216, 3, 39);
     color: white;
@@ -45,7 +49,15 @@ html,body{
     cursor: pointer;
     background-color: rgb(66, 4, 4);
 }
-
+.price-container{
+    width: 300px;
+    margin: 10px auto 0px;
+}
+.price-container input{
+    width: 100px;
+    padding: 10px;
+    border: 1px solid rgb(192, 28, 7);
+}
 /***DISPLAY AREA***/
 .display-area{
     grid-area: display;
@@ -143,7 +155,7 @@ html,body{
 
 .ads-post-container{
     grid-area: adspost;
-    min-height: 135vh;
+    min-height: 125vh;
     background: linear-gradient( rgba(0,0,0, 0.8), rgba(0,0,0,0.8)),url(../images/car3.jpg) no-repeat;
     width: 100%;
 }

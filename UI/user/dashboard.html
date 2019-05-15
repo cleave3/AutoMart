@@ -16,21 +16,19 @@
             </div>
             </div>
         <div class="sidenav">
-            <!-- <a id="switch" href="./admin_dashboard.html">Admin &raquo</a> -->
             <div id="user-image-container">
                 <img id = "user-image" src="../images/avatar.png">
+                <h3>Owhiroro cleave</h3>
             </div>
-            <h3>Owhiroro cleave</h3>
-            <a class="current" href="../dashboard.html">MY ADS</a>
+            <a class="current" href="./dashboard.html">MY ADS</a>
             <a href="./dashboard_orders.html">MY ORDERS</a>
-            <a href="../car_view.html">CARS</a>
+            <a href="../car_view.html">AVAILABLE CARS</a>
             <a href="../post_ads.html">SELL CAR</a>
             <a href="#">LOGOUT</a>
         </div>
         <div class="main">
             <div class="content-container">
                 <div id="ads-container">
-                    <h2>MY ADS</h2>
                 <div id="ads-box">
                     <img src="../images/benz.png">
                     <div>
@@ -38,9 +36,14 @@
                         <p>Model:GLK</p>
                        <p> Price: &#8358 3,200,000</p>
                     </div>
-                    <div id="price-update-container">
-                        <input type="number" placeholder="price">
-                        <input type="submit" value="update">
+                    <div class="update-container">
+                        <select class="status">
+                            <option class="available">Available</option>
+                            <option class="sold">Sold</option>
+                        </select>
+                        <button>Update</button>
+                        <input name= "price" type="number" placeholder="price">
+                        <button>Update</button>
                     </div>
                 </div>
                 <div id="ads-box">
@@ -50,9 +53,14 @@
                         <p>Model:GLK</p>
                         <p> Price: &#8358 3,200,000</p>
                     </div>
-                    <div id="price-update-container">
-                        <input type="number" placeholder="price">
-                        <input type="submit" value="update">
+                    <div class="update-container">
+                        <select class="status">
+                            <option class="available">Available</option>
+                            <option class="sold">Sold</option>
+                        </select>
+                        <button>Update</button>
+                        <input name= "price" type="number" placeholder="price">
+                        <button>Update</button>
                     </div>
                 </div>
                 </div>

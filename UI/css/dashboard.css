@@ -41,11 +41,10 @@ html{
 .sidenav a{
     text-decoration: none;
     color: black;
-    text-align: left;
+    text-align: center;
     display: block;
     font-weight: bold;
     padding: 15px;
-    font-size: 17px;
 }
 
 .current{
@@ -71,7 +70,7 @@ html{
     color: white;
 }
 #user-image-container{
-    margin: 20px auto 50px;
+    margin: 20px auto 100px;
     width: 100px;
     height: 100px;
 }
@@ -86,20 +85,22 @@ html{
     min-height: 85vh;
 }
 .content-container{
-    width: 450px;
     margin: 0 auto;
 }
+
 #ads-container{
     min-width: 50%;
     margin: 20px auto;
-}
-#ads-box img{
-    width: 100px;
-    height: 100px;
-}
-#ads-box{
     display: flex;
     flex-wrap: wrap;
+}
+#ads-box img{
+    width: 200px;
+    height: 150px;
+}
+#ads-box{
+    /* max-width: 320px; */
+    width: 320px;
     box-shadow: 1px 2px 3px gray;
     margin: 30px auto;
     padding: 10px;
@@ -109,6 +110,34 @@ html{
 #ads-box:hover{
     box-shadow: 5px 5px 5px 5px gray;
     cursor: pointer;
+}
+ #ads-box p{
+    font-weight: bold;
+}
+.update-container input,
+.update-container select{
+    width: 100px;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid black;
+}
+.update-container button{
+    padding: 5px;
+    background-color: rgb(170, 82, 10);
+    color: white;
+    border: none;
+}
+.update-container button:hover{
+    background-color: rgb(87, 28, 5);
+    cursor: pointer;
+}
+.available{
+    color: rgb(14, 211, 14);
+    font-weight: bold;
+}
+.sold{
+    color: rgb(211, 14, 14);
+    font-weight: bold; 
 }
 /*** ADMIN ADS DISPLAY AREA***/
 .display-area{
