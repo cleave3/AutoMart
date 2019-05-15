@@ -112,6 +112,7 @@ label:hover{
 .dropdown img{ 
     width: 30px;
     height: 30px;
+    border-radius: 50%;
     margin-right: 10px;
 }
 .dropdown img:hover{
@@ -268,6 +269,9 @@ label:hover{
 .about-menu a:hover{
     cursor: pointer;
     color: rgb(87, 31, 31);
+}
+.contact-section p{
+    font-weight: 100;
 }
 
 /**** MOBILE VIEW ***/

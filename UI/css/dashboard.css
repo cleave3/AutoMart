@@ -40,18 +40,35 @@ html{
 }
 .sidenav a{
     text-decoration: none;
+    color: black;
     text-align: left;
     display: block;
     font-weight: bold;
     padding: 15px;
     font-size: 17px;
 }
+
+.current{
+    background-color: rgb(5, 112, 155);
+    color: white;
+}
+
 #switch{
     float: left;
+    text-decoration: none;
+    margin: 20px;
+    font-weight: bold;
+    color: black;
+}
+#switch:hover{
+    background-color: none;
+    color: white;
+    margin-left: 30px;
+    transition: all .5s ease-in-out;
 }
 .sidenav a:hover{
-    background-color: rgb(7, 2, 54);
-    color: rgb(8, 191, 207);
+    background-color: rgb(15, 6, 99);
+    color: white;
 }
 #user-image-container{
     margin: 20px auto 50px;
@@ -69,7 +86,7 @@ html{
     min-height: 85vh;
 }
 .content-container{
-    width: 500px;
+    width: 450px;
     margin: 0 auto;
 }
 #ads-container{
@@ -148,7 +165,7 @@ html{
 }
 
 /**** MOBILE VIEWS ****/
-@media(max-width: 600px){
+@media(max-width: 620px){
     .container{
         width: 98%;
         margin: 0 auto;
@@ -175,8 +192,4 @@ html{
     .display-box{
         margin: 10px auto;
     }
-}
-.current{
-    background-color: black;
-    color: white;
 }
