@@ -1,0 +1,46 @@
+{
+  "name": "automart",
+  "version": "1.0.0",
+  "description": "A car sale web application for selling and buying new and used cars",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cleave3/AutoMart.git"
+  },
+  "keywords": [
+    "car",
+    "sale",
+    "order",
+    "car",
+    "used",
+    "car",
+    "new",
+    "car",
+    "car",
+    "affordable",
+    "cars"
+  ],
+  "author": "owhiroro cleave <owhiroroeghele@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cleave3/AutoMart/issues"
+  },
+  "homepage": "https://github.com/cleave3/AutoMart#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4",
+    "babel-cli": "^6.26.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
+}
