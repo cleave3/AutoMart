@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import db from '../db/db';
 import User from '../models/user_models';
 
@@ -15,22 +16,28 @@ const signup = (req, res) => {
       message: 'Email is associated with another user account',
     });
   }
-  const newUser = new User();
-  newUser.id = db.users.length + 1;
-  newUser.first_name = req.body.first_name;
-  newUser.last_name = req.body.last_name;
-  newUser.address = req.body.address;
-  newUser.email = req.body.email;
-  newUser.password = req.body.password;
-  newUser.is_admin = false;
+  bcrypt.hash(req.body.password, 10, (error, hash) => {
+    if (error) {
+      res.status(500).json({
+        message: error,
+      });
+    }
+    const newUser = new User();
+    newUser.id = db.users.length + 1;
+    newUser.first_name = req.body.first_name;
+    newUser.last_name = req.body.last_name;
+    newUser.address = req.body.address;
+    newUser.email = req.body.email;
+    newUser.password = hash;
+    newUser.is_admin = false;
 
-  db.users.push(newUser);
-  return res.json({
-    status: 201,
-    data: newUser,
+    db.users.push(newUser);
+    return res.json({
+      status: 201,
+      data: newUser,
+    });
   });
 };
-
 
 const usersControl = {
   signup,
