@@ -28,10 +28,24 @@ const signup = (req, res) => {
   newUser.password = hashedPassword;
   newUser.is_admin = false;
 
+  const Token = token(
+    newUser.id,
+    newUser.email,
+    newUser.is_admin,
+  );
   db.users.push(newUser);
   return res.status(200).json({
     status: 201,
-    data: newUser,
+    data: {
+      Token,
+      id: newUser.id,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
+      address: newUser.address,
+      email: newUser.email,
+      password: newUser.password,
+      is_admin: newUser.is_admin,
+    },
   });
 };
 
@@ -66,10 +80,10 @@ const login = (req, res) => {
         data: {
           Token,
           id: user.id,
-          firstname: user.first_name,
-          lastname: user.last_name,
+          first_name: user.first_name,
+          last_name: user.last_name,
           email: user.email,
-          isadmin: user.is_admin,
+          is_admin: user.is_admin,
         },
       });
     }
