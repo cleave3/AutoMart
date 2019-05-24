@@ -25,6 +25,20 @@ const schemas = {
     confirmPassword: Joi.string().trim().valid(Joi.ref('password')).required()
       .strict(),
   }),
+  car: Joi.object().keys({
+    state: Joi.string().trim().valid('new', 'used').lowercase()
+      .required(),
+    status: Joi.string().trim().valid('available', 'sold').lowercase()
+      .required(),
+    price: Joi.number().integer().required(),
+    manufacturer: Joi.string().trim().required(),
+    model: Joi.string().trim().required(),
+    body_type: Joi.string().trim().required(),
+    transmission_type: Joi.string().trim().valid('automatic', 'manual').lowercase()
+      .required(),
+    image_url: Joi.string().trim().required(),
+    description: Joi.string(),
+  }),
 };
 
 export default schemas;
