@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt';
 import db from '../db/db';
 import User from '../models/user_models';
-import token from '../../helpers/token';
+import token from '../../middleware/token';
 
 /**
  *user signup
