@@ -28,8 +28,7 @@ const schemas = {
   car: Joi.object().keys({
     state: Joi.string().trim().valid('new', 'used').lowercase()
       .required(),
-    status: Joi.string().trim().valid('available', 'sold').lowercase()
-      .required(),
+    status: Joi.string().trim().valid('available', 'sold').lowercase(),
     price: Joi.number().integer().required(),
     manufacturer: Joi.string().trim().required(),
     model: Joi.string().trim().required(),
