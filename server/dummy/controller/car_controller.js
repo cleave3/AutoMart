@@ -2,7 +2,11 @@ import shortid from 'shortid';
 import db from '../db/db';
 import Car from '../models/car_model';
 
-
+/**
+ * post a car ad
+ * @param {object} req
+ * @param {object} res
+ */
 const postCar = (req, res) => {
   const { id, email } = req.decoded;
   const userId = id;
@@ -13,7 +17,7 @@ const postCar = (req, res) => {
   car.owner = userId;
   car.created_on = new Date();
   car.state = req.body.state;
-  car.status = req.body.status;
+  car.status = 'available';
   car.price = req.body.price;
   car.manufacturer = req.body.manufacturer;
   car.model = req.body.model;
@@ -43,6 +47,11 @@ const postCar = (req, res) => {
   });
 };
 
+/**
+ * view car ads by id
+ * @param {object} req
+ * @param {object} res
+ */
 const getACar = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);
   if (!car) {
@@ -56,9 +65,30 @@ const getACar = (req, res) => {
     data: car,
   });
 };
+
+/**
+ * view all unsold cars
+ * @param {object} req
+ * @param {object} res
+ */
+const getUnsoldCars = (req, res) => {
+  const unsoldCars = db.cars.filter(car => car.status === 'available');
+  if (!unsoldCars) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Unsold cars not found',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: unsoldCars,
+  });
+};
+
 const carControl = {
   postCar,
   getACar,
+  getUnsoldCars,
 };
 
 export default carControl;
