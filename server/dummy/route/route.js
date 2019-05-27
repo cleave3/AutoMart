@@ -16,5 +16,6 @@ app.patch('/api/v1/auth/reset', validate(schemas.reset, 'body'), usersControl.pa
 app.post('/api/v1/car', validate(schemas.car, 'body'), verifyUser, carControl.postCar);
 app.get('/api/v1/car/:id', carControl.getACar);
 app.get('/api/v1/car', carControl.getUnsoldCars);
+app.get('/api/v1/car', carControl.getUnsoldCarsByPrice);
 
 export default app;

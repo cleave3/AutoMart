@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
 import shortid from 'shortid';
 import db from '../db/db';
 import Car from '../models/car_model';
@@ -71,12 +73,17 @@ const getACar = (req, res) => {
  * @param {object} req
  * @param {object} res
  */
-const getUnsoldCars = (req, res) => {
-  const unsoldCars = db.cars.filter(car => car.status === 'available');
-  if (!unsoldCars) {
+const getUnsoldCars = (req, res, next) => {
+  const { status, min_price, max_price } = req.query;
+  const unsoldCars = db.cars.filter(car => car.status === status);
+  if (min_price || max_price) {
+    return next();
+  }
+  // eslint-disable-next-line eqeqeq
+  if (unsoldCars == '') {
     return res.status(404).json({
       status: 404,
-      message: 'Unsold cars not found',
+      message: 'cars not found',
     });
   }
   return res.status(200).json({
@@ -85,10 +92,35 @@ const getUnsoldCars = (req, res) => {
   });
 };
 
+
+/**
+ * view unsold cars within a price range
+ * @param {object} req
+ * @param {object} res
+ */
+const getUnsoldCarsByPrice = (req, res) => {
+  const { status, min_price, max_price } = req.query;
+  const max = max_price;
+  const min = min_price;
+  const unsoldCarsByPrice = db.cars.filter(car => car.status === status && car.price >= min && car.price <= max);
+  // eslint-disable-next-line eqeqeq
+  if (unsoldCarsByPrice == '') {
+    return res.status(404).json({
+      status: 404,
+      message: 'cars not found',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: unsoldCarsByPrice,
+  });
+};
+
 const carControl = {
   postCar,
   getACar,
   getUnsoldCars,
+  getUnsoldCarsByPrice,
 };
 
 export default carControl;
