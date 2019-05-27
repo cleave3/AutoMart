@@ -116,11 +116,27 @@ const getUnsoldCarsByPrice = (req, res) => {
   });
 };
 
+const updateCarStatus = (req, res) => {
+  const car = db.cars.find(data => data.id === req.params.id);
+  if (!car) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Car not found',
+    });
+  }
+  car.status = req.body.status;
+  return res.status(200).json({
+    status: 200,
+    data: car,
+  });
+};
+
 const carControl = {
   postCar,
   getACar,
   getUnsoldCars,
   getUnsoldCarsByPrice,
+  updateCarStatus,
 };
 
 export default carControl;
