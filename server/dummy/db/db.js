@@ -1,4 +1,3 @@
-import shortid from 'shortid';
 
 export default {
   users: [
@@ -23,7 +22,7 @@ export default {
   ],
   cars: [
     {
-      id: shortid.generate(),
+      id: '123',
       owner: 1,
       created_on: new Date(),
       state: 'used',
@@ -37,7 +36,7 @@ export default {
       description: 'Fairly used toyota camry with auto transmission',
     },
     {
-      id: shortid.generate(),
+      id: '124',
       owner: 2,
       created_on: new Date(),
       state: 'New',
@@ -51,7 +50,7 @@ export default {
       description: ' Brand new Benz GLK with latest functionalities',
     },
     {
-      id: shortid.generate(),
+      id: '125',
       owner: 3,
       created_on: new Date(),
       state: 'New',
