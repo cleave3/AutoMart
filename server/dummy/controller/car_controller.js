@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable max-len */
 import shortid from 'shortid';
 import db from '../db/car_db';
 import Car from '../models/car_model';
@@ -131,7 +130,7 @@ const getUnsoldCarsByPrice = (req, res) => {
   if (unsoldCarsByPrice == '') {
     return res.status(404).json({
       status: 404,
-      message: 'cars not found',
+      message: 'No car found in price range',
     });
   }
   return res.status(200).json({
@@ -145,7 +144,7 @@ const updateCarStatus = (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car not found',
+      message: 'Car with given id not found',
     });
   }
   car.status = req.body.status;
@@ -160,7 +159,7 @@ const updateCarPrice = (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car not found',
+      message: 'Car with given id not found',
     });
   }
   car.price = req.body.price;
@@ -170,6 +169,25 @@ const updateCarPrice = (req, res) => {
   });
 };
 
+const deleteCar = (req, res) => {
+  const car = db.cars.find(data => data.id === req.params.id);
+  if (!car) {
+    return res.status(404).json({
+      status: 404,
+      message: 'car with the given id not found',
+    });
+  }
+
+  const index = db.cars.indexOf(car);
+  db.cars.splice(index, 1);
+
+  return res.json({
+    status: 200,
+    message: 'Car Ad successfully deleted',
+  });
+};
+
+
 const carControl = {
   postCar,
   getACar,
@@ -178,6 +196,7 @@ const carControl = {
   getUnsoldCarsByPrice,
   updateCarStatus,
   updateCarPrice,
+  deleteCar,
 };
 
 export default carControl;
