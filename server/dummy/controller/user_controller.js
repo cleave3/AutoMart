@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import bcrypt from 'bcrypt';
-import db from '../db/db';
+import db from '../db/user_db';
 import User from '../models/user_models';
 import token from '../../middleware/token';
 

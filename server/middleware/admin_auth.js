@@ -1,10 +1,12 @@
+/* eslint-disable camelcase */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
 const secret = process.env.JWT_SECRET;
 
-const verifyUser = (req, res, next) => {
+// eslint-disable-next-line consistent-return
+const verifyAdmin = (req, res, next) => {
   const token = req.headers['x-access-token'];
   if (!token) {
     res.status(403).json({
@@ -14,19 +16,20 @@ const verifyUser = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, secret);
-    if (!decoded) {
-      res.status(401).json({
-        message: 'authentication failed, please login',
-      });
+    const { is_admin } = decoded;
+    if (is_admin) {
+      return next();
     }
-    req.decoded = decoded;
-    return next();
+    res.status(401).json({
+      status: 401,
+      message: 'authentication failed, please login as Admin',
+    });
   } catch (error) {
     res.status(401).json({
       status: 401,
-      message: 'authentication failed, please login',
+      message: 'authentication failed',
     });
   }
 };
 
-export default verifyUser;
+export default verifyAdmin;
