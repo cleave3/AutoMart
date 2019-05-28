@@ -16,6 +16,13 @@ const schemas = {
       .strict(),
     is_admin: Joi.boolean(),
   }),
+  signin: Joi.object().keys({
+    email: Joi.string().email().trim().lowercase()
+      .required(),
+    password: Joi.string().trim().min(8).max(20)
+      .required()
+      .strict(),
+  }),
   reset: Joi.object().keys({
     email: Joi.string().email().trim().lowercase()
       .required(),

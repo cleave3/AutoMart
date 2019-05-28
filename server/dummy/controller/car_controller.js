@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable max-len */
 import shortid from 'shortid';
-import db from '../db/db';
+import db from '../db/car_db';
 import Car from '../models/car_model';
 
 /**
@@ -65,6 +65,30 @@ const getACar = (req, res) => {
   return res.status(200).json({
     status: 200,
     data: car,
+  });
+};
+
+/**
+ *view all car ads
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+const getAllCars = (req, res, next) => {
+  const { status, min_price, max_price } = req.query;
+  if (status || min_price || max_price) {
+    return next();
+  }
+  const allCars = db.cars.map(cars => cars);
+  if (allCars == '') {
+    res.status(404).json({
+      status: 404,
+      message: 'No car found',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: allCars,
   });
 };
 
@@ -149,6 +173,7 @@ const updateCarPrice = (req, res) => {
 const carControl = {
   postCar,
   getACar,
+  getAllCars,
   getUnsoldCars,
   getUnsoldCarsByPrice,
   updateCarStatus,
