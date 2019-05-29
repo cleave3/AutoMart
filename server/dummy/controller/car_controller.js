@@ -139,6 +139,11 @@ const getUnsoldCarsByPrice = (req, res) => {
   });
 };
 
+/**
+ * update car status
+ * @param {object} req 
+ * @param {object} res 
+ */
 const updateCarStatus = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);
   if (!car) {
@@ -154,6 +159,11 @@ const updateCarStatus = (req, res) => {
   });
 };
 
+/**
+ * update car price
+ * @param {object} req 
+ * @param {object} res 
+ */
 const updateCarPrice = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);
   if (!car) {
@@ -169,6 +179,11 @@ const updateCarPrice = (req, res) => {
   });
 };
 
+/**
+ * Delete an ad
+ * @param {object} req 
+ * @param {object} res 
+ */
 const deleteCar = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);
   if (!car) {
