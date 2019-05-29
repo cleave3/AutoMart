@@ -3,6 +3,11 @@ import db from '../db/order_db';
 import Cars from '../db/car_db';
 import Order from '../models/order_model';
 
+/**
+ * Post an order
+ * @param {object} req
+ * @param {object} res
+ */
 const makeOrder = (req, res) => {
   const desiredCar = Cars.cars.find(car => car.id === req.body.id);
   const { id } = req.decoded;
@@ -28,6 +33,11 @@ const makeOrder = (req, res) => {
   });
 };
 
+/**
+ * update price offered
+ * @param {object} req
+ * @param {object} res
+ */
 const updateOrderPrice = (req, res) => {
   const order = db.orders.find(data => data.id === req.params.id);
   if (!order) {
@@ -50,9 +60,28 @@ const updateOrderPrice = (req, res) => {
   });
 };
 
+/**
+ * get user orders
+ * @param {object} req
+ * @param {object} res
+ */
+const getOrdersByUser = (req, res) => {
+  const userOrders = db.orders.filter(order => order.buyer === Number(req.params.id));
+  if (userOrders == '') {
+    return res.status(404).json({
+      status: 404,
+      message: 'user is yet to make an order',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: userOrders,
+  });
+};
 const orderControl = {
   makeOrder,
   updateOrderPrice,
+  getOrdersByUser,
 };
 
 export default orderControl;

@@ -11,7 +11,7 @@ export default {
     },
     {
       id: '133',
-      buyer: 2,
+      buyer: 1,
       car_id: '4gt5096',
       created_on: new Date(),
       amount: 4500000,
