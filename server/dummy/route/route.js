@@ -14,7 +14,7 @@ const {
   postCar, getACar, getAllCars, getUnsoldCars,
   getUnsoldCarsByPrice, updateCarStatus, updateCarPrice, deleteCar,
 } = carControl;
-const { makeOrder } = orderControl;
+const { makeOrder, updateOrderPrice } = orderControl;
 
 // USER ROUTES
 app.post('/api/v1/auth/signup', validate(schemas.user, 'body'), signup);
@@ -33,5 +33,6 @@ app.delete('/api/v1/car/:id', verifyAdmin, deleteCar);
 
 // ORDER ROUTES
 app.post('/api/v1/order', verifyUser, makeOrder);
+app.post('/api/v1/order/:id/price', verifyUser, updateOrderPrice);
 
 export default app;

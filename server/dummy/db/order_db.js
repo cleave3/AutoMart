@@ -6,6 +6,7 @@ export default {
       car_id: '3gt5096',
       created_on: new Date(),
       amount: 3000000,
+      price_offered: 2500000,
       status: 'pending',
     },
     {
@@ -13,7 +14,8 @@ export default {
       buyer: 2,
       car_id: '4gt5096',
       created_on: new Date(),
-      amount: 2500000,
+      amount: 4500000,
+      price_offered: 2500000,
       status: 'accepted',
     },
     {
@@ -22,6 +24,7 @@ export default {
       car_id: '5gt5096',
       created_on: new Date(),
       amount: 2500000,
+      price_offered: 2000000,
       status: 'rejected',
     },
   ],
