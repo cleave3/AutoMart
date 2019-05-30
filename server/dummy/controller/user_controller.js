@@ -88,25 +88,9 @@ const login = (req, res) => {
   });
 };
 
-const passwordReset = (req, res) => {
-  const user = db.users.find(data => data.email === req.body.email);
-  if (!user) {
-    return res.status(404).json({
-      status: 404,
-      message: 'Email does not exist',
-    });
-  }
-  const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-  user.password = hashedPassword;
-  return res.status(200).json({
-    status: 200,
-    message: 'Password reset successful',
-  });
-};
 const usersControl = {
   signup,
   login,
-  passwordReset,
 };
 
 export default usersControl;

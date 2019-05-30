@@ -23,15 +23,6 @@ const schemas = {
       .required()
       .strict(),
   }),
-  reset: Joi.object().keys({
-    email: Joi.string().email().trim().lowercase()
-      .required(),
-    password: Joi.string().trim().min(8).max(20)
-      .required()
-      .strict(),
-    confirmPassword: Joi.string().trim().valid(Joi.ref('password')).required()
-      .strict(),
-  }),
   car: Joi.object().keys({
     state: Joi.string().trim().valid('new', 'used').lowercase()
       .required(),
