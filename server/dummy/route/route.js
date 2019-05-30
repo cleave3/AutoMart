@@ -9,7 +9,7 @@ import orderControl from '../controller/order_controller';
 
 const app = Express.Router();
 
-const { signup, login, passwordReset } = usersControl;
+const { signup, login } = usersControl;
 const {
   postCar, getACar, getAllCars, getUnsoldCars,
   getUnsoldCarsByPrice, updateCarStatus, updateCarPrice, deleteCar,
@@ -19,7 +19,6 @@ const { makeOrder, updateOrderPrice, getOrdersByUser } = orderControl;
 // USER ROUTES
 app.post('/api/v1/auth/signup', validate(schemas.user, 'body'), signup);
 app.post('/api/v1/auth/signin', validate(schemas.signin, 'body'), login);
-app.patch('/api/v1/auth/reset', validate(schemas.reset, 'body'), passwordReset);
 
 // CAR ROUTES
 app.post('/api/v1/car', validate(schemas.car, 'body'), verifyUser, postCar);
@@ -33,7 +32,7 @@ app.delete('/api/v1/car/:id', verifyAdmin, deleteCar);
 
 // ORDER ROUTES
 app.post('/api/v1/order', verifyUser, makeOrder);
-app.post('/api/v1/order/:id/price', verifyUser, updateOrderPrice);
+app.patch('/api/v1/order/:id/price', verifyUser, updateOrderPrice);
 app.get('/api/v1/order/buyer/:id', verifyUser, getOrdersByUser);
 
 export default app;

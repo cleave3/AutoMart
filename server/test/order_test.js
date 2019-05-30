@@ -79,7 +79,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
   describe('UPDATE ORDER PRICE', () => {
     it('should update an order', (done) => {
       chai.request(app)
-        .post('/api/v1/order/123/price')
+        .patch('/api/v1/order/123/price')
         .set('x-access-token', userToken)
         .send({
           price_offered: 25000000,
@@ -92,7 +92,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
     });
     it('should not update an order when order with given id is not found', (done) => {
       chai.request(app)
-        .post('/api/v1/order/fakeid/price')
+        .patch('/api/v1/order/fakeid/price')
         .set('x-access-token', userToken)
         .send({
           price_offered: 25000000,
@@ -105,7 +105,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
     });
     it('should not update an order when token is invalid', (done) => {
       chai.request(app)
-        .post('/api/v1/order/123/price')
+        .patch('/api/v1/order/123/price')
         .set('x-access-token', 'invalid token')
         .send({
           price_offered: 25000000,
