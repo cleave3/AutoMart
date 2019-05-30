@@ -63,12 +63,6 @@ const login = (req, res) => {
     });
   }
   bcrypt.compare(req.body.password, user.password, (error, result) => {
-    if (error) {
-      return res.status(400).json({
-        status: 400,
-        message: 'Email or Password Incorrect',
-      });
-    }
     if (result) {
       const Token = token(
         user.id,
