@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'autosecret';
 
 // eslint-disable-next-line consistent-return
 const verifyAdmin = (req, res, next) => {
