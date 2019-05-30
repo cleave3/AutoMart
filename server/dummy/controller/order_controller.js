@@ -12,7 +12,7 @@ const makeOrder = (req, res) => {
   const desiredCar = Cars.cars.find(car => car.id === req.body.id);
   const { id } = req.decoded;
   if (!desiredCar) {
-    res.status(404).json({
+    return res.status(404).json({
       status: 404,
       message: 'car not available',
     });

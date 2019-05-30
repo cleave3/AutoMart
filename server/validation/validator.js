@@ -7,7 +7,6 @@ const validate = (schema, property) => (req, res, next) => {
   if (valid) {
     next();
   } else {
-    console.log(error.details[0]);
     return res.status(400).send(error.details[0].message);
   }
 };

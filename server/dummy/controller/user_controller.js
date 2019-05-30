@@ -57,15 +57,15 @@ const signup = (req, res) => {
 const login = (req, res) => {
   const user = db.users.find(data => data.email === req.body.email);
   if (!user) {
-    return res.status(401).json({
-      status: 401,
+    return res.status(400).json({
+      status: 400,
       message: 'Email or Password Incorrect',
     });
   }
   bcrypt.compare(req.body.password, user.password, (error, result) => {
     if (error) {
-      return res.status(401).json({
-        status: 401,
+      return res.status(400).json({
+        status: 400,
         message: 'Email or Password Incorrect',
       });
     }
@@ -87,8 +87,8 @@ const login = (req, res) => {
         },
       });
     }
-    return res.status(401).json({
-      status: 401,
+    return res.status(400).json({
+      status: 400,
       message: 'Email or Password Incorrect',
     });
   });
