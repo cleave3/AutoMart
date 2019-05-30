@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'autosecret';
 
 const verifyUser = (req, res, next) => {
   const token = req.headers['x-access-token'];
