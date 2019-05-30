@@ -9,7 +9,7 @@ const secret = process.env.JWT_SECRET;
 const verifyAdmin = (req, res, next) => {
   const token = req.headers['x-access-token'];
   if (!token) {
-    res.status(403).json({
+    return res.status(403).json({
       status: 403,
       message: 'authentication failed, please login',
     });
@@ -20,12 +20,12 @@ const verifyAdmin = (req, res, next) => {
     if (is_admin) {
       return next();
     }
-    res.status(401).json({
+    return res.status(401).json({
       status: 401,
       message: 'authentication failed, please login as Admin',
     });
   } catch (error) {
-    res.status(401).json({
+    return res.status(401).json({
       status: 401,
       message: 'authentication failed',
     });

@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "stable"
+before_install: cd server
+before_script:
+  - npm install
+script:
+  - npm test
+after_success: 
+  - npm run coverage
+  - npm run coveralls
