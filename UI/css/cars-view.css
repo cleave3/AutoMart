@@ -23,39 +23,32 @@ html,body{
     grid-area: searchbar;
     background-color: rgb(8, 191, 207);
     min-height: 50px;
+    text-align: center;
+    font-size: 20px;
 }
 
-.search-container{
-    margin: 5px auto 5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-items: center;
-}
-
-.search-container input{
-    border: 1px solid rgb(192, 28, 7);
-    padding: 10px;  
-    width: 300px;
-}
-.search-container button{
+.price-container button{
     padding: 10px;
     width: 80px;
     border: none;
     background-color: rgb(216, 3, 39);
     color: white;
 }
-.search-container button:hover{
+.price-container button:hover{
     cursor: pointer;
     background-color: rgb(66, 4, 4);
 }
 .price-container{
-    width: 300px;
-    margin: 10px auto 0px;
+    margin: 5px auto 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
 }
 .price-container input{
     width: 100px;
     padding: 10px;
+    margin: 5px;
     border: 1px solid rgb(192, 28, 7);
 }
 /***DISPLAY AREA***/
