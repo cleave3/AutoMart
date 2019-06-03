@@ -4,11 +4,13 @@
   "description": "A car sale web application for selling and buying new and used cars",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js",
-    "test": " nyc --reporter=html --reporter=text mocha --require @babel/register --exit || true",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "start": "babel-node index.js",
+    "test": " nyc mocha --require @babel/register --exit || true",  
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls", 
+    "generate-lcov": "nyc report --reporter=text-lcov >lcov.info", 
+    "coveralls-coverage": "coveralls < lcov.info", 
+    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info", 
+    "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage" 
   },
   "repository": {
     "type": "git",
