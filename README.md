@@ -1,5 +1,5 @@
 # AutoMart
-[![Build Status](https://travis-ci.org/cleave3/AutoMart.svg?branch=develop)](https://travis-ci.org/cleave3/AutoMart)[![Coverage Status](https://coveralls.io/repos/github/cleave3/AutoMart/badge.svg)](https://coveralls.io/github/cleave3/AutoMart)
+[![Build Status](https://travis-ci.org/cleave3/AutoMart.svg?branch=develop)](https://travis-ci.org/cleave3/AutoMart)  [![Coverage Status](https://coveralls.io/repos/github/cleave3/AutoMart/badge.svg)](https://coveralls.io/github/cleave3/AutoMart)
 
 # What is AutoMart ?
 Auto Mart is an online market place for automobile of diverse make, model or body type. With Auto Mart, users can sell or buy from trusted dealerships of private sellers

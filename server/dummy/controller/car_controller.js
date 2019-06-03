@@ -9,23 +9,25 @@ import Car from '../models/car_model';
  * @param {object} res
  */
 const postCar = (req, res) => {
+  const {
+    state, price, manufacturer, model, body_type, transmission_type, description,
+  } = req.body;
   const { id, email } = req.decoded;
-  const userId = id;
-  const userEmail = email;
+  const { secure_url } = req.file;
 
   const car = new Car();
   car.id = shortid.generate();
-  car.owner = userId;
+  car.owner = id;
   car.created_on = new Date();
-  car.state = req.body.state;
+  car.state = state;
   car.status = 'available';
-  car.price = req.body.price;
-  car.manufacturer = req.body.manufacturer;
-  car.model = req.body.model;
-  car.body_type = req.body.body_type;
-  car.transmission_type = req.body.transmission_type;
-  car.image_url = req.body.image_url;
-  car.description = req.body.description;
+  car.price = price;
+  car.manufacturer = manufacturer;
+  car.model = model;
+  car.body_type = body_type;
+  car.transmission_type = transmission_type;
+  car.image_url = secure_url;
+  car.description = description;
 
   db.cars.push(car);
   return res.status(200).json({
@@ -33,7 +35,7 @@ const postCar = (req, res) => {
     data: {
       id: car.id,
       owner: car.owner,
-      email: userEmail,
+      email,
       created_on: car.created_on,
       state: car.state,
       status: car.status,
@@ -141,8 +143,8 @@ const getUnsoldCarsByPrice = (req, res) => {
 
 /**
  * update car status
- * @param {object} req 
- * @param {object} res 
+ * @param {object} req
+ * @param {object} res
  */
 const updateCarStatus = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);
@@ -161,8 +163,8 @@ const updateCarStatus = (req, res) => {
 
 /**
  * update car price
- * @param {object} req 
- * @param {object} res 
+ * @param {object} req
+ * @param {object} res
  */
 const updateCarPrice = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);
@@ -181,8 +183,8 @@ const updateCarPrice = (req, res) => {
 
 /**
  * Delete an ad
- * @param {object} req 
- * @param {object} res 
+ * @param {object} req
+ * @param {object} res
  */
 const deleteCar = (req, res) => {
   const car = db.cars.find(data => data.id === req.params.id);

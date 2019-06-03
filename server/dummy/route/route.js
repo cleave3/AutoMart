@@ -6,6 +6,7 @@ import verifyAdmin from '../../middleware/admin_auth';
 import usersControl from '../controller/user_controller';
 import carControl from '../controller/car_controller';
 import orderControl from '../controller/order_controller';
+import parser from '../controller/image_controller';
 
 const app = Express.Router();
 
@@ -21,7 +22,7 @@ app.post('/api/v1/auth/signup', validate(schemas.user, 'body'), signup);
 app.post('/api/v1/auth/signin', validate(schemas.signin, 'body'), login);
 
 // CAR ROUTES
-app.post('/api/v1/car', validate(schemas.car, 'body'), verifyUser, postCar);
+app.post('/api/v1/car', verifyUser, parser.single('image'), validate(schemas.car, 'body'), postCar);
 app.get('/api/v1/car/:id', getACar);
 app.get('/api/v1/car', verifyAdmin, getAllCars);
 app.get('/api/v1/car', getUnsoldCars);
