@@ -11,4 +11,4 @@ after_success:
   - npm run coveralls
 
 env:
--CLOUDINARY_URL=cloudinary://924532231333791:RPagydm5nIN2CFgwcIPVkXWaiDU@dqxyecesu
+- CLOUDINARY_URL=cloudinary://924532231333791:RPagydm5nIN2CFgwcIPVkXWaiDU@dqxyecesu
