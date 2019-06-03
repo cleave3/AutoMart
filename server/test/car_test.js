@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import fs from 'fs';
 import app from '../index';
 
 chai.use(chaiHttp);
@@ -39,19 +40,20 @@ before((done) => {
 describe('API ENDPOINTS FOR CARS', () => {
   describe('POSTING A CAR AD', () => {
     it('should create a car ad when user is signed in', (done) => {
+      const filePath = `${__dirname}/assets/nissan.jpeg`;
       chai.request(app)
         .post('/api/v1/car')
         .set('x-access-token', userToken)
-        .send({
-          state: 'new',
-          price: 2000000,
-          manufacturer: 'toyota',
-          model: 'camry',
-          body_type: 'car',
-          transmission_type: 'automatic',
-          image_url: 'google.com',
-          description: 'nice new car',
-        })
+        .type('form')
+        .set('enctype', 'multipart/formdata')
+        .attach('image', fs.readFileSync(filePath), 'nissan.jpeg')
+        .field('state', 'new')
+        .field('price', 2000000)
+        .field('manufacturer', 'toyota')
+        .field('model', 'camry')
+        .field('body_type', 'car')
+        .field('transmission_type', 'automatic')
+        .field('description', 'nice new car')
         .end((error, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');

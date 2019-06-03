@@ -7,7 +7,7 @@ const token = (id, email, is_admin) => jwt.sign({
   email,
   is_admin,
 }, secret, {
-  expiresIn: '1h',
+  expiresIn: '5h',
 });
 
 export default token;

@@ -33,7 +33,6 @@ const schemas = {
     body_type: Joi.string().trim().required(),
     transmission_type: Joi.string().trim().valid('automatic', 'manual').lowercase()
       .required(),
-    image_url: Joi.string().trim().required(),
     description: Joi.string(),
   }),
 };

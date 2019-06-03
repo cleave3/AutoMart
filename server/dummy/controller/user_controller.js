@@ -10,7 +10,10 @@ import token from '../../middleware/token';
  * @param {json} res
  */
 const signup = (req, res) => {
-  const same = db.users.find(user => user.email === req.body.email);
+  const {
+    first_name, last_name, address, email, password,
+  } = req.body;
+  const same = db.users.find(user => user.email === email);
   if (same) {
     return res.status(409).json({
       status: 409,
@@ -18,13 +21,13 @@ const signup = (req, res) => {
     });
   }
 
-  const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+  const hashedPassword = bcrypt.hashSync(password, 10);
   const newUser = new User();
   newUser.id = db.users.length + 1;
-  newUser.first_name = req.body.first_name;
-  newUser.last_name = req.body.last_name;
-  newUser.address = req.body.address;
-  newUser.email = req.body.email;
+  newUser.first_name = first_name;
+  newUser.last_name = last_name;
+  newUser.address = address;
+  newUser.email = email;
   newUser.password = hashedPassword;
   newUser.is_admin = false;
 
@@ -55,14 +58,15 @@ const signup = (req, res) => {
  * @param {json} res
  */
 const login = (req, res) => {
-  const user = db.users.find(data => data.email === req.body.email);
+  const { email, password } = req.body;
+  const user = db.users.find(data => data.email === email);
   if (!user) {
     return res.status(400).json({
       status: 400,
       message: 'Email or Password Incorrect',
     });
   }
-  bcrypt.compare(req.body.password, user.password, (error, result) => {
+  bcrypt.compare(password, user.password, (error, result) => {
     if (result) {
       const Token = token(
         user.id,
