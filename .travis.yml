@@ -12,5 +12,4 @@ after_success:
 
 env:
 - CLOUDINARY_URL=cloudinary://924532231333791:RPagydm5nIN2CFgwcIPVkXWaiDU@dqxyecesu
-global:
 - CODECLIMATE_REPO_TOKEN=d3708a9bcef91c58c706e9d2e0a4593501f6ab490dce979ed9b7d5a3afa79200
