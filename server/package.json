@@ -4,7 +4,8 @@
   "description": "A car sale web application for selling and buying new and used cars",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js",
+    "start-dev": "nodemon --exec babel-node index.js",
+    "start": "babel-node index.js",
     "test": " nyc --reporter=html --reporter=text mocha --require @babel/register --exit || true",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls", 
     "generate-lcov": "nyc report --reporter=text-lcov >lcov.info", 
