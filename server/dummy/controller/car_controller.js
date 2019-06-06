@@ -101,7 +101,7 @@ const getAllCars = (req, res, next) => {
 const getUnsoldCars = (req, res, next) => {
   const { status, min_price, max_price } = req.query;
   const unsoldCars = db.cars.filter(car => car.status === status);
-  if (min_price || max_price) {
+  if (min_price || max_price || !status) {
     return next();
   }
   // eslint-disable-next-line eqeqeq
@@ -123,8 +123,11 @@ const getUnsoldCars = (req, res, next) => {
  * @param {object} req
  * @param {object} res
  */
-const getUnsoldCarsByPrice = (req, res) => {
+const getUnsoldCarsByPrice = (req, res, next) => {
   const { status, min_price, max_price } = req.query;
+  if (!min_price || !max_price) {
+    return next();
+  }
   const max = max_price;
   const min = min_price;
   const unsoldCarsByPrice = db.cars.filter(car => car.status === status && car.price >= min && car.price <= max);
@@ -132,7 +135,7 @@ const getUnsoldCarsByPrice = (req, res) => {
   if (unsoldCarsByPrice == '') {
     return res.status(404).json({
       status: 404,
-      message: 'No car found in price range',
+      message: 'No car found',
     });
   }
   return res.status(200).json({
