@@ -12,42 +12,48 @@ const postCar = (req, res) => {
   const {
     state, price, manufacturer, model, body_type, transmission_type, description,
   } = req.body;
-  const { id, email } = req.decoded;
-  const { secure_url } = req.file;
 
-  const car = new Car();
-  car.id = shortid.generate();
-  car.owner = id;
-  car.created_on = new Date();
-  car.state = state;
-  car.status = 'available';
-  car.price = price;
-  car.manufacturer = manufacturer;
-  car.model = model;
-  car.body_type = body_type;
-  car.transmission_type = transmission_type;
-  car.image_url = secure_url;
-  car.description = description;
+  try {
+    const { id, email } = req.decoded;
+    const { secure_url } = req.file;
+    const car = new Car();
+    car.id = shortid.generate();
+    car.owner = id;
+    car.created_on = new Date();
+    car.state = state;
+    car.status = 'available';
+    car.price = price;
+    car.manufacturer = manufacturer;
+    car.model = model;
+    car.body_type = body_type;
+    car.transmission_type = transmission_type;
+    car.image_url = secure_url;
+    car.description = description;
 
-  db.cars.push(car);
-  return res.status(200).json({
-    status: 201,
-    data: {
-      id: car.id,
-      owner: car.owner,
-      email,
-      created_on: car.created_on,
-      state: car.state,
-      status: car.status,
-      price: car.price,
-      manufacturer: car.manufacturer,
-      model: car.model,
-      body_type: car.body_type,
-      transmission_type: car.transmission_type,
-      image_url: car.image_url,
-      description: car.description,
-    },
-  });
+    db.cars.push(car);
+    return res.status(200).json({
+      status: 201,
+      data: {
+        id: car.id,
+        owner: car.owner,
+        email,
+        created_on: car.created_on,
+        state: car.state,
+        status: car.status,
+        price: car.price,
+        manufacturer: car.manufacturer,
+        model: car.model,
+        body_type: car.body_type,
+        transmission_type: car.transmission_type,
+        image_url: car.image_url,
+        description: car.description,
+      },
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: 'something went wrong. Please ensure an image is selected',
+    });
+  }
 };
 
 /**
