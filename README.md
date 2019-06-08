@@ -6,7 +6,7 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
 
 # Technologies
 * HTML
-* CSS166
+* CSS
 * JavaScript (ES6)
 * Express
 * Node
