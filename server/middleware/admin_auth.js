@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const secret = process.env.JWT_SECRET || 'autosecret';
+const secret = process.env.JWT_SECRET;
 
 // eslint-disable-next-line consistent-return
 const verifyAdmin = (req, res, next) => {
@@ -11,7 +11,7 @@ const verifyAdmin = (req, res, next) => {
   if (!token) {
     return res.status(403).json({
       status: 403,
-      message: 'authentication failed, please login',
+      error: 'authentication failed, please login',
     });
   }
   try {
@@ -22,12 +22,12 @@ const verifyAdmin = (req, res, next) => {
     }
     return res.status(401).json({
       status: 401,
-      message: 'authentication failed, please login as Admin',
+      error: 'Access Denied',
     });
   } catch (error) {
     return res.status(401).json({
       status: 401,
-      message: 'authentication failed',
+      error: 'authentication failed',
     });
   }
 };

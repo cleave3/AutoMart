@@ -17,7 +17,7 @@ const signup = (req, res) => {
   if (same) {
     return res.status(409).json({
       status: 409,
-      message: 'Email is associated with another user account',
+      error: 'Email is associated with another user account',
     });
   }
 
@@ -63,7 +63,7 @@ const login = (req, res) => {
   if (!user) {
     return res.status(400).json({
       status: 400,
-      message: 'Email or Password Incorrect',
+      error: 'Email or Password Incorrect',
     });
   }
   bcrypt.compare(password, user.password, (error, result) => {
@@ -87,7 +87,7 @@ const login = (req, res) => {
     }
     return res.status(400).json({
       status: 400,
-      message: 'Email or Password Incorrect',
+      error: 'Email or Password Incorrect',
     });
   });
 };

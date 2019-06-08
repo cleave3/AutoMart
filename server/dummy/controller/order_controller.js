@@ -14,7 +14,7 @@ const makeOrder = (req, res) => {
   if (!desiredCar) {
     return res.status(404).json({
       status: 404,
-      message: 'car not available',
+      error: 'car not available',
     });
   }
   const order = new Order();
@@ -43,7 +43,7 @@ const updateOrderPrice = (req, res) => {
   if (!order) {
     return res.status(404).json({
       status: 404,
-      message: 'Order with given id not found',
+      error: 'Order with given id not found',
     });
   }
   order.price_offered = req.body.price_offered;
@@ -70,7 +70,7 @@ const getOrdersByUser = (req, res) => {
   if (userOrders == '') {
     return res.status(404).json({
       status: 404,
-      message: 'user is yet to make an order',
+      error: 'user is yet to make an order',
     });
   }
   return res.status(200).json({
