@@ -177,9 +177,6 @@ const updateCarStatus = (req, res) => {
       manufacturer: car.manufacturer,
       model: car.model,
       body_type: car.body_type,
-      transmission_type: car.transmission_type,
-      image_url: car.image_url,
-      description: car.description,
     },
   });
 };
@@ -211,9 +208,6 @@ const updateCarPrice = (req, res) => {
       manufacturer: car.manufacturer,
       model: car.model,
       body_type: car.body_type,
-      transmission_type: car.transmission_type,
-      image_url: car.image_url,
-      description: car.description,
     },
   });
 };
