@@ -51,7 +51,7 @@ const postCar = (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      message: 'something went wrong. Please ensure an image is selected',
+      error: 'Oops! Please select an image',
     });
   }
 };
@@ -66,7 +66,7 @@ const getACar = (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car not found',
+      error: 'Car not found',
     });
   }
   return res.status(200).json({
@@ -90,7 +90,7 @@ const getAllCars = (req, res, next) => {
   if (allCars == '') {
     res.status(404).json({
       status: 404,
-      message: 'No car found',
+      error: 'No car found',
     });
   }
   return res.status(200).json({
@@ -114,7 +114,7 @@ const getUnsoldCars = (req, res, next) => {
   if (unsoldCars == '') {
     return res.status(404).json({
       status: 404,
-      message: 'cars not found',
+      error: 'cars not found',
     });
   }
   return res.status(200).json({
@@ -141,7 +141,7 @@ const getUnsoldCarsByPrice = (req, res, next) => {
   if (unsoldCarsByPrice == '') {
     return res.status(404).json({
       status: 404,
-      message: 'No car found',
+      error: 'No car found',
     });
   }
   return res.status(200).json({
@@ -156,17 +156,31 @@ const getUnsoldCarsByPrice = (req, res, next) => {
  * @param {object} res
  */
 const updateCarStatus = (req, res) => {
+  const { email } = req.decoded;
   const car = db.cars.find(data => data.id === req.params.id);
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car with given id not found',
+      error: 'Car with given id not found',
     });
   }
   car.status = req.body.status;
   return res.status(200).json({
     status: 200,
-    data: car,
+    data: {
+      id: car.id,
+      email,
+      created_on: car.created_on,
+      state: car.state,
+      status: car.status,
+      price: car.price,
+      manufacturer: car.manufacturer,
+      model: car.model,
+      body_type: car.body_type,
+      transmission_type: car.transmission_type,
+      image_url: car.image_url,
+      description: car.description,
+    },
   });
 };
 
@@ -176,17 +190,31 @@ const updateCarStatus = (req, res) => {
  * @param {object} res
  */
 const updateCarPrice = (req, res) => {
+  const { email } = req.decoded;
   const car = db.cars.find(data => data.id === req.params.id);
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car with given id not found',
+      error: 'Car with given id not found',
     });
   }
   car.price = req.body.price;
   return res.status(200).json({
     status: 200,
-    data: car,
+    data: {
+      id: car.id,
+      email,
+      created_on: car.created_on,
+      state: car.state,
+      status: car.status,
+      price: car.price,
+      manufacturer: car.manufacturer,
+      model: car.model,
+      body_type: car.body_type,
+      transmission_type: car.transmission_type,
+      image_url: car.image_url,
+      description: car.description,
+    },
   });
 };
 
@@ -200,7 +228,7 @@ const deleteCar = (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'car with the given id not found',
+      error: 'car with the given id not found',
     });
   }
 
@@ -209,7 +237,7 @@ const deleteCar = (req, res) => {
 
   return res.json({
     status: 200,
-    message: 'Car Ad successfully deleted',
+    data: 'Car Ad successfully deleted',
   });
 };
 

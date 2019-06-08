@@ -17,7 +17,6 @@ before((done) => {
       password: 'john12345',
     })
     .end((error, res) => {
-      if (error) done(error);
       userToken = res.body.data.Token;
       done();
     });
@@ -31,7 +30,6 @@ before((done) => {
       password: 'cleave12345',
     })
     .end((error, res) => {
-      if (error) done(error);
       AdminToken = res.body.data.Token;
       done();
     });
@@ -56,6 +54,27 @@ describe('API ENDPOINTS FOR CARS', () => {
         .field('description', 'nice new car')
         .end((error, res) => {
           res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not create a car ad when image is not selected', (done) => {
+      const filePath = `${__dirname}/assets/nissan.jpeg`;
+      chai.request(app)
+        .post('/api/v1/car')
+        .set('x-access-token', userToken)
+        .type('form')
+        .set('enctype', 'multipart/formdata')
+        .attach('image', fs.readFileSync(filePath))
+        .field('state', 'new')
+        .field('price', 2000000)
+        .field('manufacturer', 'toyota')
+        .field('model', 'camry')
+        .field('body_type', 'car')
+        .field('transmission_type', 'automatic')
+        .field('description', 'nice new car')
+        .end((error, res) => {
+          res.should.have.status(400);
           res.body.should.be.an('object');
           done();
         });
@@ -278,7 +297,7 @@ describe('API ENDPOINTS FOR CARS', () => {
     });
   });
   describe('GET CARS', () => {
-    it('should get all cars if user is signed in as admin', (done) => {
+    it('should get all cars if signed user is an admin', (done) => {
       chai.request(app)
         .get('/api/v1/car')
         .set('x-access-token', AdminToken)

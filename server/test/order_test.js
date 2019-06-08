@@ -16,7 +16,6 @@ before((done) => {
       password: 'cleave12345',
     })
     .end((error, res) => {
-      if (error) done(error);
       userToken = res.body.data.Token;
       done();
     });
