@@ -14,7 +14,6 @@ const schemas = {
       .strict(),
     confirmPassword: Joi.string().trim().valid(Joi.ref('password')).required()
       .strict(),
-    is_admin: Joi.boolean(),
   }),
   signin: Joi.object().keys({
     email: Joi.string().email().trim().lowercase()
