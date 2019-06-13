@@ -14,13 +14,10 @@ const verifyUser = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, secret);
-    if (!decoded) {
-      return res.status(401).json({
-        error: 'authentication failed, please login',
-      });
+    if (decoded) {
+      req.decoded = decoded;
+      return next();
     }
-    req.decoded = decoded;
-    return next();
   } catch (error) {
     return res.status(401).json({
       status: 401,
