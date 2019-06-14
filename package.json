@@ -6,7 +6,7 @@
   "scripts": {
     "start-dev": "nodemon --exec babel-node server/index.js",
     "start": "babel-node server/index.js",
-    "test": " nyc --reporter=html --reporter=text mocha server/test --require @babel/register --exit || true",
+    "test": "npm run migrations && npm run seeders && nyc --reporter=html --reporter=text mocha server/test --require @babel/register --exit || true",
     "migrations": "babel-node server/database/migrations/migrations.js",
     "seeders": "babel-node server/database/seeders/seeders.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls", 
