@@ -48,9 +48,6 @@ const createTables = () => {
     .then(() => {
       console.log('tables created sucessfully');
       pool.end();
-    })
-    .catch((error) => {
-      console.log(error);
     });
 };
 

@@ -17,7 +17,7 @@ app.use(cors());
 
 app.use(Route);
 
-app.get('/', (req, res) => res.status(200).send('AutoMart is running'));
+app.get('/', (req, res) => res.status(200).json('AutoMart is running'));
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
