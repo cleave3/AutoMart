@@ -1,12 +1,13 @@
-/* eslint-disable semi */
 /* eslint-disable camelcase */
 import bcrypt from 'bcrypt';
 import uuidv4 from 'uuid/v4';
 import insert from '../queries/insert';
+import find from '../queries/find';
 import db from '../database/db';
 import Token from '../middleware/token';
 
 const { userSignup } = insert;
+const { findByEmail } = find;
 
 const signup = async (req, res) => {
   const {
@@ -44,8 +45,45 @@ const signup = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  const userEmail = [email];
+  try {
+    const user = await db.query(findByEmail, userEmail);
+    const {
+      user_id, first_name, last_name, is_admin,
+    } = user.rows[0];
+
+    if (user.rows[0]) {
+      const correctPassword = await bcrypt.compareSync(password, user.rows[0].password);
+
+      if (!correctPassword) {
+        return res.status(400).json({
+          message: 'password incorrect',
+        });
+      }
+      const token = await Token(user_id, email, first_name, last_name, is_admin);
+      return res.status(200).json({
+        status: 200,
+        data: {
+          token,
+          first_name,
+          last_name,
+          email,
+          is_admin,
+        },
+      });
+    }
+  } catch (error) {
+    return res.status(400).json({
+      message: 'Email does not match any user account',
+    });
+  }
+};
+
 const userControl = {
   signup,
+  login,
 };
 
 export default userControl;
