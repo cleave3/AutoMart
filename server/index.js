@@ -1,7 +1,8 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import Route from './dummy/route/route';
+import cors from 'cors';
+import Route from './route/route';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use(Route);
 
