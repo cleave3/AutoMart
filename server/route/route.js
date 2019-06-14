@@ -10,7 +10,7 @@ const app = Express.Router();
 
 const { signup, login } = userControl;
 const {
-  postCar, getACar,
+  postCar, getACar, getUnsoldCars,
 } = carControl;
 
 // USER ROUTES
@@ -20,5 +20,6 @@ app.post('/api/v1/auth/signin', validate(schemas.signin, 'body'), login);
 // CAR ROUTES
 app.post('/api/v1/car', verifyUser, uploader.single('image'), validate(schemas.car, 'body'), postCar);
 app.get('/api/v1/car/:id', getACar);
+app.get('/api/v1/car', getUnsoldCars);
 
 export default app;
