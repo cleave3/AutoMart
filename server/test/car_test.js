@@ -7,7 +7,7 @@ import app from '../index';
 chai.use(chaiHttp);
 chai.should();
 let userToken;
-let AdminToken;
+// let AdminToken;
 
 before((done) => {
   chai.request(app)
@@ -17,25 +17,23 @@ before((done) => {
       password: 'john12345',
     })
     .end((error, res) => {
-      if (error) done(error);
       userToken = res.body.data.token;
       done();
     });
 });
 
-before((done) => {
-  chai.request(app)
-    .post('/api/v1/auth/signin')
-    .send({
-      email: 'cleave@gmail.com',
-      password: 'cleave12345',
-    })
-    .end((error, res) => {
-      if (error) done(error);
-      AdminToken = res.body.data.token;
-      done();
-    });
-});
+// before((done) => {
+//   chai.request(app)
+//     .post('/api/v1/auth/signin')
+//     .send({
+//       email: 'cleave@gmail.com',
+//       password: 'cleave12345',
+//     })
+//     .end((error, res) => {
+//       AdminToken = res.body.data.token;
+//       done();
+//     });
+// });
 
 describe('API ENDPOINTS FOR CARS', () => {
   describe('POSTING A CAR AD', () => {
@@ -100,26 +98,26 @@ describe('API ENDPOINTS FOR CARS', () => {
         });
     });
   });
-//   describe('VIEWING A SPECIFIC A CAR AD', () => {
-//     it('should view a specific car ad when id is accurate', (done) => {
-//       chai.request(app)
-//         .get('/api/v1/car/123')
-//         .end((error, res) => {
-//           res.should.have.status(200);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not view a specific car ad when id is inaccurate', (done) => {
-//       chai.request(app)
-//         .get('/api/v1/car/fakeid')
-//         .end((error, res) => {
-//           res.should.have.status(404);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//   });
+  describe('VIEWING A SPECIFIC A CAR AD', () => {
+    it('should view a specific car ad when id is accurate', (done) => {
+      chai.request(app)
+        .get('/api/v1/car/123')
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not view a specific car ad when id is inaccurate', (done) => {
+      chai.request(app)
+        .get('/api/v1/car/fakeid')
+        .end((error, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+  });
 //   describe('DELETING A SPECIFIC A CAR AD', () => {
 //     it('should delete a specific car ad when id is accurate', (done) => {
 //       chai.request(app)
