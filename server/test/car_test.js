@@ -299,50 +299,50 @@ describe('API ENDPOINTS FOR CARS', () => {
           done();
         });
     });
-    // it('should view all available cars within a price range', (done) => {
-    //   chai.request(app)
-    //     .get('/api/v1/car')
-    //     .set('x-access-token', AdminToken)
-    //     .query({
-    //       status: 'available',
-    //       min_price: 0,
-    //       max_price: 3000000000,
-    //     })
-    //     .end((error, res) => {
-    //       res.should.have.status(200);
-    //       res.body.should.be.an('object');
-    //       done();
-    //     });
-    // });
-    // it('should not view all available cars within a price range', (done) => {
-    //   chai.request(app)
-    //     .get('/api/v1/car')
-    //     .set('x-access-token', AdminToken)
-    //     .query({
-    //       status: 'available',
-    //       min_price: '',
-    //       max_price: 1,
-    //     })
-    //     .end((error, res) => {
-    //       res.should.have.status(404);
-    //       res.body.should.be.an('object');
-    //       done();
-    //     });
-    // });
-    // it('should not view all available cars within a price range', (done) => {
-    //   chai.request(app)
-    //     .get('/api/v1/car')
-    //     .set('x-access-token', AdminToken)
-    //     .query({
-    //       status: 'available',
-    //       min_price: 0,
-    //       max_price: '',
-    //     })
-    //     .end((error, res) => {
-    //       res.should.have.status(404);
-    //       res.body.should.be.an('object');
-    //       done();
-    //     });
-    // });
+    it('should view all available cars within a price range', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', AdminToken)
+        .query({
+          status: 'available',
+          min_price: 0,
+          max_price: 3000000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not view all available cars within a price range', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', AdminToken)
+        .query({
+          status: 'available',
+          min_price: '',
+          max_price: 1,
+        })
+        .end((error, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not view all available cars within a price range', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', AdminToken)
+        .query({
+          status: 'available',
+          min_price: 0,
+          max_price: '',
+        })
+        .end((error, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
   });
 });

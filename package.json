@@ -9,7 +9,7 @@
     "test": "npm run migrations && npm run seeders && nyc --reporter=html --reporter=text mocha server/test --require @babel/register --exit || true",
     "migrations": "babel-node server/database/migrations/migrations.js",
     "seeders": "babel-node server/database/seeders/seeders.js",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls", 
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "generate-lcov": "nyc report --reporter=text-lcov >lcov.info", 
     "coveralls-coverage": "coveralls < lcov.info", 
     "codeclimate-coverage": "codeclimate-test-reporter < lcov.info", 
