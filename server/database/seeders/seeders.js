@@ -127,9 +127,6 @@ const insertData = () => {
     .then(() => {
       console.log('database seeded sucessfully');
       pool.end();
-    })
-    .catch((error) => {
-      console.log(error);
     });
 };
 

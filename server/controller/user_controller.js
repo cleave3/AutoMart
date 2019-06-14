@@ -59,7 +59,7 @@ const login = async (req, res) => {
 
       if (!correctPassword) {
         return res.status(400).json({
-          message: 'password incorrect',
+          error: 'password incorrect',
         });
       }
       const token = await Token(user_id, email, first_name, last_name, is_admin);
@@ -76,7 +76,7 @@ const login = async (req, res) => {
     }
   } catch (error) {
     return res.status(400).json({
-      message: 'Email does not match any user account',
+      error: 'Email does not match any user account',
     });
   }
 };
