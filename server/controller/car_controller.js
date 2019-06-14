@@ -2,8 +2,10 @@
 import shortid from 'shortid';
 import db from '../database/db';
 import insert from '../queries/insert';
+import find from '../queries/find';
 
 const { createAds } = insert;
+const { findById } = find;
 
 /**
  * create a car Ad
@@ -48,9 +50,30 @@ const postCar = async (req, res) => {
   }
 };
 
+/**
+ *
+ * @param {params} req
+ * @param {object} res
+ */
+const getACar = async (req, res) => {
+  const carId = [req.params.id];
+  const desiredCar = await db.query(findById, carId);
+  const car = desiredCar.rows[0];
+  if (!car) {
+    return res.status(404).json({
+      status: 404,
+      message: 'car not found',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: car,
+  });
+};
 
 const carControl = {
   postCar,
+  getACar,
 };
 
 export default carControl;
