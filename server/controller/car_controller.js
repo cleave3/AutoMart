@@ -5,7 +5,7 @@ import insert from '../queries/insert';
 import find from '../queries/find';
 
 const { createAds } = insert;
-const { findById } = find;
+const { findById, findAllByStatus } = find;
 
 /**
  * create a car Ad
@@ -51,7 +51,7 @@ const postCar = async (req, res) => {
 };
 
 /**
- *
+ * View a specific car Ad
  * @param {params} req
  * @param {object} res
  */
@@ -71,9 +71,34 @@ const getACar = async (req, res) => {
   });
 };
 
+/**
+ *View all unsold cars
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+const getUnsoldCars = async (req, res, next) => {
+  const { status, min_price, max_price } = req.query;
+  if (min_price || max_price || !status) {
+    return next();
+  }
+  const unsoldCars = await db.query(findAllByStatus);
+  if (unsoldCars.rows < 1) {
+    return res.status(404).json({
+      status: 404,
+      message: 'cars not found',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: unsoldCars.rows,
+  });
+};
+
 const carControl = {
   postCar,
   getACar,
+  getUnsoldCars,
 };
 
 export default carControl;
