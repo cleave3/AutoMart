@@ -1,5 +1,5 @@
 # AutoMart
-[![Build Status](https://travis-ci.org/cleave3/AutoMart.svg?branch=develop)](https://travis-ci.org/cleave3/AutoMart)  [![Coverage Status](https://coveralls.io/repos/github/cleave3/AutoMart/badge.svg?branch=develop)](https://coveralls.io/github/cleave3/AutoMart?branch=develop)  [![Test Coverage](https://api.codeclimate.com/v1/badges/bef163d83d46aa2f539b/test_coverage)](https://codeclimate.com/github/cleave3/AutoMart/test_coverage)  [![Maintainability](https://api.codeclimate.com/v1/badges/bef163d83d46aa2f539b/maintainability)](https://codeclimate.com/github/cleave3/AutoMart/maintainability)  [![GitHub stars](https://img.shields.io/github/stars/cleave3/AutoMart.svg)](https://github.com/cleave3/AutoMart/stargazers)
+[![Build Status](https://travis-ci.org/cleave3/AutoMart.svg?branch=develop)](https://travis-ci.org/cleave3/AutoMart)  [![Coverage Status](https://coveralls.io/repos/github/cleave3/AutoMart/badge.svg?branch=develop)](https://coveralls.io/github/cleave3/AutoMart?branch=develop)  [![Test Coverage](https://api.codeclimate.com/v1/badges/bef163d83d46aa2f539b/test_coverage)](https://codeclimate.com/github/cleave3/AutoMart/test_coverage)  [![Maintainability](https://api.codeclimate.com/v1/badges/bef163d83d46aa2f539b/maintainability)](https://codeclimate.com/github/cleave3/AutoMart/maintainability)  [![GitHub license](https://img.shields.io/github/license/cleave3/AutoMart.svg)](https://github.com/cleave3/AutoMart/blob/develop/LICENSE)  [![GitHub stars](https://img.shields.io/github/stars/cleave3/AutoMart.svg)](https://github.com/cleave3/AutoMart/stargazers)
 # What is AutoMart ?
 Auto Mart is an online market place for automobile of diverse make, model or body type. With Auto Mart, users can sell or buy from trusted dealerships of private sellers
 
@@ -10,6 +10,8 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
 * Express
 * Node
 * cloudinary
+* Postgresql
+* pg
 
 # Features
 1. User can sign up.
