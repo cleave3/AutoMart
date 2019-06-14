@@ -238,97 +238,97 @@ describe('API ENDPOINTS FOR USERS', () => {
       });
   });
 });
-// describe('USER SIGNIN', () => {
-//   it('should not signin a user when all required fields are empty', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: '',
-//         password: '',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(400);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-//   it('should not signin a user when a valid mail is not provided', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: 'johnmail.com',
-//         password: '12345678',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(400);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-//   it('should not signin a user when a valid password is not provided', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: 'john@mail.com',
-//         password: '123',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(400);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-//   it('should not signin a user when incorrect email is provided', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: 'john@mail.com',
-//         password: '123345678',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(400);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-//   it('should not signin a user when incorrect password is provided', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: 'cleave@gmail.com',
-//         password: '123345678',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(400);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-//   it('should not signin a user when incorrect details are provided', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: 'john@mail.com',
-//         password: '123345678',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(400);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-//   it('should signin a user when all required fields completed accurately', (done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send({
-//         email: 'cleave@gmail.com',
-//         password: 'cleave12345',
-//       })
-//       .end((error, res) => {
-//         res.should.have.status(200);
-//         res.body.should.be.an('object');
-//         res.body.data.should.have.property('token');
-//         done();
-//       });
-  // });
-// });
+describe('USER SIGNIN', () => {
+  it('should not signin a user when all required fields are empty', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: '',
+        password: '',
+      })
+      .end((error, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+  it('should not signin a user when a valid mail is not provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'johnmail.com',
+        password: '12345678',
+      })
+      .end((error, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+  it('should not signin a user when a valid password is not provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'john@mail.com',
+        password: '123',
+      })
+      .end((error, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+  it('should not signin a user when incorrect email is provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'john@mail.com',
+        password: '123345678',
+      })
+      .end((error, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+  it('should not signin a user when incorrect password is provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'cleave@gmail.com',
+        password: '123345678',
+      })
+      .end((error, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+  it('should not signin a user when incorrect details are provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'john@mail.com',
+        password: '123345678',
+      })
+      .end((error, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+  it('should signin a user when all required fields completed accurately', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'cleave@gmail.com',
+        password: 'cleave12345',
+      })
+      .end((error, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        res.body.data.should.have.property('token');
+        done();
+      });
+  });
+});
