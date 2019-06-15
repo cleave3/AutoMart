@@ -5,7 +5,9 @@ import insert from '../queries/insert';
 import find from '../queries/find';
 
 const { createAds } = insert;
-const { findById, findAllByStatus, findAllByStatusAndPrice } = find;
+const {
+  findById, findAllByStatus, findAllByStatusAndPrice, findAllCars,
+} = find;
 
 /**
  * create a car Ad
@@ -45,10 +47,29 @@ const postCar = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      error: 'Oops ! Please ensure an image is selected',
+      error: 'Oops ! Please select an image',
     });
   }
 };
+
+/**
+ *View all cars
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+const getAllCars = async (req, res, next) => {
+  const { status, min_price, max_price } = req.query;
+  if (status || min_price || max_price) {
+    return next();
+  }
+  const allCars = await db.query(findAllCars);
+  return res.status(200).json({
+    status: 200,
+    data: allCars.rows,
+  });
+};
+
 
 /**
  * View a specific car Ad
@@ -62,7 +83,7 @@ const getACar = async (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'car not found',
+      error: 'car not found',
     });
   }
   return res.status(200).json({
@@ -86,7 +107,7 @@ const getUnsoldCars = async (req, res, next) => {
   if (unsoldCars.rows < 1) {
     return res.status(404).json({
       status: 404,
-      message: 'cars not found',
+      error: 'cars not found',
     });
   }
   return res.status(200).json({
@@ -111,7 +132,7 @@ const getUnsoldCarsByPrice = async (req, res, next) => {
   if (unsoldCarsByPrice.rows < 1) {
     return res.status(404).json({
       status: 404,
-      message: 'No car found',
+      error: 'No car found',
     });
   }
   return res.status(200).json({
@@ -122,6 +143,7 @@ const getUnsoldCarsByPrice = async (req, res, next) => {
 
 const carControl = {
   postCar,
+  getAllCars,
   getACar,
   getUnsoldCars,
   getUnsoldCarsByPrice,

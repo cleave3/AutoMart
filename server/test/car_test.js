@@ -35,7 +35,7 @@ before((done) => {
     });
 });
 
-describe('API ENDPOINTS FOR CARS', () => {
+describe('API ENDPOINTS FOR CARS', async () => {
   describe('POSTING A CAR AD', () => {
     it('should create a car ad when user is signed in', (done) => {
       const filePath = `${__dirname}/assets/nissan.jpeg`;
@@ -276,16 +276,45 @@ describe('API ENDPOINTS FOR CARS', () => {
 //     });
 //   });
   describe('GET CARS', () => {
-    // it('should get all cars if user is signed in as admin', (done) => {
-    //   chai.request(app)
-    //     .get('/api/v1/car')
-    //     .set('x-access-token', AdminToken)
-    //     .end((error, res) => {
-    //       res.should.have.status(200);
-    //       res.body.should.be.an('object');
-    //       done();
-    //     });
-    // });
+    it('should view cars if user is signed in as admin', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', AdminToken)
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not view cars when user is not an Admin', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', userToken)
+        .end((error, res) => {
+          res.should.have.status(401);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not view cars when user token is invalid', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', 'invalid token')
+        .end((error, res) => {
+          res.should.have.status(401);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not view cars when Admin is not logged in', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .end((error, res) => {
+          res.should.have.status(403);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
     it('should view all available cars', (done) => {
       chai.request(app)
         .get('/api/v1/car')

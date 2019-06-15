@@ -2,6 +2,7 @@ import Express from 'express';
 import validate from '../validation/validator';
 import schemas from '../validation/schema';
 import verifyUser from '../middleware/auth';
+import verifyAdmin from '../middleware/admin_auth';
 import userControl from '../controller/user_controller';
 import uploader from '../controller/image_controller';
 import carControl from '../controller/car_controller';
@@ -10,7 +11,7 @@ const app = Express.Router();
 
 const { signup, login } = userControl;
 const {
-  postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice,
+  postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice, getAllCars,
 } = carControl;
 
 // USER ROUTES
@@ -22,5 +23,6 @@ app.post('/api/v1/car', verifyUser, uploader.single('image'), validate(schemas.c
 app.get('/api/v1/car/:id', getACar);
 app.get('/api/v1/car', getUnsoldCars);
 app.get('/api/v1/car', getUnsoldCarsByPrice);
+app.get('/api/v1/car', verifyAdmin, getAllCars);
 
 export default app;
