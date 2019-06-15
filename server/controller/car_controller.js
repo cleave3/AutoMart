@@ -9,7 +9,7 @@ const { createAds } = insert;
 const {
   findById, findAllByStatus, findAllByStatusAndPrice, findAllCars,
 } = find;
-const { updateStatus } = update;
+const { updateStatus, updatePrice } = update;
 
 /**
  * create a car Ad
@@ -180,6 +180,38 @@ const updateCarStatus = async (req, res) => {
   });
 };
 
+const updateCarPrice = async (req, res) => {
+  const { price } = req.body;
+  const { email } = req.decoded;
+  const carId = req.params.id;
+  const desiredCar = await db.query(findById, [carId]);
+  const car = desiredCar.rows[0];
+  const values = [price, carId];
+  if (!car) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Car with given id not found',
+    });
+  }
+  await db.query(updatePrice, values);
+  const updatedCar = await db.query(findById, [carId]);
+  const data = updatedCar.rows[0];
+  return res.status(200).json({
+    status: 200,
+    data: {
+      car_id: data.id,
+      email,
+      created_on: data.created_on,
+      state: data.state,
+      status: data.status,
+      price: data.price,
+      manufacturer: data.manufacturer,
+      model: data.model,
+      body_type: data.body_type,
+    },
+  });
+};
+
 const carControl = {
   postCar,
   getAllCars,
@@ -187,6 +219,7 @@ const carControl = {
   getUnsoldCars,
   getUnsoldCarsByPrice,
   updateCarStatus,
+  updateCarPrice,
 };
 
 export default carControl;

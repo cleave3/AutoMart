@@ -222,59 +222,59 @@ describe('API ENDPOINTS FOR CARS', async () => {
         });
     });
   });
-//   describe('UPDATE A SPECIFIC A CAR PRICE', () => {
-//     it('should update a specific car price when user is signedin', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/car/124/price')
-//         .set('x-access-token', userToken)
-//         .send({
-//           price: 1000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(200);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not update a specific car price when user is signedin', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/car/124/price')
-//         .send({
-//           price: 1000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(403);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not update a specific car price when car id is incorrect', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/car/fakeid/price')
-//         .set('x-access-token', userToken)
-//         .send({
-//           price: 1000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(404);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not update a specific car price when user token is invalid', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/car/124/price')
-//         .set('x-access-token', 'invalid token')
-//         .send({
-//           price: 1000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(401);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//   });
+  describe('UPDATE A SPECIFIC A CAR PRICE', () => {
+    it('should update a specific car price when user is signedin', (done) => {
+      chai.request(app)
+        .patch('/api/v1/car/124/price')
+        .set('x-access-token', userToken)
+        .send({
+          price: 1000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not update a specific car price when user is signedin', (done) => {
+      chai.request(app)
+        .patch('/api/v1/car/124/price')
+        .send({
+          price: 1000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(403);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not update a specific car price when car id is incorrect', (done) => {
+      chai.request(app)
+        .patch('/api/v1/car/fakeid/price')
+        .set('x-access-token', userToken)
+        .send({
+          price: 1000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not update a specific car price when user token is invalid', (done) => {
+      chai.request(app)
+        .patch('/api/v1/car/124/price')
+        .set('x-access-token', 'invalid token')
+        .send({
+          price: 1000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(401);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+  });
   describe('GET CARS', () => {
     it('should view cars if user is signed in as admin', (done) => {
       chai.request(app)
