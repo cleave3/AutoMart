@@ -3,11 +3,13 @@ import shortid from 'shortid';
 import db from '../database/db';
 import insert from '../queries/insert';
 import find from '../queries/find';
+import update from '../queries/update';
 
 const { createAds } = insert;
 const {
   findById, findAllByStatus, findAllByStatusAndPrice, findAllCars,
 } = find;
+const { updateStatus } = update;
 
 /**
  * create a car Ad
@@ -141,12 +143,50 @@ const getUnsoldCarsByPrice = async (req, res, next) => {
   });
 };
 
+/**
+ * update car status
+ * @param {object} req
+ * @param {object} res
+ */
+const updateCarStatus = async (req, res) => {
+  const { status } = req.body;
+  const { email } = req.decoded;
+  const carId = req.params.id;
+  const desiredCar = await db.query(findById, [carId]);
+  const car = desiredCar.rows[0];
+  const values = [status, carId];
+  if (!car) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Car with given id not found',
+    });
+  }
+  await db.query(updateStatus, values);
+  const updatedCar = await db.query(findById, [carId]);
+  const data = updatedCar.rows[0];
+  return res.status(200).json({
+    status: 200,
+    data: {
+      id: data.car_id,
+      email,
+      created_on: data.created_on,
+      state: data.state,
+      status: data.status,
+      price: data.price,
+      manufacturer: data.manufacturer,
+      model: data.model,
+      body_type: data.body_type,
+    },
+  });
+};
+
 const carControl = {
   postCar,
   getAllCars,
   getACar,
   getUnsoldCars,
   getUnsoldCarsByPrice,
+  updateCarStatus,
 };
 
 export default carControl;
