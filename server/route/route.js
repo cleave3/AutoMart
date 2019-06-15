@@ -11,7 +11,7 @@ const app = Express.Router();
 
 const { signup, login } = userControl;
 const {
-  postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice, getAllCars,
+  postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice, getAllCars, updateCarStatus,
 } = carControl;
 
 // USER ROUTES
@@ -24,5 +24,6 @@ app.get('/api/v1/car/:id', getACar);
 app.get('/api/v1/car', getUnsoldCars);
 app.get('/api/v1/car', getUnsoldCarsByPrice);
 app.get('/api/v1/car', verifyAdmin, getAllCars);
+app.patch('/api/v1/car/:id/status', verifyUser, updateCarStatus);
 
 export default app;
