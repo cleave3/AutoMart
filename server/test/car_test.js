@@ -118,57 +118,57 @@ describe('API ENDPOINTS FOR CARS', async () => {
         });
     });
   });
-//   describe('DELETING A SPECIFIC A CAR AD', () => {
-//     it('should delete a specific car ad when id is accurate', (done) => {
-//       chai.request(app)
-//         .delete('/api/v1/car/125')
-//         .set('x-access-token', AdminToken)
-//         .end((error, res) => {
-//           res.should.have.status(200);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not delete a specific car ad when id is inaccurate', (done) => {
-//       chai.request(app)
-//         .delete('/api/v1/car/fakeid')
-//         .set('x-access-token', AdminToken)
-//         .end((error, res) => {
-//           res.should.have.status(404);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not delete a specific car ad when user is not an admin', (done) => {
-//       chai.request(app)
-//         .delete('/api/v1/car/125')
-//         .set('x-access-token', userToken)
-//         .end((error, res) => {
-//           res.should.have.status(401);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not delete a specific car ad when admin is not signedin', (done) => {
-//       chai.request(app)
-//         .delete('/api/v1/car/125')
-//         .end((error, res) => {
-//           res.should.have.status(403);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not delete a specific car ad when id is inaccurate', (done) => {
-//       chai.request(app)
-//         .delete('/api/v1/car/125')
-//         .set('x-access-token', 'invalid token')
-//         .end((error, res) => {
-//           res.should.have.status(401);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//   });
+  describe('DELETING A SPECIFIC A CAR AD', () => {
+    it('should delete a specific car ad when id is accurate', (done) => {
+      chai.request(app)
+        .delete('/api/v1/car/125')
+        .set('x-access-token', AdminToken)
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not delete a specific car ad when id is inaccurate', (done) => {
+      chai.request(app)
+        .delete('/api/v1/car/fakeid')
+        .set('x-access-token', AdminToken)
+        .end((error, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not delete a specific car ad when user is not an admin', (done) => {
+      chai.request(app)
+        .delete('/api/v1/car/125')
+        .set('x-access-token', userToken)
+        .end((error, res) => {
+          res.should.have.status(401);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not delete a specific car ad when admin is not signedin', (done) => {
+      chai.request(app)
+        .delete('/api/v1/car/125')
+        .end((error, res) => {
+          res.should.have.status(403);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not delete a specific car ad when id is inaccurate', (done) => {
+      chai.request(app)
+        .delete('/api/v1/car/125')
+        .set('x-access-token', 'invalid token')
+        .end((error, res) => {
+          res.should.have.status(401);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+  });
   describe('UPDATE A SPECIFIC A CAR STATUS', () => {
     it('should update a specific car status when user is signedin', (done) => {
       chai.request(app)
