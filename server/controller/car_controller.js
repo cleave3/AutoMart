@@ -8,7 +8,7 @@ import remove from '../queries/delete';
 
 const { createAds } = insert;
 const {
-  findById, findAllByStatus, findAllByStatusAndPrice, findAllCars,
+  findById, findAllByStatus, findAllByStatusAndPrice, findAllCars, findUserAds,
 } = find;
 const { updateStatus, updatePrice } = update;
 const { deleteCar } = remove;
@@ -236,6 +236,28 @@ const deleteCarAd = async (req, res) => {
   });
 };
 
+/**
+ * get user orders
+ * @param {object} req
+ * @param {object} res
+ */
+const getCarsByUser = async (req, res) => {
+  const { user_id } = req.decoded;
+  const owner = user_id;
+  const userAds = await db.query(findUserAds, [owner]);
+  const cars = userAds.rows;
+  if (cars < 1) {
+    return res.status(404).json({
+      status: 404,
+      error: 'You are yet to post an AD',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: cars,
+  });
+};
+
 const carControl = {
   postCar,
   getAllCars,
@@ -245,6 +267,7 @@ const carControl = {
   updateCarStatus,
   updateCarPrice,
   deleteCarAd,
+  getCarsByUser,
 };
 
 export default carControl;
