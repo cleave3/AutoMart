@@ -9,6 +9,11 @@ import Token from '../middleware/token';
 const { userSignup } = insert;
 const { findByEmail } = find;
 
+/**
+ *
+ * @param {object} req
+ * @param {object} res
+ */
 const signup = async (req, res) => {
   const {
     first_name, last_name, address, email, password,
@@ -30,21 +35,24 @@ const signup = async (req, res) => {
         last_name,
         address,
         email,
-        password,
-        is_admin,
       },
     });
   } catch (error) {
     if (error.routine === '_bt_check_unique') {
       return res.status(409).send({
         status: 409,
-        message: 'Email is associated with another user account',
+        error: 'Email is associated with another user account',
       });
     }
     return res.status(400).send(error);
   }
 };
 
+/**
+ *
+ * @param {object} req
+ * @param {object} res
+ */
 const login = async (req, res) => {
   const { email, password } = req.body;
   const userEmail = [email];
@@ -70,7 +78,6 @@ const login = async (req, res) => {
           first_name,
           last_name,
           email,
-          is_admin,
         },
       });
     }
