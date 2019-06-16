@@ -4,12 +4,14 @@ import db from '../database/db';
 import insert from '../queries/insert';
 import find from '../queries/find';
 import update from '../queries/update';
+import remove from '../queries/delete';
 
 const { createAds } = insert;
 const {
   findById, findAllByStatus, findAllByStatusAndPrice, findAllCars,
 } = find;
 const { updateStatus, updatePrice } = update;
+const { deleteCar } = remove;
 
 /**
  * create a car Ad
@@ -158,7 +160,7 @@ const updateCarStatus = async (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car with given id not found',
+      error: 'Car with given id not found',
     });
   }
   await db.query(updateStatus, values);
@@ -190,7 +192,7 @@ const updateCarPrice = async (req, res) => {
   if (!car) {
     return res.status(404).json({
       status: 404,
-      message: 'Car with given id not found',
+      error: 'Car with given id not found',
     });
   }
   await db.query(updatePrice, values);
@@ -212,6 +214,28 @@ const updateCarPrice = async (req, res) => {
   });
 };
 
+/**
+ * Delete an ad
+ * @param {object} req
+ * @param {object} res
+ */
+const deleteCarAd = async (req, res) => {
+  const carId = req.params.id;
+  const desiredCar = await db.query(findById, [carId]);
+  const car = desiredCar.rows[0];
+  if (!car) {
+    return res.status(404).json({
+      status: 404,
+      error: 'car with the given id not found',
+    });
+  }
+  await db.query(deleteCar, [carId]);
+  return res.json({
+    status: 200,
+    data: 'Car Ad successfully deleted',
+  });
+};
+
 const carControl = {
   postCar,
   getAllCars,
@@ -220,6 +244,7 @@ const carControl = {
   getUnsoldCarsByPrice,
   updateCarStatus,
   updateCarPrice,
+  deleteCarAd,
 };
 
 export default carControl;
