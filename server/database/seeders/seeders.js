@@ -15,7 +15,7 @@ const insertData = () => {
     is_admin
     ) 
     VALUES (
-      'f1e65b71-473a-4682-b184-4cabecfcb5b8',
+      'f1e65b71-443a-4682-b984-4cabecfcb5b8',
         'Cleave',
         'Owhiroro',
         'Warri, Nigeria',
@@ -24,7 +24,7 @@ const insertData = () => {
         'true'
       ),
       (
-        'f1e65b71-443a-4682-b984-4cabecfcb5b8',
+        'f1e65b71-443a-4683-b984-4cabecfcb5b8',
         'John',
         'Smith',
         'Lagos, Nigeria',

@@ -373,5 +373,15 @@ describe('API ENDPOINTS FOR CARS', async () => {
           done();
         });
     });
+    it('should view all posted Ads of a specific user', (done) => {
+      chai.request(app)
+        .get('/api/v1/owner/car')
+        .set('x-access-token', AdminToken)
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
   });
 });
