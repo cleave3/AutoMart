@@ -34,7 +34,7 @@ app.delete('/api/v1/car/:id', verifyAdmin, deleteCarAd);
 
 // ORDER ROUTES
 app.post('/api/v1/order', verifyUser, makeOrder);
-app.patch('/api/v1/order/:id/price', validate(schemas.price, 'body'), verifyUser, updateOrderPrice);
+app.patch('/api/v1/order/:id/price', validate(schemas.offer, 'body'), verifyUser, updateOrderPrice);
 app.get('/api/v1/buyer/order', verifyUser, getOrdersByUser);
 
 export default app;
