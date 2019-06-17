@@ -15,7 +15,7 @@ const {
   postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice, getAllCars,
   updateCarStatus, updateCarPrice, deleteCarAd, getCarsByUser,
 } = carControl;
-const { makeOrder, updateOrderPrice } = orderControl;
+const { makeOrder, updateOrderPrice, getOrdersByUser } = orderControl;
 
 // USER ROUTES
 app.post('/api/v1/auth/signup', validate(schemas.user, 'body'), signup);
@@ -27,13 +27,14 @@ app.get('/api/v1/car/:id', getACar);
 app.get('/api/v1/car', getUnsoldCars);
 app.get('/api/v1/car', getUnsoldCarsByPrice);
 app.get('/api/v1/car', verifyAdmin, getAllCars);
-app.get('/api/v1/owner/car', verifyUser, getCarsByUser)
-app.patch('/api/v1/car/:id/status', verifyUser, updateCarStatus);
-app.patch('/api/v1/car/:id/price', verifyUser, updateCarPrice);
+app.get('/api/v1/owner/car', verifyUser, getCarsByUser);
+app.patch('/api/v1/car/:id/status', validate(schemas.status, 'body'), verifyUser, updateCarStatus);
+app.patch('/api/v1/car/:id/price', verifyUser, validate(schemas.price, 'body'), updateCarPrice);
 app.delete('/api/v1/car/:id', verifyAdmin, deleteCarAd);
 
 // ORDER ROUTES
 app.post('/api/v1/order', verifyUser, makeOrder);
-app.patch('/api/v1/order/:id/price', verifyUser, updateOrderPrice);
+app.patch('/api/v1/order/:id/price', validate(schemas.price, 'body'), verifyUser, updateOrderPrice);
+app.get('/api/v1/buyer/order', verifyUser, getOrdersByUser);
 
 export default app;

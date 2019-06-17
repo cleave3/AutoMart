@@ -34,6 +34,12 @@ const schemas = {
       .required(),
     description: Joi.string(),
   }),
+  status: Joi.object().keys({
+    status: Joi.string().trim().valid('available', 'sold').lowercase(),
+  }),
+  price: Joi.object().keys({
+    price: Joi.number().integer().required(),
+  }),
 };
 
 export default schemas;
