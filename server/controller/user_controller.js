@@ -35,6 +35,7 @@ const signup = async (req, res) => {
         last_name,
         address,
         email,
+        is_admin,
       },
     });
   } catch (error) {
@@ -78,6 +79,7 @@ const login = async (req, res) => {
           first_name,
           last_name,
           email,
+          is_admin,
         },
       });
     }

@@ -38,6 +38,7 @@ const postCar = async (req, res) => {
         car_id: carId,
         owner,
         email,
+        created_on: new Date(),
         state,
         status,
         price,
