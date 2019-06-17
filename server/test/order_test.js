@@ -62,47 +62,47 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         });
     });
   });
-//   describe('UPDATE ORDER PRICE', () => {
-//     it('should update an order', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/order/123/price')
-//         .set('x-access-token', userToken)
-//         .send({
-//           offer: 25000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(200);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not update an order when order with given id is not found', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/order/fakeid/price')
-//         .set('x-access-token', userToken)
-//         .send({
-//           offer: 25000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(404);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//     it('should not update an order when token is invalid', (done) => {
-//       chai.request(app)
-//         .patch('/api/v1/order/123/price')
-//         .set('x-access-token', 'invalid token')
-//         .send({
-//           offer: 25000000,
-//         })
-//         .end((error, res) => {
-//           res.should.have.status(401);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//   });
+  describe('UPDATE ORDER PRICE', () => {
+    it('should update an order', (done) => {
+      chai.request(app)
+        .patch('/api/v1/order/123/price')
+        .set('x-access-token', userToken)
+        .send({
+          offer: 25000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not update an order when order with given id is not found', (done) => {
+      chai.request(app)
+        .patch('/api/v1/order/fakeid/price')
+        .set('x-access-token', userToken)
+        .send({
+          offer: 25000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not update an order when token is invalid', (done) => {
+      chai.request(app)
+        .patch('/api/v1/order/123/price')
+        .set('x-access-token', 'invalid token')
+        .send({
+          offer: 25000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(401);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+  });
 //   describe('GET USER ORDERS', () => {
 //     it('should get all orders of a specific user', (done) => {
 //       chai.request(app)
