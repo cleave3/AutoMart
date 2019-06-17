@@ -6,6 +6,7 @@ import verifyAdmin from '../middleware/admin_auth';
 import userControl from '../controller/user_controller';
 import uploader from '../controller/image_controller';
 import carControl from '../controller/car_controller';
+import orderControl from '../controller/order_controller';
 
 const app = Express.Router();
 
@@ -14,6 +15,7 @@ const {
   postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice, getAllCars,
   updateCarStatus, updateCarPrice, deleteCarAd, getCarsByUser,
 } = carControl;
+const { makeOrder } = orderControl;
 
 // USER ROUTES
 app.post('/api/v1/auth/signup', validate(schemas.user, 'body'), signup);
@@ -29,5 +31,8 @@ app.get('/api/v1/owner/car', verifyUser, getCarsByUser)
 app.patch('/api/v1/car/:id/status', verifyUser, updateCarStatus);
 app.patch('/api/v1/car/:id/price', verifyUser, updateCarPrice);
 app.delete('/api/v1/car/:id', verifyAdmin, deleteCarAd);
+
+// ORDER ROUTES
+app.post('/api/v1/order', verifyUser, makeOrder);
 
 export default app;
