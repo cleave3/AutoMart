@@ -9,6 +9,7 @@ import remove from '../queries/delete';
 const { createAds } = insert;
 const {
   findById, findAllByStatus, findAllByStatusAndPrice, findAllCars, findUserAds,
+  findByManufacturer,
 } = find;
 const { updateStatus, updatePrice } = update;
 const { deleteCar } = remove;
@@ -64,8 +65,10 @@ const postCar = async (req, res) => {
  * @param {function} next
  */
 const getAllCars = async (req, res, next) => {
-  const { status, min_price, max_price } = req.query;
-  if (status || min_price || max_price) {
+  const {
+    status, min_price, max_price, manufacturer,
+  } = req.query;
+  if (status || min_price || max_price || manufacturer) {
     return next();
   }
   const allCars = await db.query(findAllCars);
@@ -104,8 +107,10 @@ const getACar = async (req, res) => {
  * @param {function} next
  */
 const getUnsoldCars = async (req, res, next) => {
-  const { status, min_price, max_price } = req.query;
-  if (min_price || max_price || !status) {
+  const {
+    status, min_price, max_price, manufacturer,
+  } = req.query;
+  if (min_price || max_price || !status || manufacturer) {
     return next();
   }
   const unsoldCars = await db.query(findAllByStatus);
@@ -122,7 +127,7 @@ const getUnsoldCars = async (req, res, next) => {
 };
 
 /**
- *
+ *View available cars within a price range
  * @param {object} req
  * @param {object} res
  * @param {function} next
@@ -143,6 +148,31 @@ const getUnsoldCarsByPrice = async (req, res, next) => {
   return res.status(200).json({
     status: 200,
     data: unsoldCarsByPrice.rows,
+  });
+};
+
+/**
+ *View available cars of a specific make
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+const getUnsoldCarsByManufacturer = async (req, res, next) => {
+  const { manufacturer } = req.query;
+  if (!manufacturer) {
+    return next();
+  }
+  const value = [manufacturer];
+  const carsByMake = await db.query(findByManufacturer, value);
+  if (carsByMake.rows < 1) {
+    return res.status(404).json({
+      status: 404,
+      error: 'No car found',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: carsByMake.rows,
   });
 };
 
@@ -183,6 +213,11 @@ const updateCarStatus = async (req, res) => {
   });
 };
 
+/**
+ * Update car price
+ * @param {object} req
+ * @param {object} res
+ */
 const updateCarPrice = async (req, res) => {
   const { price } = req.body;
   const { email } = req.decoded;
@@ -216,7 +251,7 @@ const updateCarPrice = async (req, res) => {
 };
 
 /**
- * Delete an ad
+ * Delete an Ad
  * @param {object} req
  * @param {object} res
  */
@@ -269,6 +304,7 @@ const carControl = {
   updateCarPrice,
   deleteCarAd,
   getCarsByUser,
+  getUnsoldCarsByManufacturer,
 };
 
 export default carControl;

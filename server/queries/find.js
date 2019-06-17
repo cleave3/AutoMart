@@ -7,6 +7,7 @@ const find = {
   findUserAds: 'SELECT * FROM cars WHERE owner = $1',
   findOrders: 'SELECT * FROM orders WHERE order_id = $1 LIMIT 1',
   findUserOrders: 'SELECT * FROM orders WHERE buyer = $1',
+  findByManufacturer: 'SELECT * FROM cars WHERE status = \'\available\' AND manufacturer = $1',
 };
 
 export default find;

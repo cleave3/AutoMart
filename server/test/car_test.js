@@ -276,7 +276,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
     });
   });
   describe('GET CARS', () => {
-    it('should view cars if user is signed in as admin', (done) => {
+    it('should view all cars if user is signed in as admin', (done) => {
       chai.request(app)
         .get('/api/v1/car')
         .set('x-access-token', AdminToken)
@@ -286,7 +286,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
           done();
         });
     });
-    it('should not view cars when user is not an Admin', (done) => {
+    it('should not view all cars when user is not an Admin', (done) => {
       chai.request(app)
         .get('/api/v1/car')
         .set('x-access-token', userToken)
@@ -296,7 +296,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
           done();
         });
     });
-    it('should not view cars when user token is invalid', (done) => {
+    it('should not view all cars when user token is invalid', (done) => {
       chai.request(app)
         .get('/api/v1/car')
         .set('x-access-token', 'invalid token')
@@ -306,7 +306,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
           done();
         });
     });
-    it('should not view cars when Admin is not logged in', (done) => {
+    it('should not view all cars when Admin is not logged in', (done) => {
       chai.request(app)
         .get('/api/v1/car')
         .end((error, res) => {
@@ -321,6 +321,20 @@ describe('API ENDPOINTS FOR CARS', async () => {
         .set('x-access-token', AdminToken)
         .query({
           status: 'available',
+        })
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should view all available cars of a specific make', (done) => {
+      chai.request(app)
+        .get('/api/v1/car')
+        .set('x-access-token', AdminToken)
+        .query({
+          status: 'available',
+          manufacturer: 'toyota',
         })
         .end((error, res) => {
           res.should.have.status(200);

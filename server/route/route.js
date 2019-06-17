@@ -13,7 +13,7 @@ const app = Express.Router();
 const { signup, login } = userControl;
 const {
   postCar, getACar, getUnsoldCars, getUnsoldCarsByPrice, getAllCars,
-  updateCarStatus, updateCarPrice, deleteCarAd, getCarsByUser,
+  updateCarStatus, updateCarPrice, deleteCarAd, getCarsByUser, getUnsoldCarsByManufacturer,
 } = carControl;
 const { makeOrder, updateOrderPrice, getOrdersByUser } = orderControl;
 
@@ -26,15 +26,16 @@ app.post('/api/v1/car', verifyUser, uploader.single('image'), validate(schemas.c
 app.get('/api/v1/car/:id', getACar);
 app.get('/api/v1/car', getUnsoldCars);
 app.get('/api/v1/car', getUnsoldCarsByPrice);
+app.get('/api/v1/car', getUnsoldCarsByManufacturer);
 app.get('/api/v1/car', verifyAdmin, getAllCars);
 app.get('/api/v1/owner/car', verifyUser, getCarsByUser);
 app.patch('/api/v1/car/:id/status', validate(schemas.status, 'body'), verifyUser, updateCarStatus);
-app.patch('/api/v1/car/:id/price', verifyUser, validate(schemas.price, 'body'), updateCarPrice);
+app.patch('/api/v1/car/:id/price', verifyUser, updateCarPrice);
 app.delete('/api/v1/car/:id', verifyAdmin, deleteCarAd);
 
 // ORDER ROUTES
 app.post('/api/v1/order', verifyUser, makeOrder);
-app.patch('/api/v1/order/:id/price', validate(schemas.offer, 'body'), verifyUser, updateOrderPrice);
+app.patch('/api/v1/order/:id/price', verifyUser, updateOrderPrice);
 app.get('/api/v1/buyer/order', verifyUser, getOrdersByUser);
 
 export default app;
