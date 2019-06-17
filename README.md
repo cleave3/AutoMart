@@ -36,7 +36,7 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
 * On postman test the following enpoints
 <table>
     <tr>
-        <th>API</th>
+        <th>Endpoint</th>
         <th>Method</th>
         <th>Action</th>
     </tr>
@@ -75,6 +75,16 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
         <td>GET</td>
         <td>View all available cars within a price range</td>
     </tr>
+    <tr>
+        <td>/api/v1/car</td>
+        <td>GET</td>
+        <td>View all available cars of a specific manufacturer</td>
+    </tr>
+    <tr>
+        <td>/api/v1/owner/car</td>
+        <td>GET</td>
+        <td>View all posted Ads of a specific user</td>
+    </tr>
      <tr>
         <td>/api/v1/car/:id/status</td>
         <td>PATCH</td>
@@ -101,7 +111,7 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
         <td>Update a specific order price</td>
     </tr>
     <tr>
-        <td>/api/v1/order/buyer/:id</td>
+        <td>/api/v1/buyer/order</td>
         <td>GET</td>
         <td>Get all orders of a specific buyer</td>
     </tr>
