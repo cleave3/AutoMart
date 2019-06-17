@@ -6,7 +6,7 @@ import find from '../queries/find';
 import update from '../queries/update';
 
 const { createOrders } = insert;
-const { findById, findOrders } = find;
+const { findById, findOrders, findUserOrders } = find;
 const { updateOffer } = update;
 
 /**
@@ -81,9 +81,32 @@ const updateOrderPrice = async (req, res) => {
   }
 };
 
+/**
+ * get user orders
+ * @param {object} req
+ * @param {object} res
+ */
+const getOrdersByUser = async (req, res) => {
+  const { user_id } = req.decoded;
+  const userId = user_id;
+  const userOrders = await db.query(findUserOrders, [userId]);
+  const orders = userOrders.rows;
+  if (orders < 1) {
+    return res.status(404).json({
+      status: 404,
+      message: 'user is yet to make an order',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: orders,
+  });
+};
+
 const orderControl = {
   makeOrder,
   updateOrderPrice,
+  getOrdersByUser,
 };
 
 export default orderControl;

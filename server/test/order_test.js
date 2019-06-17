@@ -103,16 +103,16 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         });
     });
   });
-//   describe('GET USER ORDERS', () => {
-//     it('should get all orders of a specific user', (done) => {
-//       chai.request(app)
-//         .get('/api/v1/order/buyer')
-//         .set('x-access-token', userToken)
-//         .end((error, res) => {
-//           res.should.have.status(200);
-//           res.body.should.be.an('object');
-//           done();
-//         });
-//     });
-//   });
+  describe('GET USER ORDERS', () => {
+    it('should get all orders of a specific user', (done) => {
+      chai.request(app)
+        .get('/api/v1/buyer/order')
+        .set('x-access-token', userToken)
+        .end((error, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+  });
 });
