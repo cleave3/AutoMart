@@ -2,7 +2,9 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 import Route from './route/route';
+import swaggerDocument from '../swagger.json';
 
 dotenv.config();
 
@@ -14,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 app.use(cors());
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(Route);
 
 app.get('/', (req, res) => res.status(200).json('AutoMart is running'));

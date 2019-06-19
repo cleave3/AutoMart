@@ -34,9 +34,6 @@ const schemas = {
       .required(),
     description: Joi.string(),
   }),
-  status: Joi.object().keys({
-    status: Joi.string().trim().valid('available', 'sold').lowercase(),
-  }),
 };
 
 export default schemas;
