@@ -10,9 +10,9 @@
     "migrations": "babel-node server/database/migrations/migrations.js",
     "seeders": "babel-node server/database/seeders/seeders.js",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "generate-lcov": "nyc report --reporter=text-lcov >lcov.info", 
-    "coveralls-coverage": "coveralls < lcov.info", 
-    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info", 
+    "generate-lcov": "nyc report --reporter=text-lcov >lcov.info",
+    "coveralls-coverage": "coveralls < lcov.info",
+    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
     "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
   },
   "repository": {
@@ -57,6 +57,7 @@
     "multer-storage-cloudinary": "^2.2.1",
     "pg": "^7.11.0",
     "shortid": "^2.2.14",
+    "swagger-ui-express": "^4.0.6",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

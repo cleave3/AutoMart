@@ -15,6 +15,14 @@ describe('API ENDPOINTS FOR USERS', () => {
         done();
       });
   });
+  it('should get swagger documentation', (done) => {
+    chai.request(app)
+      .get('/api-docs')
+      .end((error, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
   it('should not register a user when all required fields are empty', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
