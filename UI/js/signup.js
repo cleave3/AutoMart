@@ -17,7 +17,6 @@ const url = 'https://cleave-automart.herokuapp.com/api/v1/auth/signup';
 const patterns = {
   first_name: /^[a-z]{3,20}$/i,
   last_name: /^[a-z]{3,20}$/i,
-  address: /^[a-z\d]{5,20}$/i,
   email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
   password: /^[\d\w@-]{8,20}$/i,
 };
@@ -46,6 +45,7 @@ const validateFields = () => {
       responseForm.style.display = 'block';
       responseForm.style.backgroundColor = 'rgb(235, 91, 86)';
       input.style.borderColor = 'rgb(235, 91, 86)';
+      spinner.style.display = 'none';
       input.focus();
       return false;
     }
@@ -57,6 +57,7 @@ const validateFields = () => {
 const verifyPassword = () => {
   if (userPassword.value !== confirmUserPassword.value) {
     confirmUserPassword.className = 'invalid';
+    spinner.style.display = 'none';
     confirmUserPassword.focus();
     return false;
   }
@@ -66,9 +67,6 @@ const verifyPassword = () => {
 // spinner
 const loading = () => {
   spinner.style.display = 'block';
-  setTimeout(() => {
-    spinner.style.display = 'none';
-  }, 500);
 };
 
 // Diplay server response
@@ -92,9 +90,9 @@ const responsAction = (responseData) => {
 // initiate signup
 const init = () => {
   responseForm.style.display = 'none';
+  loading();
   validateFields();
   verifyPassword();
-  loading();
   fetch(url, {
     method: 'POST',
     headers: {
@@ -112,7 +110,11 @@ const init = () => {
   })
     .then(res => res.json())
     .then((data) => {
-      responsAction(data);
+      if (data) {
+        spinner.style.display = 'none';
+        console.log(data);
+        responsAction(data);
+      }
     });
 };
 

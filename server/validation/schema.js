@@ -18,7 +18,7 @@ const schemas = {
   signin: Joi.object().keys({
     email: Joi.string().email().trim().lowercase()
       .required(),
-    password: Joi.string().trim().min(8).max(20)
+    password: Joi.string().trim()
       .required()
       .strict(),
   }),

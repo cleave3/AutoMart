@@ -10,17 +10,20 @@
 <body>
     <div class="frame-login animate">
         <h3>Sign In</h3>
+        <p id="response-form"></p>
     <div class="loginForm">
     <form>
         <input id="login-email" type="email" name="" placeholder="email" required>
-        <input id="login-password" type="password" name="password" placeholder="password" required>
-        <input class="submit login" type="submit" name="" value="LOGIN">
+        <input id="login-password" type="password" name="password" placeholder="password" required> 
+        <div class="loader"></div>
+        <input id="login-button" class="submit login" type="submit" name="" value="LOGIN">
     <div class="message">
-        <p>Dont't have an account ? Signup <a href="./signup.html">here</a></p>   
+        <div>Dont't have an account ? Signup <a href="./signup.html">here</a></div>   
     </div>
     </form>
     <a href="./index.html"><button class="cancel-botton">Cancel</button></a>
     </div>
     </div>
+    <script src="./js/login.js"></script>
 </body>
 </html>
