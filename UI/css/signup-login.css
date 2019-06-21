@@ -103,3 +103,49 @@ input:focus{
 	from {transform: scale(0)}
 	to {transform: scale(1)}
 }
+
+/* new shit */
+#response-form{
+	display: none;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	transition: all .5s ease-in-out;
+	width: 90%;
+	margin: 10px auto;
+}
+
+.loader{
+    content: '';
+    animation: spin .5s linear infinite;
+    border: 2px solid white;
+    display: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-top-color: rgb(173, 13, 67);
+    margin: 20px auto;
+    transition: all .5s;
+}
+
+@keyframes spin{
+    0% {transform: rotate(0deg);}
+    100%{transform: rotate(360deg)}
+}
+p {
+	display: none;
+}
+input.invalid{
+	border-color: rgb(212, 23, 23);
+}
+
+input.invalid+p{
+	border-color: rgb(212, 23, 23);
+	font-size: 0.8rem;
+	font-weight: bold;
+	text-align: center;
+	color: rgb(212, 23, 23);
+	opacity: 1;
+	height: auto;
+	display: block;
+}
