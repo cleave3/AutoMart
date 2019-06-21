@@ -112,7 +112,6 @@ const init = () => {
     .then((data) => {
       if (data) {
         spinner.style.display = 'none';
-        console.log(data);
         responsAction(data);
       }
     });

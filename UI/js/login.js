@@ -9,7 +9,7 @@ const responseForm = document.getElementById('response-form');
 const spinner = document.querySelector('.loader');
 const inputs = document.querySelectorAll('input');
 
-// validate empty fields
+/** * VALIDATE EMPTY FIELD  * */
 const validateFields = () => {
   inputs.forEach((input) => {
     if (input.value === '') {
@@ -25,11 +25,12 @@ const validateFields = () => {
   });
 };
 
-// spinner
+/** * SPINNER * */
 const loading = () => {
   spinner.style.display = 'block';
 };
 
+/** * LOGIN RESPONSE HANDLER  * */
 const loginResponse = (responseData) => {
   if (responseData.error) {
     responseForm.textContent = responseData.error;
@@ -40,11 +41,29 @@ const loginResponse = (responseData) => {
     responseForm.textContent = `Welcome ${responseData.data.first_name}`;
     responseForm.style.display = 'block';
     responseForm.style.backgroundColor = 'rgb(53, 201, 53)';
-    // location.assign('user/dashboard.html');
   }
 };
-// initiate login
-const login = async () => {
+
+/** * SET SESSION  * */
+const setSessionStorage = (dataSource) => {
+  sessionStorage.setItem('token', dataSource.data.token);
+  sessionStorage.setItem('id', dataSource.data.user_id);
+  sessionStorage.setItem('email', dataSource.data.email);
+  sessionStorage.setItem('first_name', dataSource.data.first_name);
+  sessionStorage.setItem('last_name', dataSource.data.last_name);
+  sessionStorage.setItem('is_admin', dataSource.data.is_admin);
+};
+
+/** * WINDOWS LOCATION BY USER ROLE  * */
+const locationByRole = (admin) => {
+  if (admin) {
+    window.location.href = './user/admin_dashboard.html';
+  }
+  window.location.href = './user/dashboard.html';
+};
+
+/** * INITIATE LOGIN  * */
+const login = () => {
   responseForm.style.display = 'none';
   loading();
   validateFields();
@@ -64,11 +83,13 @@ const login = async () => {
       if (data) {
         spinner.style.display = 'none';
         loginResponse(data);
+        setSessionStorage(data);
+        locationByRole(data.data.is_admin);
       }
     });
 };
 
-// Add event listener to login button
+/** * ADD EVENT LISTENER TO LOGIN BUTTON * */
 loginBtn.addEventListener('click', (e) => {
   e.preventDefault();
   login();
