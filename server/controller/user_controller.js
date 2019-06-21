@@ -76,6 +76,7 @@ const login = async (req, res) => {
         status: 200,
         data: {
           token,
+          user_id,
           first_name,
           last_name,
           email,
