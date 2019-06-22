@@ -256,3 +256,11 @@ html,body{
         margin: 0 auto;
     } 
 }
+
+.result{
+    margin: 50px auto;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
+}

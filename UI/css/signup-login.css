@@ -104,7 +104,7 @@ input:focus{
 	to {transform: scale(1)}
 }
 
-/* new shit */
+/* Response form */
 #response-form{
 	display: none;
 	text-align: center;
@@ -115,6 +115,7 @@ input:focus{
 	margin: 10px auto;
 }
 
+/** Spinner */
 .loader{
     content: '';
     animation: spin .5s linear infinite;
@@ -128,10 +129,13 @@ input:focus{
     transition: all .5s;
 }
 
+/**Spinner animation*/
 @keyframes spin{
     0% {transform: rotate(0deg);}
     100%{transform: rotate(360deg)}
 }
+
+/**Form validation*/
 p {
 	display: none;
 }
