@@ -371,3 +371,23 @@ label:hover{
         height: 150px;
     }
 }
+
+/** Spinner */
+.loader{
+    content: '';
+    animation: spin .5s linear infinite;
+    border: 2px solid white;
+    display: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-top-color: rgb(173, 13, 67);
+    margin: 20px auto;
+    transition: all .5s;
+}
+
+/**Spinner animation*/
+@keyframes spin{
+    0% {transform: rotate(0deg);}
+    100%{transform: rotate(360deg)}
+}
