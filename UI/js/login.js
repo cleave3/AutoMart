@@ -55,9 +55,10 @@ const setSessionStorage = (dataSource) => {
 };
 
 /** * WINDOWS LOCATION BY USER ROLE  * */
-const locationByRole = (admin) => {
-  if (admin) {
+const locationByRole = (is_admin) => {
+  if (is_admin) {
     window.location.href = './user/admin_dashboard.html';
+    return;
   }
   window.location.href = './user/dashboard.html';
 };
