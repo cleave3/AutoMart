@@ -79,7 +79,7 @@ html,body{
 }
 
 .display-box p{
-    line-height: 5px;
+    line-height: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -99,15 +99,28 @@ html,body{
 
 /******CAR DETAILS ******/
 .car-details{
+    background-color: white;
+    max-width: 500px;
+    margin: 50px auto;
     grid-area: car-details;
     text-align: center;
     min-height: 90vh;
-    margin-top: 50px;
 }
 .car-description-container{
     max-width: 500px;
     margin: 20px auto;
     box-sizing: border-box;
+}
+
+#details-container{
+    background-color: white;
+    max-width: 550px;
+    margin: 10px auto;
+}
+
+#car-specs{
+    text-align: left;
+    margin-left: 30px;
 }
 
 .car-details .display-box{
@@ -119,8 +132,9 @@ html,body{
 }
 
 .car-details img{
-    width: 300px;
-    height: 250px;
+    margin-top: 20px;
+    width: 450px;
+    height: 300px;
 }
 .car-details .buy-button{
     padding: 15px;
@@ -263,4 +277,31 @@ html,body{
     color: red;
     font-weight: bold;
     transition: all .5s ease-in-out;
+}
+
+/**** MODAL ****/
+.modal{
+	display: none;
+	background: rgba(0,0,0, 0.8);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 150%;
+}
+
+.closeModal{
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 25px;
+	float: right;
+}
+
+.closeModal:hover{
+	cursor: pointer;
+	color:white;
+    background: black;
+	text-decoration: none;
+	border-radius: 50%;
 }
