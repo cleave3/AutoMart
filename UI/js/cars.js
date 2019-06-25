@@ -172,9 +172,9 @@ const makeOrder = async (id) => {
       confirm('Confirm Order');
       carDetails.style.display = 'none';
       successDiv.style.display = 'block';
-      setTimeout(() => {
-        window.location = 'car_view.html';
-      }, 2000);
+      // setTimeout(() => {
+      //   window.location = 'car_view.html';
+      // }, 2000);
     });
 };
 
