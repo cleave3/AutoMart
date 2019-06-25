@@ -313,3 +313,15 @@ html,body{
 	text-decoration: none;
 	border-radius: 50%;
 }
+
+.success{
+    z-index: 1;
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: white;
+    opacity: 1;
+    margin: 200px auto;
+    text-align: center;
+    display: none;
+}
