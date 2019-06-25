@@ -1,7 +1,6 @@
 const display = document.querySelector('.display-area');
 const displaySearch = document.querySelector('.search-result');
 const spinner = document.querySelector('.loader');
-const spinner2 = document.querySelector('.loader2');
 const carDetails = document.querySelector('.car-details');
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.closeModal');
@@ -23,13 +22,6 @@ const validateFields = () => {
   });
 };
 
-/**
- * INITIALIZING THE LOADER
- */
-const loading = async () => {
-  spinner.style.display = 'block';
-};
-
 /** TEMPLATE FOR DISPLAYING DATA ON PAGE */
 const displayCars = async (car) => {
   const template = `<div class="display-box" car-id=${car.car_id}>
@@ -44,7 +36,6 @@ const displayCars = async (car) => {
 
 /** TEMPLATE FOR DISPLAYING SEARCH RESULT ON PAGE */
 const searchCars = async (car) => {
-  displaySearch.innerHTML = '';
   const template = `<div class="display-box" car-id=${car.car_id}>
   <img src=${car.image_url} alt="ford">
   <p class="car-manufacturer"><b>Manufacturer: </b>${car.manufacturer}</p>
@@ -83,7 +74,7 @@ const displayDetails = async (data) => {
  * FETCH AVAILABLE CARS
  */
 const getData = async () => {
-  loading();
+  spinner.style.display = 'block';
   try {
     const payload = await fetch('https://cleave-automart.herokuapp.com/api/v1/car?status=available');
     const cars = await payload.json();
@@ -116,38 +107,29 @@ getData();
 const searchByPrice = async () => {
   validateFields();
   display.innerHTML = '';
-  spinner2.style.display = 'block';
+  displaySearch.innerHTML = '';
   try {
     const payload = await fetch(`https://cleave-automart.herokuapp.com/api/v1/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`);
     const cars = await payload.json();
     const res = cars.data;
     const noCar = cars.error;
     if (noCar) {
-      display.style.color = 'red';
-      display.innerHTML = noCar;
-      spinner2.style.display = 'none';
+      displaySearch.style.color = 'red';
+      displaySearch.innerHTML = noCar;
       return;
     }
     await res.forEach((data) => {
       if (data) {
-        spinner2.style.display = 'none';
+        displaySearch.style.color = '';
         display.style.color = '';
         searchCars(data);
       }
-      spinner2.style.display = 'none';
     });
   } catch (error) {
-    display.style.color = 'red';
-    display.innerHTML = 'Oops! Something went wrong';
+    displaySearch.style.color = 'red';
+    displaySearch.innerHTML = 'Oops! Something went wrong';
   }
 };
-
-/** ADD EVENT LISTENERS TO SEARCH BUTTON */
-search.addEventListener('click', (e) => {
-  e.preventDefault();
-  loading();
-  searchByPrice();
-});
 
 /**
  * VIEW A SPECIFIC CAR
@@ -161,6 +143,12 @@ const viewCarDetails = async (id) => {
   const { data } = car;
   displayDetails(data);
 };
+
+/** ADD EVENT LISTENERS TO SEARCH BUTTON */
+search.addEventListener('click', (e) => {
+  e.preventDefault();
+  searchByPrice();
+});
 
 /** ADD EVENT LISTENER TO DOCUMENT */
 document.addEventListener('click', (e) => {
