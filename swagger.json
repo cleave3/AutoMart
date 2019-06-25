@@ -12,7 +12,7 @@
       "url": "https://github.com/cleave3/AutoMart/blob/develop/LICENSE"
     }
   },
-  "host": "localhost:8080",
+  "host": "cleave-automart.herokuapp.com",
   "basePath": "/api/v1",
   "tags": [
     {
