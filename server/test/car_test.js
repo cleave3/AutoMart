@@ -174,9 +174,6 @@ describe('API ENDPOINTS FOR CARS', async () => {
       chai.request(app)
         .patch('/api/v1/car/124/status')
         .set('x-access-token', userToken)
-        .send({
-          status: 'sold',
-        })
         .end((error, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');
@@ -186,9 +183,6 @@ describe('API ENDPOINTS FOR CARS', async () => {
     it('should not update a specific car status when user is signedin', (done) => {
       chai.request(app)
         .patch('/api/v1/car/124/status')
-        .send({
-          status: 'sold',
-        })
         .end((error, res) => {
           res.should.have.status(403);
           res.body.should.be.an('object');
@@ -199,9 +193,6 @@ describe('API ENDPOINTS FOR CARS', async () => {
       chai.request(app)
         .patch('/api/v1/car/fakeid/status')
         .set('x-access-token', userToken)
-        .send({
-          status: 'sold',
-        })
         .end((error, res) => {
           res.should.have.status(404);
           res.body.should.be.an('object');
@@ -212,9 +203,6 @@ describe('API ENDPOINTS FOR CARS', async () => {
       chai.request(app)
         .patch('/api/v1/car/124/status')
         .set('x-access-token', 'invalid token')
-        .send({
-          status: 'sold',
-        })
         .end((error, res) => {
           res.should.have.status(401);
           res.body.should.be.an('object');
