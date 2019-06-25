@@ -182,19 +182,17 @@ const getUnsoldCarsByManufacturer = async (req, res, next) => {
  * @param {object} res
  */
 const updateCarStatus = async (req, res) => {
-  const { status } = req.body;
   const { email } = req.decoded;
   const carId = req.params.id;
   const desiredCar = await db.query(findById, [carId]);
   const car = desiredCar.rows[0];
-  const values = [status, carId];
   if (!car) {
     return res.status(404).json({
       status: 404,
       error: 'Car with given id not found',
     });
   }
-  await db.query(updateStatus, values);
+  await db.query(updateStatus, [carId]);
   const updatedCar = await db.query(findById, [carId]);
   const data = updatedCar.rows[0];
   return res.status(200).json({

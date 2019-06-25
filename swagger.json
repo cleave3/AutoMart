@@ -12,7 +12,7 @@
       "url": "https://github.com/cleave3/AutoMart/blob/develop/LICENSE"
     }
   },
-  "host": "cleave-automart.herokuapp.com",
+  "host": "localhost:8080",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -365,8 +365,8 @@
         "tags": [
           "cars"
         ],
-        "summary": "Update specific car",
-        "description": "Updates a single car",
+        "summary": "Mark car as sold",
+        "description": "Updates a single car status",
         "operationId": "updateCarStatus",
         "consumes": [
           "application/json"
@@ -381,15 +381,6 @@
             "description": "ID of car to return",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "status",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/status"
-            },
-            "description": "status can be available or sold",
-            "required": true
           }
         ],
         "responses": {
@@ -631,14 +622,6 @@
       "type": "object",
       "properties": {
         "carId": {
-          "type": "string"
-        }
-      }
-    },
-    "status": {
-      "type": "object",
-      "properties": {
-        "status": {
           "type": "string"
         }
       }
