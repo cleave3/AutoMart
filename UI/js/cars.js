@@ -8,6 +8,8 @@ const minPrice = document.querySelector('#min_price');
 const maxPrice = document.querySelector('#max_price');
 const search = document.querySelector('#search-button');
 const inputs = document.querySelectorAll('input');
+const token = sessionStorage.getItem('token');
+const successDiv = document.querySelector('.success');
 
 /**
  * VALIDATE INPUT FIELDS
@@ -48,7 +50,7 @@ const searchCars = async (car) => {
 
 /**
  * VIEW SPECIFIC CAR TEMPLATE
- * @param {object} data 
+ * @param {object} data
  */
 const displayDetails = async (data) => {
   const detailTemplate = `<div class="details-display-box" car-id=${data.car_id}>
@@ -133,7 +135,7 @@ const searchByPrice = async () => {
 
 /**
  * VIEW A SPECIFIC CAR
- * @param {string} id 
+ * @param {string} id
  */
 const viewCarDetails = async (id) => {
   carDetails.innerHTML = '';
@@ -144,6 +146,38 @@ const viewCarDetails = async (id) => {
   displayDetails(data);
 };
 
+/**
+ * MAKE AN ORDER
+ * @param {string} id
+ */
+const makeOrder = async (id) => {
+  fetch('https://cleave-automart.herokuapp.com/api/v1/order', {
+    method: 'POST',
+    headers: {
+      'x-access-token': `${token}`,
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      carId: id,
+    }),
+  })
+    .then(res => res.json())
+    .then((data) => {
+      if (data.error) {
+        alert(data.error);
+        window.location = 'login.html';
+        return;
+      }
+      confirm('Confirm Order');
+      carDetails.style.display = 'none';
+      successDiv.style.display = 'block';
+      setTimeout(() => {
+        window.location = 'car_view.html';
+      }, 2000);
+    });
+};
+
 /** ADD EVENT LISTENERS TO SEARCH BUTTON */
 search.addEventListener('click', (e) => {
   e.preventDefault();
@@ -152,9 +186,11 @@ search.addEventListener('click', (e) => {
 
 /** ADD EVENT LISTENER TO DOCUMENT */
 document.addEventListener('click', (e) => {
+  const id = e.target.parentElement.getAttribute('car-id');
   if (e.target.className === 'car-button') {
-    const id = e.target.parentElement.getAttribute('car-id');
     viewCarDetails(id);
+  } else if (e.target.className === 'buy-button') {
+    makeOrder(id);
   }
 });
 

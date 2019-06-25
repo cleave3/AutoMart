@@ -55,12 +55,11 @@ const setSessionStorage = (dataSource) => {
 };
 
 /** * WINDOWS LOCATION BY USER ROLE  * */
-const locationByRole = (is_admin) => {
-  if (is_admin) {
-    window.location.href = './user/admin_dashboard.html';
-    return;
+const locationByRole = (data) => {
+  if (!data) {
+    return false;
   }
-  window.location.href = './user/dashboard.html';
+  window.location.href = 'car_view.html';
 };
 
 /** * INITIATE LOGIN  * */
@@ -85,7 +84,7 @@ const login = () => {
         spinner.style.display = 'none';
         loginResponse(data);
         setSessionStorage(data);
-        locationByRole(data.data.is_admin);
+        locationByRole(data);
       }
     });
 };
