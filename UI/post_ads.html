@@ -39,7 +39,7 @@
             <div class="post-form-container">
                 <form id="sale-form">
                     <label for="manufacturer">MANUFACTURER</label>
-                    <select id="manufacturer">
+                    <select name="manufacturer" id="manufacturer">
                         <option>Please Select</option>
                         <option>Audi</option>
                         <option>Mercedez Benz</option>
@@ -55,39 +55,42 @@
                         <option>Lexus</option>
                     </select>
                     <label for="model">MODEL</label>
-                    <input id="model" type="text" name="model" placeholder="Model" required>
+                    <input name="model" id="model" type="text" name="model" placeholder="Model" required>
                     <label for="transmission">Transmission Type</label>
-                    <select id="transmission">
+                    <select name="transmission_type" id="transmission-type">
                         <option>Please Select</option>
                         <option>Automatic</option>
                         <option>Manual</option>
                     </select>
                     <label for="body">BODY TYPE</label>
-                    <select id="body">
+                    <select name="body_type" id="body-type">
                         <option>Please Select</option>
                         <option>Buses</option>
+                        <option>car</option>
                         <option>Convertibles</option>
                         <option>SUV</option>
                         <option>Truck</option>
                         <option>Van</option>
                     </select>
                     <label for="state">STATE</label>
-                    <select id="state">
+                    <select name="state" id="state">
                         <option>Please Select</option>
                         <option>New</option>
                         <option>Used</option>
                     </select>
                     <label for="price">price</label>
-                    <input id="price" type="number" name="price" placeholder="Price" required>
+                    <input name="price" id="price" type="number" placeholder="Price" required>
                     <label for="image">image</label>
-                    <input id="image" type="url" name="photo" placeholder="Image URL" required>
+                    <input id="image" type="file" name="image" placeholder="Image" required>
                     <label for="description">description</label>
-                    <textarea id="description" placeholder="Description....."></textarea>
+                    <textarea name="description" id="description" placeholder="Description....."></textarea>
+                    <div class="loader"></div>
+                    <div id="response-form"></div>
+                    <div class="post-button-container">
+                        <button type="submit" id="post-button">POST</button>
+                        <button id="cancel-button">CANCEL</button>
+                    </div>
                 </form>
-                <div class="post-button-container">
-                    <button id="cancel-button">CANCEL</button>
-                    <button id="post-button">POST</button>
-                </div>
             </div>
         </div>
         <div class="footer">
@@ -101,5 +104,6 @@
             <p> copyright &copy cleave 2019</p>
         </div>
     </div>
+    <script src="./js/post-ads.js"></script>
 </body>
 </html>

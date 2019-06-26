@@ -398,6 +398,20 @@ label:hover{
     margin: 20px auto;
     transition: all .5s;
 }
+
+/* RESPONSE FORM */
+#response-form{
+    display: none;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
+	color: green;
+	padding: 10px;
+	transition: all .5s ease-in-out;
+	width: 90%;
+	margin: 10px auto;
+}
+
 /** ANIMATIONS */
 @keyframes spin{
     0% {transform: rotate(0deg);}
