@@ -271,14 +271,74 @@ html,body{
         width: 400px;
         margin: 0 auto;
     }
+    #details-container{
+        background-color: white;
+        max-width: 500px;
+        margin: 10px auto;
+    }
+    
+    .car-details .display-box{
+        box-shadow: none;
+        height: 450px;
+        max-width: 300px;
+        margin: 20px auto;
+        margin-bottom: 50px;
+    }
+    
+    .car-details img{
+        margin-top: 5px;
+        width: 400px;
+        height: 250px;
+    }
 }
 @media(max-width: 600px){
     .post-form-container{
         width: 80%;
         margin: 0 auto;
-    } 
+    }
+    #details-container{
+        background-color: white;
+        max-width: 400px;
+        margin: 10px auto;
+    }
+    
+    .car-details .display-box{
+        box-shadow: none;
+        height: 450px;
+        max-width: 350px;
+        margin: 20px auto;
+        margin-bottom: 50px;
+    }
+    
+    .car-details img{
+        margin-top: 5px;
+        width: 350px;
+        height: 250px;
+    }
 }
 
+@media(max-width: 420px) {
+    #details-container{
+        background-color: white;
+        max-width: 310px;
+        margin: 10px auto;
+    }
+    
+    .car-details .display-box{
+        box-shadow: none;
+        height: 450px;
+        max-width: 300px;
+        margin: 20px auto;
+        margin-bottom: 50px;
+    }
+    
+    .car-details img{
+        margin-top: 5px;
+        width: 300px;
+        height: 200px;
+    }
+
+}
 .result{
     margin: 50px auto;
     text-align: center;
