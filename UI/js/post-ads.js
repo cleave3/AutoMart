@@ -30,21 +30,25 @@ const handleResponse = (car) => {
 myForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   responseForm.innerHTML = '';
-  confirm('Please confirm');
-  spinner.style.display = 'block';
-  const formData = new FormData(myForm);
-  const options = {
-    method: 'POST',
-    body: formData,
-    headers: {
-      'x-access-token': `${token}`,
-    },
-  };
-  await fetch('https://cleave-automart.herokuapp.com/api/v1/car', options)
-    .then(res => res.json())
-    .then((car) => {
-      handleResponse(car);
-    });
+  const confirmPost = confirm('Please confirm');
+  if (confirmPost == true) {
+    spinner.style.display = 'block';
+    const formData = new FormData(myForm);
+    const options = {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'x-access-token': `${token}`,
+      },
+    };
+    await fetch('https://cleave-automart.herokuapp.com/api/v1/car', options)
+      .then(res => res.json())
+      .then((car) => {
+        handleResponse(car);
+      });
+      return;
+  }
+  alert('Ad creation cancelled');
 });
 
 /** ADD EVENT LISTENER TO CANCEL BUTTON */

@@ -21,16 +21,14 @@
                 <a href="./car_view.html">Available Cars</a>
                 <a class="current" href="./post_ads.html">Sell Car</a>
                 <div id="nav-hide">
-                    <a id="dashboard" href="./user/dashboard.html">Dashboard</a>
-                    <a id="nav-signup" href="./signup.html">Signup</a>
-                    <a id="nav-login" href="./login.html">Login</a> 
+                    <a class="dashboard" href="#">Dashboard</a>
+                    <a class="logout" href="#">Logout</a>
                 </div>
                 <div class="dropdown">
                     <img src="./images/panel.jpg">
                     <div class="dropdown-content">
-                        <a id="dashboard" href="./user/dashboard.html">Dashboard</a>
-                        <a id="nav-signup" href="./signup.html">Signup</a>
-                        <a id="nav-login" href="./login.html">Login</a>
+                        <a class="dashboard" href="#">Dashboard</a>
+                        <a class="logout" href="#">Logout</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +81,7 @@
                     <label for="image">image</label>
                     <input id="image" type="file" name="image" placeholder="Image" required>
                     <label for="description">description</label>
-                    <textarea name="description" id="description" placeholder="Description....."></textarea>
+                    <textarea name="description" id="description" placeholder="Description....." required></textarea>
                     <div class="loader"></div>
                     <div id="response-form"></div>
                     <div class="post-button-container">
@@ -99,11 +97,14 @@
                 <a href="./post_ads.html">Sell Car</a>
                 <a href="./about_contact.html">Contact Us</a>
                 <a href="./about_contact.html">About Us</a>
+                <a href="./signup.html">Signup</a>
+                <a href="./login.html">Login</a> 
                 <a href="./about_contact.html">Terms & Condition</a>
             </div>
             <p> copyright &copy cleave 2019</p>
         </div>
     </div>
+    <script src="./js/logout.js"></script>
     <script src="./js/post-ads.js"></script>
 </body>
 </html>
