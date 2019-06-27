@@ -169,9 +169,10 @@ const makeOrder = async (id) => {
         window.location = 'login.html';
         return;
       }
-      confirm('Confirm Order');
+      setTimeout(() => { 
       carDetails.style.display = 'none';
       successDiv.style.display = 'block';
+      }, 300);
     });
 };
 
@@ -187,7 +188,12 @@ document.addEventListener('click', (e) => {
   if (e.target.className === 'car-button') {
     viewCarDetails(id);
   } else if (e.target.className === 'buy-button') {
-    makeOrder(id);
+    const confirmOrder = confirm('Please confirm order');
+    if (confirmOrder == true) {
+      makeOrder(id);
+    } else {  
+    alert('Order cancel');
+    }
   }
 });
 
