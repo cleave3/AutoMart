@@ -45,11 +45,21 @@ input:focus{
     outline: 0;
 }
 
+.btn-container {
+	width: 90%;
+	margin: 10px auto;
+}
+
 .submit{
 	background-color: rgb(93, 218, 240);
 	border: none;
 	color: white;
-    font-weight: bold;
+	font-weight: bold;
+	width: 100%;
+	padding: 15px;
+	margin: 0 auto;
+	border-radius: 5px;
+	outline: 0;
 }
 .submit:hover{
 	background-color: rgb(22, 132, 184);
@@ -111,7 +121,7 @@ input:focus{
 	color: white;
 	padding: 10px;
 	transition: all .5s ease-in-out;
-	width: 90%;
+	width: 84%;
 	margin: 10px auto;
 }
 

@@ -315,6 +315,10 @@ html,body{
         width: 350px;
         height: 250px;
     }
+    
+    .car-details{
+        margin: 0px auto;
+    }
 }
 
 @media(max-width: 420px) {
@@ -336,6 +340,10 @@ html,body{
         margin-top: 5px;
         width: 300px;
         height: 200px;
+    }
+    
+    .car-details{
+        margin: 0px auto;
     }
 
 }

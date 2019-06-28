@@ -52,25 +52,12 @@ html{
     color: white;
 }
 
-#switch{
-    float: left;
-    text-decoration: none;
-    margin: 20px;
-    font-weight: bold;
-    color: black;
-}
-#switch:hover{
-    background-color: none;
-    color: white;
-    margin-left: 30px;
-    transition: all .5s ease-in-out;
-}
 .sidenav a:hover{
     background-color: rgb(15, 6, 99);
     color: white;
 }
 #user-image-container{
-    margin: 20px auto 100px;
+    margin: 20px auto;
     width: 100px;
     height: 100px;
 }
@@ -121,23 +108,31 @@ html{
     padding: 5px;
     border: 1px solid black;
 }
-.update-container button{
+.update-button{
     padding: 5px;
     background-color: rgb(170, 82, 10);
     color: white;
     border: none;
 }
-.update-container button:hover{
+.update-button:hover{
     background-color: rgb(87, 28, 5);
     cursor: pointer;
+}
+.sold-botton{
+    font-weight: bold; 
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 10px 15px;
 }
 .available{
     color: rgb(14, 211, 14);
     font-weight: bold;
 }
-.sold{
-    color: rgb(211, 14, 14);
-    font-weight: bold; 
+.sold {
+    color: gray;
+    border: none;
+    padding: 10px 15px;
 }
 /*** ADMIN ADS DISPLAY AREA***/
 .display-area{
@@ -221,4 +216,24 @@ html{
     .display-box{
         margin: 10px auto;
     }
+}
+
+/** Spinner */
+.loader{
+    content: '';
+    animation: spin .5s linear infinite;
+    border: 2px solid white;
+    /* display: none; */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-top-color: rgb(173, 13, 67);
+    margin: 20px auto;
+    transition: all .5s;
+}
+
+/** ANIMATIONS */
+@keyframes spin{
+    0% {transform: rotate(0deg);}
+    100%{transform: rotate(360deg)}
 }

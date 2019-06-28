@@ -10,7 +10,6 @@
 <body>
     <div class="container">
         <div class="header">
-            <a id="switch" href="./admin_dashboard.html">Admin Panel &raquo</a>
             <div class="logo-container">
                 <a href="../index.html"><img src="../images/logo.png"></a>
             </div>
@@ -18,51 +17,20 @@
         <div class="sidenav">
             <div id="user-image-container">
                 <img id = "user-image" src="../images/avatar.png">
-                <h3>Owhiroro cleave</h3>
             </div>
+            <h3 class="userId"></h3>
             <a class="current" href="./dashboard.html">MY ADS</a>
             <a href="./dashboard_orders.html">MY ORDERS</a>
+            <a class="admin-panel" href="./admin_dashboard.html">DELETE ADS</a>
             <a href="../car_view.html">AVAILABLE CARS</a>
             <a href="../post_ads.html">SELL CAR</a>
-            <a href="#">LOGOUT</a>
+            <a class="logout" href="#">LOGOUT</a>
         </div>
         <div class="main">
             <div class="content-container">
+                <div class="loader"></div>
+                <div class="result"></div>
                 <div id="ads-container">
-                <div id="ads-box">
-                    <img src="../images/benz.png">
-                    <div>
-                        <p>Manufacturer:Mercedez</p>
-                        <p>Model:GLK</p>
-                       <p> Price: &#8358 3,200,000</p>
-                    </div>
-                    <div class="update-container">
-                        <select class="status">
-                            <option class="available">Available</option>
-                            <option class="sold">Sold</option>
-                        </select>
-                        <button>Update</button>
-                        <input name= "price" type="number" placeholder="price">
-                        <button>Update</button>
-                    </div>
-                </div>
-                <div id="ads-box">
-                    <img src="../images/ford_suv.jpeg">
-                    <div>
-                        <p>Manufacturer:Mercedez</p>
-                        <p>Model:GLK</p>
-                        <p> Price: &#8358 3,200,000</p>
-                    </div>
-                    <div class="update-container">
-                        <select class="status">
-                            <option class="available">Available</option>
-                            <option class="sold">Sold</option>
-                        </select>
-                        <button>Update</button>
-                        <input name= "price" type="number" placeholder="price">
-                        <button>Update</button>
-                    </div>
-                </div>
                 </div>
             </div>
             </div> 
@@ -70,5 +38,7 @@
             <p>copyright &copy cleave 2019</p>
         </div>
     </div>
+    <script src="../js/user-auth.js"></script>
+    <script src="../js/dasboard.js"></script>
 </body>
 </html>
