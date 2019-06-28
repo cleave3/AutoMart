@@ -386,19 +386,6 @@ label:hover{
     transition: all .5s;
 }
 
-.loader2{
-    content: '';
-    animation: spin .5s linear infinite;
-    border: 2px solid white;
-    display: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border-top-color: rgb(173, 13, 67);
-    margin: 20px auto;
-    transition: all .5s;
-}
-
 /* RESPONSE FORM */
 #response-form{
     display: none;

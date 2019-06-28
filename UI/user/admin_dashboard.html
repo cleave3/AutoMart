@@ -10,7 +10,6 @@
 <body>
     <div class="container">
         <div class="header">
-            <a id="switch" href="./dashboard.html">User Dashboard &raquo</a>
             <div class="logo-container">
                 <a href="../index.html"><img src="../images/logo.png"></a>
             </div>
@@ -18,12 +17,14 @@
         <div class="sidenav">
             <div id="user-image-container">
                 <img id = "user-image" src="../images/avatar.png">
-                <h3>WELCOME ADMIN</h3>
             </div>
-            <a class="current" href="./dashboard_orders.html">VIEW ALL ADS</a>
+            <h3 class="userId" ></h3>
+            <a href="./dashboard.html">MY ADS</a>
+            <a  href="./dashboard_orders.html">MY ORDERS</a>
+            <a  class="current admin-panel" href="./admin_dashboard.html">DELETE ADS</a>
             <a href="../car_view.html">AVAILABLE CARS</a>
             <a href="../post_ads.html">SELL CAR</a>
-            <a href="#">LOGOUT</a>
+            <a class="logout" href="#">LOGOUT</a>
         </div>
         <div class="main">
             <h2>ALL ADS</h2>
@@ -66,5 +67,6 @@
             <p>copyright &copy cleave 2019</p>
         </div>
     </div>
+    <script src="../js/user-auth.js"></script>
 </body>
 </html>
