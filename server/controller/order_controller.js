@@ -20,12 +20,14 @@ const makeOrder = async (req, res) => {
   try {
     const desiredCar = await db.query(findById, [carId]);
     const car = desiredCar.rows[0];
-    const { car_id, price } = car;
+    const {
+      car_id, price, manufacturer, model, image_url,
+    } = car;
     const orderId = shortid.generate();
     const buyer = user_id;
     const price_offered = price;
     const status = 'pending';
-    const values = [orderId, buyer, car_id, price, price_offered, status];
+    const values = [orderId, buyer, car_id, price, price_offered, manufacturer, model, status, image_url];
 
     await db.query(createOrders, values);
     return res.status(200).json({
@@ -37,6 +39,9 @@ const makeOrder = async (req, res) => {
         status,
         price,
         price_offered: price,
+        manufacturer,
+        model,
+        image_url,
       },
     });
   } catch (error) {
@@ -59,9 +64,14 @@ const updateOrderPrice = async (req, res) => {
   try {
     const order = await db.query(findOrders, [orderId]);
     const {
-      order_id, car_id, status, amount,
+      order_id, car_id, status, amount, manufacturer, model, image_url,
     } = order.rows[0];
-
+    if (status !== 'pending') {
+      return res.status(400).json({
+        status: 400,
+        error: 'Order whas already been accepted or rejected',
+      });
+    }
     await db.query(updateOffer, values);
     return res.status(200).json({
       status: 200,
@@ -69,6 +79,9 @@ const updateOrderPrice = async (req, res) => {
         order_id,
         car_id,
         status,
+        manufacturer,
+        model,
+        image_url,
         old_price_offered: amount,
         new_price_offered: offer,
       },

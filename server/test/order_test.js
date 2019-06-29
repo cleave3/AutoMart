@@ -89,6 +89,19 @@ describe('API ENDPOINTS FOR ORDERS', () => {
           done();
         });
     });
+    it('should not update an order when order is already accepted or rejected', (done) => {
+      chai.request(app)
+        .patch('/api/v1/order/133/price')
+        .set('x-access-token', userToken)
+        .send({
+          offer: 25000000,
+        })
+        .end((error, res) => {
+          res.should.have.status(400);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
     it('should not update an order when token is invalid', (done) => {
       chai.request(app)
         .patch('/api/v1/order/123/price')
