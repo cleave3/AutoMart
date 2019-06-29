@@ -96,7 +96,10 @@ const insertData = () => {
     car_id,
     amount,
     price_offered,
-    status
+    status,
+    manufacturer,
+    model,
+    image_url
     ) 
     VALUES (
         '123',
@@ -104,7 +107,10 @@ const insertData = () => {
         '3gt5096',
         3000000,
         2500000,
-        'pending'
+        'pending',
+        'nissan',
+        'nissan 2018',
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
       ),
       (
         '143',
@@ -112,7 +118,10 @@ const insertData = () => {
         '5gt5096',
         2500000,
         2000000,
-        'rejected'
+        'rejected',
+        'nissan',
+        'nissan 2018',
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
       ),
       (
         '133',
@@ -120,7 +129,10 @@ const insertData = () => {
         '4gt5096',
         4500000,
         2500000,
-        'accepted'
+        'accepted',
+        'nissan',
+        'nissan 2018',
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
       );
   `;
   pool.query(data)
