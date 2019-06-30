@@ -2,29 +2,28 @@ const display = document.querySelector('#ads-container');
 const spinner = document.querySelector('.loader');
 const response = document.querySelector('.result');
 const token = sessionStorage.getItem('token');
-const url = 'http://localhost:8080/api/v1';
+const url = 'https://cleave-automart.herokuapp.com/api/v1';
 
 /**
  * ADS TEMPLATE TO DISPLAY ON PAGE
  * @param {object} data
  */
-// const displayMyAds = async (data) => {
-//   const template = `<div id="ads-box" car-id=${data.car_id}>
-//     <img src=${data.image_url}>
-//     <div>
-//         <p>Manufacturer: ${data.manufacturer}</p>
-//         <p>Model: ${data.model}</p>
-//         <p> Price: &#8358 ${data.price}</p>
-//         <p class="status">Status: ${data.status}</p>
-//     </div>
-//     <div class="update-container">
-//         <button status=${data.status} class="sold-botton">SOLD</button>
-//         <input name= "price" type="number" placeholder="price">
-//         <button status=${data.status} class=update-button>Update</button>
-//     </div>
-//     </div>`;
-//   await display.insertAdjacentHTML('afterbegin', template);
-// };
+const displayMyOrders = async (data) => {
+  const template = `<div id="ads-box" order-id=${data.order_id}>
+    <div>
+        <img src=${data.image_url}>
+        <p>${data.manufacturer} ${data.model}</p>
+        <p> offer: &#8358 ${data.amount}</p>
+        <p> My offer: &#8358 ${data.price_offered}</p>
+        <p> Status: ${data.status}</p>
+    </div>
+    <div class="update-container">
+        <input name= "offer" type="number" placeholder="New offer">
+        <button class="update-button">Update</button>
+    </div>
+    </div>`;
+  await display.insertAdjacentHTML('afterbegin', template);
+};
 
 /**
  * LOAD USER POSTED ADS
@@ -45,54 +44,47 @@ const getMyAds = async () => {
       }
       spinner.style.display = 'none';
       orders.data.forEach((order) => {
-        // displayMyAds(car);
         console.log(order);
+        displayMyOrders(order);
       });
     });
 };
 getMyAds();
 
 /**
- *UPDATE CAR PRICE
+ *UPDATE OFFER
  * @param {params} id
- * @param {number} price
+ * @param {number} offer
  */
-// const updatePrice = (id, price) => {
-//   fetch(`${url}/car/${id}/price`, {
-//     method: 'PATCH',
-//     headers: {
-//       'x-access-token': `${token}`,
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       price,
-//     }),
-//   })
-//     .then(res => res.json())
-//     .then((cars) => {
-//       if (cars.error) {
-//         spinner.style.display = 'none';
-//         alert(cars.error);
-//         return;
-//       }
-//       spinner.style.display = 'none';
-//       location.reload();
-//     });
-// };
+const updateOffer = (id, offer) => {
+  fetch(`${url}/order/${id}/price`, {
+    method: 'PATCH',
+    headers: {
+      'x-access-token': `${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      offer,
+    }),
+  })
+    .then(res => res.json())
+    .then((order) => {
+      if (order.error) {
+        alert(order.error);
+        return;
+      }
+      location.reload();
+    });
+};
 
 /** ADD EVENT LISTENERS TO BUTTONS */
-// document.addEventListener('click', (e) => {
-//   const id = e.target.parentElement.parentElement.getAttribute('car-id');
-//   const carprice = Number(e.target.parentElement.childNodes[3].value);
-//   if (e.target.className === 'sold-botton') {
-//     const sure = confirm('Please confirm');
-//     if (sure === true) {
-//       carSold(id);
-//     }
-//   } else if (e.target.className === 'update-button') {
-//     const sure = confirm('Please confirm');
-//     if (sure === true) {
-//       updatePrice(id, carprice);
-//     }
-//   }
-// });
+document.addEventListener('click', (e) => {
+  const id = e.target.parentElement.parentElement.getAttribute('order-id');
+  const offer = Number(e.target.parentElement.childNodes[1].value);
+  if (e.target.className === 'update-button') {
+    const sure = confirm('Please confirm');
+    if (sure === true) {
+      updateOffer(id, offer);
+    }
+  }
+});

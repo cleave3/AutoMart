@@ -109,7 +109,7 @@ html{
     border: 1px solid black;
 }
 .update-button{
-    padding: 5px;
+    padding: 10px 15px;
     background-color: rgb(170, 82, 10);
     color: white;
     border: none;
@@ -124,6 +124,11 @@ html{
     background-color: red;
     border: none;
     padding: 10px 15px;
+}
+
+.sold-botton:hover{
+    background-color: darkred;
+    cursor: pointer;
 }
 .available{
     color: rgb(14, 211, 14);
@@ -224,11 +229,12 @@ html{
     animation: spin .5s linear infinite;
     border: 2px solid white;
     /* display: none; */
-    width: 30px;
-    height: 30px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border-top-color: rgb(173, 13, 67);
-    margin: 20px auto;
+    border-top-color: black;
+    border-bottom-color: black;
+    margin: 200px auto;
     transition: all .5s;
 }
 
