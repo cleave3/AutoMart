@@ -27,7 +27,7 @@ const validateFields = () => {
 /** TEMPLATE FOR DISPLAYING DATA ON PAGE */
 const displayCars = async (car) => {
   const template = `<div class="display-box" car-id=${car.car_id}>
-  <img src=${car.image_url} alt="ford">
+  <img src=${car.image_url} alt=${car.manufacturer}>
   <p class="car-manufacturer"><b>Manufacturer: </b>${car.manufacturer}</p>
   <p class="car-model"><b>Model: </b>${car.model}</p>
   <p class="car-price"><b>Price: </b><b>&#8358</b>${car.price}</p>
@@ -39,7 +39,7 @@ const displayCars = async (car) => {
 /** TEMPLATE FOR DISPLAYING SEARCH RESULT ON PAGE */
 const searchCars = async (car) => {
   const template = `<div class="display-box" car-id=${car.car_id}>
-  <img src=${car.image_url} alt="ford">
+  <img src=${car.image_url} alt=${car.manufacturer}>
   <p class="car-manufacturer"><b>Manufacturer: </b>${car.manufacturer}</p>
   <p class="car-model"><b>Model: </b>${car.model}</p>
   <p class="car-price"><b>Price: </b><b>&#8358</b>${car.price}</p>
@@ -54,7 +54,7 @@ const searchCars = async (car) => {
  */
 const displayDetails = async (data) => {
   const detailTemplate = `<div class="details-display-box" car-id=${data.car_id}>
-  <img src=${data.image_url} alt="Toyota Camry">
+  <img src=${data.image_url} alt=${data.manufacturer}>
   <div id="car-specs">
   <p id="" class="car-manufacturer"><b>Manufacturer: </b>${data.manufacturer}</p>
   <p class="car-model"><b>Model: </b>${data.model}</p>

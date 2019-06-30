@@ -11,7 +11,7 @@ const url = 'https://cleave-automart.herokuapp.com/api/v1';
 const displayMyOrders = async (data) => {
   const template = `<div id="ads-box" order-id=${data.order_id}>
     <div>
-        <img src=${data.image_url}>
+        <img src=${data.image_url} alt=${data.manufacturer}>
         <p>${data.manufacturer} ${data.model}</p>
         <p> offer: &#8358 ${data.amount}</p>
         <p> My offer: &#8358 ${data.price_offered}</p>
@@ -82,6 +82,10 @@ document.addEventListener('click', (e) => {
   const id = e.target.parentElement.parentElement.getAttribute('order-id');
   const offer = Number(e.target.parentElement.childNodes[1].value);
   if (e.target.className === 'update-button') {
+    if (offer === 0 || offer === '') {
+      alert('offer cannot be empty');
+      return;
+    }
     const sure = confirm('Please confirm');
     if (sure === true) {
       updateOffer(id, offer);
