@@ -10,7 +10,7 @@ const url = 'https://cleave-automart.herokuapp.com/api/v1';
  */
 const displayMyAds = async (data) => {
   const template = `<div id="ads-box" car-id=${data.car_id}>
-    <img src=${data.image_url}>
+    <img src=${data.image_url} alt=${data.manufacturer}>
     <div>
         <p>Manufacturer: ${data.manufacturer}</p>
         <p>Model: ${data.model}</p>
@@ -132,6 +132,10 @@ document.addEventListener('click', (e) => {
       carSold(id);
     }
   } else if (e.target.className === 'update-button') {
+    if (carprice === 0 || carprice === '') {
+      alert('car price cannot be empty');
+      return;
+    }
     const sure = confirm('Please confirm');
     if (sure === true) {
       updatePrice(id, carprice);
