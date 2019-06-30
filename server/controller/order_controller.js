@@ -69,7 +69,7 @@ const updateOrderPrice = async (req, res) => {
     if (status !== 'pending') {
       return res.status(400).json({
         status: 400,
-        error: 'Order whas already been accepted or rejected',
+        error: `Can't update offer. Order has been ${status}`,
       });
     }
     await db.query(updateOffer, values);
