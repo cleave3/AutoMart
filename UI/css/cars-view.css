@@ -393,3 +393,16 @@ html,body{
     text-align: center;
     display: none;
 }
+
+.car-loader{
+    content: '';
+    animation: spin .5s linear infinite;
+    border: 2px solid white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-top-color: black;
+    border-bottom-color: black;
+    margin: 200px auto;
+    transition: all .5s;
+}

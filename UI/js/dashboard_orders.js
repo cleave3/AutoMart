@@ -37,14 +37,13 @@ const getMyAds = async () => {
   })
     .then(res => res.json())
     .then((orders) => {
-      if (orders.error) {
+      if (orders.message) {
         spinner.style.display = 'none';
-        response.innerHTML = orders.error;
+        response.innerHTML = orders.message;
         return;
       }
       spinner.style.display = 'none';
       orders.data.forEach((order) => {
-        console.log(order);
         displayMyOrders(order);
       });
     });
@@ -82,8 +81,8 @@ document.addEventListener('click', (e) => {
   const id = e.target.parentElement.parentElement.getAttribute('order-id');
   const offer = Number(e.target.parentElement.childNodes[1].value);
   if (e.target.className === 'update-button') {
-    if (offer === 0 || offer === '') {
-      alert('offer cannot be empty');
+    if (offer === 0 || offer === '' || offer < 0) {
+      alert('Offer must be greater than zero');
       return;
     }
     const sure = confirm('Please confirm');
