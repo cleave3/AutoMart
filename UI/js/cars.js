@@ -1,6 +1,6 @@
 const display = document.querySelector('.display-area');
 const displaySearch = document.querySelector('.search-result');
-const spinner = document.querySelector('.loader');
+const spinner = document.querySelector('.car-loader');
 const carDetails = document.querySelector('.car-details');
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.closeModal');
@@ -10,6 +10,7 @@ const search = document.querySelector('#search-button');
 const inputs = document.querySelectorAll('input');
 const token = sessionStorage.getItem('token');
 const successDiv = document.querySelector('.success');
+const url = 'https://cleave-automart.herokuapp.com/api/v1';
 
 /**
  * VALIDATE INPUT FIELDS
@@ -78,7 +79,7 @@ const displayDetails = async (data) => {
 const getData = async () => {
   spinner.style.display = 'block';
   try {
-    const payload = await fetch('https://cleave-automart.herokuapp.com/api/v1/car?status=available');
+    const payload = await fetch(`${url}/car?status=available`);
     const cars = await payload.json();
     const res = cars.data;
     const noCar = cars.error;
@@ -111,7 +112,7 @@ const searchByPrice = async () => {
   display.innerHTML = '';
   displaySearch.innerHTML = '';
   try {
-    const payload = await fetch(`https://cleave-automart.herokuapp.com/api/v1/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`);
+    const payload = await fetch(`${url}/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`);
     const cars = await payload.json();
     const res = cars.data;
     const noCar = cars.error;
@@ -140,7 +141,7 @@ const searchByPrice = async () => {
 const viewCarDetails = async (id) => {
   carDetails.innerHTML = '';
   modal.style.display = 'block';
-  const payload = await fetch(`https://cleave-automart.herokuapp.com/api/v1/car/${id}`);
+  const payload = await fetch(`${url}/car/${id}`);
   const car = await payload.json();
   const { data } = car;
   displayDetails(data);
@@ -151,7 +152,7 @@ const viewCarDetails = async (id) => {
  * @param {string} id
  */
 const makeOrder = async (id) => {
-  fetch('https://cleave-automart.herokuapp.com/api/v1/order', {
+  fetch(`${url}/order`, {
     method: 'POST',
     headers: {
       'x-access-token': `${token}`,
@@ -169,9 +170,9 @@ const makeOrder = async (id) => {
         window.location = 'login.html';
         return;
       }
-      setTimeout(() => { 
-      carDetails.style.display = 'none';
-      successDiv.style.display = 'block';
+      setTimeout(() => {
+        carDetails.style.display = 'none';
+        successDiv.style.display = 'block';
       }, 300);
     });
 };
@@ -191,8 +192,8 @@ document.addEventListener('click', (e) => {
     const confirmOrder = confirm('Please confirm order');
     if (confirmOrder == true) {
       makeOrder(id);
-    } else {  
-    alert('Order cancel');
+    } else {
+      alert('Order cancel');
     }
   }
 });

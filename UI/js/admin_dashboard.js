@@ -21,9 +21,9 @@ const displayMycars = async (data) => {
 };
 
 /**
- * LOAD USER POSTED ADS
+ * LOAD ALL POSTED ADS
  */
-const getMyAds = async () => {
+const getAllAds = async () => {
   fetch(`${url}/car`, {
     method: 'GET',
     headers: {
@@ -44,7 +44,7 @@ const getMyAds = async () => {
       });
     });
 };
-getMyAds();
+getAllAds();
 
 /**
  *UPDATE OFFER
