@@ -41,10 +41,7 @@ const createTables = () => {
     created_on TIMESTAMP DEFAULT NOW(),
     amount FLOAT NOT NULL,
     price_offered FLOAT NOT NULL,
-    status TEXT NOT NULL,
-    manufacturer TEXT NOT NULL,
-    model VARCHAR NOT NULL,
-    image_url VARCHAR NOT NULL
+    status TEXT NOT NULL
   );
   `;
   pool.query(tables)
