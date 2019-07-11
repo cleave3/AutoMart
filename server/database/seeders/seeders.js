@@ -4,7 +4,6 @@ import pool from '../db';
 const insertData = () => {
   const data = `
     TRUNCATE users;
-
   INSERT INTO users (
     user_id,
     first_name,
@@ -32,9 +31,7 @@ const insertData = () => {
         '$2b$10$KckxTbjutti4LPmSb4gOOObbn4fpBKsn4AfASQZqCjz3wFgxXLuKu',
         'false'
       );
-
     TRUNCATE cars;
-
   INSERT INTO cars (
     car_id,
     owner,
@@ -87,19 +84,14 @@ const insertData = () => {
         'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
         'Brand new ford express with latest functionalities'
       );
-
     TRUNCATE orders;
-
   INSERT INTO orders (
     order_id,
     buyer,
     car_id,
     amount,
     price_offered,
-    status,
-    manufacturer,
-    model,
-    image_url
+    status
     ) 
     VALUES (
         '123',
@@ -107,10 +99,7 @@ const insertData = () => {
         '3gt5096',
         3000000,
         2500000,
-        'pending',
-        'nissan',
-        'nissan 2018',
-        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
+        'pending'
       ),
       (
         '143',
@@ -118,10 +107,7 @@ const insertData = () => {
         '5gt5096',
         2500000,
         2000000,
-        'rejected',
-        'nissan',
-        'nissan 2018',
-        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
+        'rejected'
       ),
       (
         '133',
@@ -129,10 +115,7 @@ const insertData = () => {
         '4gt5096',
         4500000,
         2500000,
-        'accepted',
-        'nissan',
-        'nissan 2018',
-        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
+        'accepted'
       );
   `;
   pool.query(data)

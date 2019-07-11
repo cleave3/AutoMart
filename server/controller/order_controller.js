@@ -10,7 +10,7 @@ const { findById, findOrders, findUserOrders } = find;
 const { updateOffer } = update;
 
 /**
- * Post an order
+ * Make an order
  * @param {object} req
  * @param {object} res
  */
@@ -20,14 +20,12 @@ const makeOrder = async (req, res) => {
   try {
     const desiredCar = await db.query(findById, [carId]);
     const car = desiredCar.rows[0];
-    const {
-      car_id, price, manufacturer, model, image_url,
-    } = car;
+    const { car_id, price } = car;
     const orderId = shortid.generate();
     const buyer = user_id;
     const price_offered = price;
     const status = 'pending';
-    const values = [orderId, buyer, car_id, price, price_offered, manufacturer, model, status, image_url];
+    const values = [orderId, buyer, car_id, price, price_offered, status];
 
     await db.query(createOrders, values);
     return res.status(200).json({
@@ -39,9 +37,6 @@ const makeOrder = async (req, res) => {
         status,
         price,
         price_offered: price,
-        manufacturer,
-        model,
-        image_url,
       },
     });
   } catch (error) {
@@ -107,7 +102,7 @@ const getOrdersByUser = async (req, res) => {
   if (orders < 1) {
     return res.status(404).json({
       status: 404,
-      message: 'user is yet to make an order',
+      error: 'user is yet to make an order',
     });
   }
   return res.status(200).json({
