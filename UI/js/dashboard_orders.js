@@ -1,4 +1,4 @@
-const display = document.querySelector('#ads-container');
+const display = document.querySelector('.table-body');
 const spinner = document.querySelector('.loader');
 const response = document.querySelector('.result');
 const token = sessionStorage.getItem('token');
@@ -9,19 +9,18 @@ const url = 'https://cleave-automart.herokuapp.com/api/v1';
  * @param {object} data
  */
 const displayMyOrders = async (data) => {
-  const template = `<div id="ads-box" order-id=${data.order_id}>
-    <div>
-        <img src=${data.image_url} alt=${data.manufacturer}>
-        <p>${data.manufacturer} ${data.model}</p>
-        <p> offer: &#8358 ${data.amount}</p>
-        <p> My offer: &#8358 ${data.price_offered}</p>
-        <p> Status: ${data.status}</p>
-    </div>
-    <div class="update-container">
-        <input name= "offer" type="number" placeholder="New offer">
-        <button class="update-button">Update</button>
-    </div>
-    </div>`;
+  const template = `<tr order-id=${data.order_id}>
+    <td>${data.order_id}</td>
+    <td>&#8358 ${data.amount}</td>
+    <td>&#8358 ${data.price_offered}</td>
+    <td>${data.status}</td>
+    <td>
+        <div class="update-container">
+        <input name="offer" id="offer" type="number" placeholder="New offer">
+        <button id="table-button" class="update-button">Update</button>
+        </div>
+    </td>
+</tr>`;
   await display.insertAdjacentHTML('afterbegin', template);
 };
 
@@ -37,9 +36,9 @@ const getMyAds = async () => {
   })
     .then(res => res.json())
     .then((orders) => {
-      if (orders.message) {
+      if (orders.error) {
         spinner.style.display = 'none';
-        response.innerHTML = orders.message;
+        response.innerHTML = orders.error;
         return;
       }
       spinner.style.display = 'none';
@@ -78,7 +77,7 @@ const updateOffer = (id, offer) => {
 
 /** ADD EVENT LISTENERS TO BUTTONS */
 document.addEventListener('click', (e) => {
-  const id = e.target.parentElement.parentElement.getAttribute('order-id');
+  const id = e.target.parentElement.parentElement.parentElement.getAttribute('order-id');
   const offer = Number(e.target.parentElement.childNodes[1].value);
   if (e.target.className === 'update-button') {
     if (offer === 0 || offer === '' || offer < 0) {
@@ -87,6 +86,7 @@ document.addEventListener('click', (e) => {
     }
     const sure = confirm('Please confirm');
     if (sure === true) {
+      console.log(id);
       updateOffer(id, offer);
     }
   }
