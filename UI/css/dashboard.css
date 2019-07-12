@@ -5,6 +5,7 @@ html{
     box-sizing: border-box;
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-sizing: border-box;
 }
 .container{
     width: 98%;
@@ -80,6 +81,7 @@ html{
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
+    overflow: auto;
 }
 #ads-box img{
     width: 200px;
@@ -98,7 +100,7 @@ html{
     box-shadow: 5px 5px 5px 5px gray;
     cursor: pointer;
 }
- #ads-box p{
+#ads-box p{
     font-weight: bold;
 }
 .update-container input,
@@ -193,6 +195,37 @@ html{
     width: 100%;
 }
 
+/** ORDERS TABLE **/
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-spacing: 0;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: transparent;
+    line-height: 3;
+}
+thead tr {
+    overflow: auto;
+    background-color: gray;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tbody tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+tbody tr:nth-of-type(odd) {
+    background-color: rgb(212, 209, 209);
+}
+#offer{
+    width: 5rem;
+}
 /**** MOBILE VIEWS ****/
 @media(max-width: 620px){
     .container{
@@ -234,7 +267,7 @@ html{
     border-radius: 50%;
     border-top-color: black;
     border-bottom-color: black;
-    margin: 200px auto;
+    margin: 80px auto;
     transition: all .5s;
 }
 

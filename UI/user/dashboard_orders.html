@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,67 +8,67 @@
     <title>AutoMart || Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <div class="logo-container">
                 <a href="../index.html"><img src="../images/logo.png"></a>
             </div>
+        </div>
+        <div class="sidenav">
+            <div id="user-image-container">
+                <img id="user-image" src="../images/avatar.png">
             </div>
-            <div class="sidenav">
-                <div id="user-image-container">
-                    <img id = "user-image" src="../images/avatar.png">
-                </div>
-                <h3 class="userId"></h3>
-                <a href="./dashboard.html">MY ADS</a>
-                <a class="current" href="./dashboard_orders.html">MY ORDERS</a>
-                <a class="admin-panel" href="./admin_dashboard.html">DELETE ADS</a>
-                <a href="../car_view.html">AVAILABLE CARS</a>
-                <a href="../post_ads.html">SELL CAR</a>
-                <a class="logout" href="#">LOGOUT</a>
-            </div>
+            <h3 class="userId"></h3>
+            <a href="./dashboard.html">MY ADS</a>
+            <a class="current" href="./dashboard_orders.html">MY ORDERS</a>
+            <a class="admin-panel" href="./admin_dashboard.html">DELETE ADS</a>
+            <a href="../car_view.html">AVAILABLE CARS</a>
+            <a href="../post_ads.html">SELL CAR</a>
+            <a class="logout" href="#">LOGOUT</a>
+        </div>
         <div class="main">
             <h3>MY ORDERS</h3>
-            <div class="result"></div>
             <div class="content-container">
                 <div id="ads-container">
-                    <div class="loader"></div>
-                <!-- <div id="ads-box">
-                    <img src="../images/benz.png">
-                    <div>
-                        <p>Seller: AutoMart</p>
-                        <p>Manufacturer: Mercedez</p>
-                        <p>Model: GLK</p>
-                        <p>State: New</p>
-                       <p> Price: &#8358 3,200,000</p>
-                    </div>
-                    <div class="update-container">
-                        <input type="number" placeholder="price">
-                        <button>Update</button>
-                    </div>
-                    </div>
-                    <div id="ads-box">
-                        <img src="../images/toyota-lexus.jpg">
-                        <div>
-                            <p>Seller: Paul Smith</p>
-                            <p>Manufacturer: Toyota</p>
-                            <p>Model: Camry</p>
-                            <p>State:Used</p>
-                            <p> Price: &#8358 350,000</p>
-                        </div>
-                        <div class="update-container">
-                            <input type="number" placeholder="price">
-                            <button>Update</button>
-                        </div>
-                    </div> -->
+                    <!-- <div class="loader"></div> -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Price</th>
+                                <th>Offer</th>
+                                <th>Status</th>
+                                <th>New offer</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body">
+                            <!-- <tr>
+                                <td>1111111111</td>
+                                <td>&#8358 1000000</td>
+                                <td>&#8358 1000000</td>
+                                <td>Accepted</td>
+                                <td>
+                                    <div class="update-container">
+                                    <input name="offer" id="offer" type="number" placeholder="New offer">
+                                    <button class="update-button">Update</button>
+                                    </div>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            </div> 
-            <div class="footer">
-                <p>copyright &copy cleave 2019</p>
+            <div class="loader"></div>
+            <div class="result"></div>
+        </div>
+        <div class="footer">
+            <p>copyright &copy cleave 2019</p>
         </div>
     </div>
     <script src="../js/user-auth.js"></script>
     <script src="../js/dashboard_orders.js"></script>
 </body>
+
 </html>
