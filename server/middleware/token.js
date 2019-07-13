@@ -3,14 +3,22 @@ import jwt from 'jsonwebtoken';
 
 const secret = process.env.JWT_SECRET;
 
-const token = (user_id, email, first_name, last_name, is_admin) => jwt.sign({
-  user_id,
-  email,
-  first_name, 
-  last_name,
-  is_admin,
-}, secret, {
-  expiresIn: '5h',
-});
+class Auth {
+  static createToken(user_id, email, first_name, last_name, is_admin) {
+    const token = jwt.sign(
+      {
+        user_id,
+        email,
+        first_name,
+        last_name,
+        is_admin,
+      },
+      secret,
+      { expiresIn: '24h' },
+    );
 
-export default token;
+    return token;
+  }
+}
+
+export default Auth;
