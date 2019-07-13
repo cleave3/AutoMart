@@ -3,7 +3,8 @@ import pool from '../db';
 
 const insertData = () => {
   const data = `
-    TRUNCATE users;
+  TRUNCATE users;
+
   INSERT INTO users (
     user_id,
     first_name,
@@ -31,7 +32,9 @@ const insertData = () => {
         '$2b$10$KckxTbjutti4LPmSb4gOOObbn4fpBKsn4AfASQZqCjz3wFgxXLuKu',
         'false'
       );
-    TRUNCATE cars;
+
+  TRUNCATE cars;
+
   INSERT INTO cars (
     car_id,
     owner,
@@ -41,9 +44,7 @@ const insertData = () => {
     manufacturer,
     model,
     body_type,
-    transmission_type,
-    image_url,
-    description
+    image_url
     ) 
     VALUES (
         '123',
@@ -54,9 +55,7 @@ const insertData = () => {
         'toyota',
         'camry',
         'car',
-        'automatic',
-        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
-        'Fairly used toyota camry with auto transmission'
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
       ),
       (
         '124',
@@ -67,9 +66,7 @@ const insertData = () => {
         'nissan',
         'nissan 2018',
         'car',
-        'automatic',
-        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
-        'Brand new Benz GLK with latest functionalities'
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
       ),
       (
        '125',
@@ -80,11 +77,11 @@ const insertData = () => {
         'ford',
         'ford express',
         'SUV',
-        'automatic',
-        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
-        'Brand new ford express with latest functionalities'
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg'
       );
-    TRUNCATE orders;
+
+  TRUNCATE orders;
+  
   INSERT INTO orders (
     order_id,
     buyer,

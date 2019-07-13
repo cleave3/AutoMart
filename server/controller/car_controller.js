@@ -21,22 +21,22 @@ const { deleteCar } = remove;
  */
 const postCar = async (req, res) => {
   const {
-    state, price, manufacturer, model, body_type, transmission_type, description,
+    state, price, manufacturer, model, body_type,
   } = req.body;
   const { user_id, email } = req.decoded;
-  const carId = shortid.generate();
+  const car_id = shortid.generate();
   const status = 'available';
   const owner = user_id;
 
   try {
     const { secure_url } = req.file;
     const image_url = secure_url;
-    const values = [carId, owner, state, status, price, manufacturer, model, body_type, transmission_type, image_url, description];
+    const values = [car_id, owner, state, status, price, manufacturer, model, body_type, image_url];
     await db.query(createAds, values);
     res.status(201).json({
       status: 201,
       data: {
-        car_id: carId,
+        car_id,
         owner,
         email,
         created_on: new Date(),
@@ -46,9 +46,7 @@ const postCar = async (req, res) => {
         manufacturer,
         model,
         body_type,
-        transmission_type,
         image_url,
-        description,
       },
     });
   } catch (error) {
