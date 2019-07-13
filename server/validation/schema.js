@@ -9,8 +9,7 @@ const schemas = {
     address: Joi.string().min(3).max(100).required(),
     email: Joi.string().email().trim().lowercase()
       .required(),
-    password: Joi.string().trim().min(1).max(20)
-      .required(),
+    password: Joi.string().trim().required(),
   }),
   signin: Joi.object().keys({
     email: Joi.string().email().trim().lowercase()

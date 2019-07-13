@@ -4,11 +4,10 @@ import uuidv4 from 'uuid/v4';
 import insert from '../queries/insert';
 import find from '../queries/find';
 import db from '../database/db';
-import Auth from '../middleware/token';
+import Token from '../middleware/token';
 
 const { userSignup } = insert;
 const { findByEmail } = find;
-const { createToken } = Auth;
 
 /**
  *
@@ -26,7 +25,7 @@ const signup = async (req, res) => {
 
   try {
     await db.query(userSignup, values);
-    const token = await createToken(user_id, first_name, last_name, email, is_admin);
+    const token = await Token(user_id, first_name, last_name, email, is_admin);
     return res.status(201).json({
       status: 201,
       data: {
@@ -72,7 +71,7 @@ const login = async (req, res) => {
           error: 'password incorrect',
         });
       }
-      const token = await createToken(user_id, email, first_name, last_name, is_admin);
+      const token = await Token(user_id, email, first_name, last_name, is_admin);
       return res.status(200).json({
         status: 200,
         data: {

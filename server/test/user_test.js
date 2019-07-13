@@ -141,24 +141,24 @@ describe('API ENDPOINTS FOR USERS', () => {
   //       res.body.should.be.an('object');
   //       done();
   //     });
+  // // });
+  // it('should not register a user when password is less than 8 characters', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send({
+  //       first_name: 'cleave',
+  //       last_name: 'owhiroro',
+  //       address: 'warri, nigeria',
+  //       email: 'owhiroro@mail.com',
+  //       password: '123345',
+  //       // confirmPassword: '12345',
+  //     })
+  //     .end((error, res) => {
+  //       res.should.have.status(400);
+  //       res.body.should.be.an('object');
+  //       done();
+  //     });
   // });
-  it('should not register a user when password is less than 8 characters', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-        first_name: 'cleave',
-        last_name: 'owhiroro',
-        address: 'warri, nigeria',
-        email: 'owhiroro@mail.com',
-        password: '123345',
-        // confirmPassword: '12345',
-      })
-      .end((error, res) => {
-        res.should.have.status(400);
-        res.body.should.be.an('object');
-        done();
-      });
-  });
   it('should not register a user when a valid email is not provided', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
