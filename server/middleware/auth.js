@@ -5,7 +5,7 @@ dotenv.config();
 const secret = process.env.JWT_SECRET;
 
 const verifyUser = (req, res, next) => {
-  const token = req.headers['x-access-token'];
+  const token = req.headers['x-access-token'] || req.headers.token || req.body.token;
   if (!token) {
     return res.status(403).json({
       status: 403,

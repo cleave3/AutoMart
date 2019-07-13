@@ -32,7 +32,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        // confirmPassword: '',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -49,7 +49,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        // confirmPassword: '',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -66,7 +66,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        // confirmPassword: '',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -83,7 +83,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: '',
         password: '',
-        confirmPassword: '',
+        // confirmPassword: '',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -100,7 +100,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'owhiroro@mail.com',
         password: '',
-        confirmPassword: '',
+        // confirmPassword: '',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -108,40 +108,40 @@ describe('API ENDPOINTS FOR USERS', () => {
         done();
       });
   });
-  it('should not register a user when confirmation password is not provided', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-        first_name: 'cleave',
-        last_name: 'owhiroro',
-        address: 'warri, nigeria',
-        email: 'owhiroro@mail.com',
-        password: '123345678',
-        confirmPassword: '',
-      })
-      .end((error, res) => {
-        res.should.have.status(400);
-        res.body.should.be.an('object');
-        done();
-      });
-  });
-  it('should not register a user when paswword and confirmation password does not match', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-        first_name: 'cleave',
-        last_name: 'owhiroro',
-        address: 'warri, nigeria',
-        email: 'owhiroro@mail.com',
-        password: '12345678',
-        confirmPassword: '12347865',
-      })
-      .end((error, res) => {
-        res.should.have.status(400);
-        res.body.should.be.an('object');
-        done();
-      });
-  });
+  // it('should not register a user when confirmation password is not provided', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send({
+  //       first_name: 'cleave',
+  //       last_name: 'owhiroro',
+  //       address: 'warri, nigeria',
+  //       email: 'owhiroro@mail.com',
+  //       password: '123345678',
+  //       // confirmPassword: '',
+  //     })
+  //     .end((error, res) => {
+  //       res.should.have.status(400);
+  //       res.body.should.be.an('object');
+  //       done();
+  //     });
+  // });
+  // it('should not register a user when paswword and confirmation password does not match', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send({
+  //       first_name: 'cleave',
+  //       last_name: 'owhiroro',
+  //       address: 'warri, nigeria',
+  //       email: 'owhiroro@mail.com',
+  //       password: '12345678',
+  //       // confirmPassword: '12347865',
+  //     })
+  //     .end((error, res) => {
+  //       res.should.have.status(400);
+  //       res.body.should.be.an('object');
+  //       done();
+  //     });
+  // });
   it('should not register a user when password is less than 8 characters', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -151,7 +151,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'owhiroro@mail.com',
         password: '123345',
-        confirmPassword: '12345',
+        // confirmPassword: '12345',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -168,7 +168,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'owhiroromail.com',
         password: '123345678',
-        confirmPassword: '12345678',
+        // confirmPassword: '12345678',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -185,7 +185,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'owhiroro@mail.com',
         password: '123345678',
-        confirmPassword: '12345678',
+        // confirmPassword: '12345678',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -202,7 +202,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'owhiroro@mail.com',
         password: '123345678',
-        confirmPassword: '12345678',
+        // confirmPassword: '12345678',
       })
       .end((error, res) => {
         res.should.have.status(400);
@@ -219,7 +219,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'cleave@gmail.com',
         password: '12345678',
-        confirmPassword: '12345678',
+        // confirmPassword: '12345678',
       })
       .end((error, res) => {
         res.should.have.status(409);
@@ -236,7 +236,7 @@ describe('API ENDPOINTS FOR USERS', () => {
         address: 'warri, nigeria',
         email: 'realdude@gmail.com',
         password: '12345678',
-        confirmPassword: '12345678',
+        // confirmPassword: '12345678',
       })
       .end((error, res) => {
         res.should.have.status(201);

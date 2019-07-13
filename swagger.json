@@ -12,7 +12,7 @@
       "url": "https://github.com/cleave3/AutoMart/blob/develop/LICENSE"
     }
   },
-  "host": "cleave-automart.herokuapp.com",
+  "host": "localhost:8080",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -285,7 +285,7 @@
         ]
       }
     },
-    "/car/{carId}": {
+    "/car/{id}": {
       "get": {
         "tags": [
           "cars"
@@ -298,7 +298,7 @@
         ],
         "parameters": [
           {
-            "name": "carId",
+            "name": "id",
             "in": "path",
             "description": "ID of car to return",
             "required": true,
@@ -315,7 +315,12 @@
           "404": {
             "description": "Car not found"
           }
-        }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -360,7 +365,7 @@
         ]
       }
     },
-    "/car/{carId}/status": {
+    "/car/{id}/status": {
       "patch": {
         "tags": [
           "cars"
@@ -376,7 +381,7 @@
         ],
         "parameters": [
           {
-            "name": "carId",
+            "name": "id",
             "in": "path",
             "description": "ID of car to return",
             "required": true,
@@ -404,7 +409,7 @@
         ]
       }
     },
-    "/car/{carId}/price": {
+    "/car/{id}/price": {
       "patch": {
         "tags": [
           "cars"
@@ -420,7 +425,7 @@
         ],
         "parameters": [
           {
-            "name": "carId",
+            "name": "id",
             "in": "path",
             "description": "ID of car to return",
             "required": true,
@@ -500,7 +505,7 @@
         ]
       }
     },
-    "/order/{orderId}/price": {
+    "/order/{id}/price": {
       "patch": {
         "tags": [
           "orders"
@@ -516,17 +521,17 @@
         ],
         "parameters": [
           {
-            "name": "orderId",
+            "name": "id",
             "in": "path",
             "description": "ID of car to return",
             "required": true,
             "type": "string"
           },
           {
-            "name": "offer",
+            "name": "price",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/offer"
+              "$ref": "#/definitions/price"
             },
             "description": "update price offered",
             "required": true
@@ -601,9 +606,6 @@
         },
         "password": {
           "type": "string"
-        },
-        "confirmPassword": {
-          "type": "string"
         }
       }
     },
@@ -621,7 +623,7 @@
     "orders": {
       "type": "object",
       "properties": {
-        "carId": {
+        "car_id": {
           "type": "string"
         }
       }
@@ -630,14 +632,6 @@
       "type": "object",
       "properties": {
         "price": {
-          "type": "number"
-        }
-      }
-    },
-    "offer": {
-      "type": "object",
-      "properties": {
-        "offer": {
           "type": "number"
         }
       }

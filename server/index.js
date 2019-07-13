@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use(Route);
+app.use('/api/v1', Route);
 
 app.get('/', (req, res) => res.status(200).json('AutoMart is running'));
 

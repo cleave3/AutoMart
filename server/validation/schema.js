@@ -9,10 +9,8 @@ const schemas = {
     address: Joi.string().min(3).max(100).required(),
     email: Joi.string().email().trim().lowercase()
       .required(),
-    password: Joi.string().trim().min(8).max(20)
+    password: Joi.string().trim().min(1).max(20)
       .required()
-      .strict(),
-    confirmPassword: Joi.string().trim().valid(Joi.ref('password')).required()
       .strict(),
   }),
   signin: Joi.object().keys({
@@ -30,8 +28,7 @@ const schemas = {
     manufacturer: Joi.string().trim().required(),
     model: Joi.string().trim().required(),
     body_type: Joi.string().trim().required(),
-    transmission_type: Joi.string().trim().valid('automatic', 'manual').lowercase()
-      .required(),
+    transmission_type: Joi.string().trim().valid('automatic', 'manual').lowercase(),
     description: Joi.string(),
   }),
 };
