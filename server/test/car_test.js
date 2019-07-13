@@ -102,6 +102,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
     it('should view a specific car ad when id is accurate', (done) => {
       chai.request(app)
         .get('/api/v1/car/123')
+        .set('x-access-token', userToken)
         .end((error, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');
@@ -111,6 +112,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
     it('should not view a specific car ad when id is inaccurate', (done) => {
       chai.request(app)
         .get('/api/v1/car/fakeid')
+        .set('x-access-token', userToken)
         .end((error, res) => {
           res.should.have.status(404);
           res.body.should.be.an('object');

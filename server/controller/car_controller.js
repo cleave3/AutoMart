@@ -85,8 +85,8 @@ const getAllCars = async (req, res, next) => {
  * @param {object} res
  */
 const getACar = async (req, res) => {
-  const carId = [req.params.id];
-  const desiredCar = await db.query(findById, carId);
+  const car_id = [req.params.id];
+  const desiredCar = await db.query(findById, car_id);
   const car = desiredCar.rows[0];
   if (!car) {
     return res.status(404).json({
@@ -183,8 +183,8 @@ const getUnsoldCarsByManufacturer = async (req, res, next) => {
  */
 const updateCarStatus = async (req, res) => {
   const { email } = req.decoded;
-  const carId = req.params.id;
-  const desiredCar = await db.query(findById, [carId]);
+  // const car_id = req.params.id;
+  const desiredCar = await db.query(findById, [req.params.id]);
   const car = desiredCar.rows[0];
   if (!car) {
     return res.status(404).json({
@@ -192,8 +192,8 @@ const updateCarStatus = async (req, res) => {
       error: 'Car with given id not found',
     });
   }
-  await db.query(updateStatus, [carId]);
-  const updatedCar = await db.query(findById, [carId]);
+  await db.query(updateStatus, [req.params.id]);
+  const updatedCar = await db.query(findById, [req.params.id]);
   const data = updatedCar.rows[0];
   return res.status(200).json({
     status: 200,
@@ -219,10 +219,10 @@ const updateCarStatus = async (req, res) => {
 const updateCarPrice = async (req, res) => {
   const { price } = req.body;
   const { email } = req.decoded;
-  const carId = req.params.id;
-  const desiredCar = await db.query(findById, [carId]);
+  // const carId = req.params.id;
+  const desiredCar = await db.query(findById, [req.params.id]);
   const car = desiredCar.rows[0];
-  const values = [price, carId];
+  const values = [price, req.params.id];
   if (!car) {
     return res.status(404).json({
       status: 404,
@@ -230,7 +230,7 @@ const updateCarPrice = async (req, res) => {
     });
   }
   await db.query(updatePrice, values);
-  const updatedCar = await db.query(findById, [carId]);
+  const updatedCar = await db.query(findById, [req.params.id]);
   const data = updatedCar.rows[0];
   return res.status(200).json({
     status: 200,
@@ -254,8 +254,8 @@ const updateCarPrice = async (req, res) => {
  * @param {object} res
  */
 const deleteCarAd = async (req, res) => {
-  const carId = req.params.id;
-  const desiredCar = await db.query(findById, [carId]);
+  // const carId = req.params.id;
+  const desiredCar = await db.query(findById, [req.params.id]);
   const car = desiredCar.rows[0];
   if (!car) {
     return res.status(404).json({
@@ -263,7 +263,7 @@ const deleteCarAd = async (req, res) => {
       error: 'car with the given id not found',
     });
   }
-  await db.query(deleteCar, [carId]);
+  await db.query(deleteCar, [req.params.id]);
   return res.json({
     status: 200,
     data: 'Car Ad successfully deleted',

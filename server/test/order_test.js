@@ -28,7 +28,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         .post('/api/v1/order')
         .set('x-access-token', userToken)
         .send({
-          carId: '123',
+          car_id: '123',
         })
         .end((error, res) => {
           res.should.have.status(200);
@@ -40,7 +40,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
       chai.request(app)
         .post('/api/v1/order')
         .send({
-          carId: '123',
+          car_id: '123',
         })
         .end((error, res) => {
           res.should.have.status(403);
@@ -53,7 +53,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         .post('/api/v1/order')
         .set('x-access-token', 'invalid token')
         .send({
-          carId: '123',
+          car_id: '123',
         })
         .end((error, res) => {
           res.should.have.status(401);
@@ -68,7 +68,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         .patch('/api/v1/order/123/price')
         .set('x-access-token', userToken)
         .send({
-          offer: 25000000,
+          price: 25000000,
         })
         .end((error, res) => {
           res.should.have.status(200);
@@ -81,7 +81,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         .patch('/api/v1/order/fakeid/price')
         .set('x-access-token', userToken)
         .send({
-          offer: 25000000,
+          price: 25000000,
         })
         .end((error, res) => {
           res.should.have.status(404);
@@ -94,7 +94,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         .patch('/api/v1/order/133/price')
         .set('x-access-token', userToken)
         .send({
-          offer: 25000000,
+          price: 25000000,
         })
         .end((error, res) => {
           res.should.have.status(400);
@@ -107,7 +107,7 @@ describe('API ENDPOINTS FOR ORDERS', () => {
         .patch('/api/v1/order/123/price')
         .set('x-access-token', 'invalid token')
         .send({
-          offer: 25000000,
+          price: 25000000,
         })
         .end((error, res) => {
           res.should.have.status(401);

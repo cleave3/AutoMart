@@ -16,23 +16,23 @@ const { updateOffer } = update;
  */
 const makeOrder = async (req, res) => {
   const { user_id } = req.decoded;
-  const { carId } = req.body;
+  // const { car_id } = req.body;
   try {
-    const desiredCar = await db.query(findById, [carId]);
+    const desiredCar = await db.query(findById, [req.body.car_id]);
     const car = desiredCar.rows[0];
     const { car_id, price } = car;
-    const orderId = shortid.generate();
+    const order_id = shortid.generate();
     const buyer = user_id;
     const price_offered = price;
     const status = 'pending';
-    const values = [orderId, buyer, car_id, price, price_offered, status];
+    const values = [order_id, buyer, car_id, price, price_offered, status];
 
     await db.query(createOrders, values);
     return res.status(200).json({
       status: 201,
       data: {
-        id: orderId,
-        car_id: carId,
+        id: order_id,
+        car_id,
         created_on: new Date(),
         status,
         price,
@@ -53,13 +53,13 @@ const makeOrder = async (req, res) => {
  * @param {object} res
  */
 const updateOrderPrice = async (req, res) => {
-  const orderId = req.params.id;
-  const { offer } = req.body;
-  const values = [offer, orderId];
+  // const order_id = req.params.id;
+  const { price } = req.body;
+  const values = [price, req.params.id];
   try {
-    const order = await db.query(findOrders, [orderId]);
+    const order = await db.query(findOrders, [req.params.id]);
     const {
-      order_id, car_id, status, amount, manufacturer, model, image_url,
+      order_id, car_id, status, amount,
     } = order.rows[0];
     if (status !== 'pending') {
       return res.status(400).json({
@@ -74,11 +74,8 @@ const updateOrderPrice = async (req, res) => {
         order_id,
         car_id,
         status,
-        manufacturer,
-        model,
-        image_url,
         old_price_offered: amount,
-        new_price_offered: offer,
+        new_price_offered: price,
       },
     });
   } catch (error) {

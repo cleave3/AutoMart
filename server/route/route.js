@@ -18,24 +18,24 @@ const {
 const { makeOrder, updateOrderPrice, getOrdersByUser } = orderControl;
 
 // USER ROUTES
-app.post('/api/v1/auth/signup', validate(schemas.user, 'body'), signup);
-app.post('/api/v1/auth/signin', validate(schemas.signin, 'body'), login);
+app.post('/auth/signup', validate(schemas.user, 'body'), signup);
+app.post('/auth/signin', validate(schemas.signin, 'body'), login);
 
 // CAR ROUTES
-app.post('/api/v1/car', verifyUser, uploader.single('image'), validate(schemas.car, 'body'), postCar);
-app.get('/api/v1/car/:id', getACar);
-app.get('/api/v1/car', getUnsoldCars);
-app.get('/api/v1/car', getUnsoldCarsByPrice);
-app.get('/api/v1/car', getUnsoldCarsByManufacturer);
-app.get('/api/v1/car', verifyAdmin, getAllCars);
-app.get('/api/v1/owner/car', verifyUser, getCarsByUser);
-app.patch('/api/v1/car/:id/status', verifyUser, updateCarStatus);
-app.patch('/api/v1/car/:id/price', verifyUser, updateCarPrice);
-app.delete('/api/v1/car/:id', verifyAdmin, deleteCarAd);
+app.post('/car', verifyUser, uploader.single('image'), validate(schemas.car, 'body'), postCar);
+app.get('/car/:id', verifyUser, getACar);
+app.get('/car', getUnsoldCars);
+app.get('/car', getUnsoldCarsByPrice);
+app.get('/car', getUnsoldCarsByManufacturer);
+app.get('/car', verifyAdmin, getAllCars);
+app.get('/owner/car', verifyUser, getCarsByUser);
+app.patch('/car/:id/status', verifyUser, updateCarStatus);
+app.patch('/car/:id/price', verifyUser, updateCarPrice);
+app.delete('/car/:id', verifyAdmin, deleteCarAd);
 
 // ORDER ROUTES
-app.post('/api/v1/order', verifyUser, makeOrder);
-app.patch('/api/v1/order/:id/price', verifyUser, updateOrderPrice);
-app.get('/api/v1/buyer/order', verifyUser, getOrdersByUser);
+app.post('/order', verifyUser, makeOrder);
+app.patch('/order/:id/price', verifyUser, updateOrderPrice);
+app.get('/buyer/order', verifyUser, getOrdersByUser);
 
 export default app;
