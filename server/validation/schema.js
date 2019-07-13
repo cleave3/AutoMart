@@ -26,8 +26,8 @@ const schemas = {
     manufacturer: Joi.string().trim().required(),
     model: Joi.string().trim().required(),
     body_type: Joi.string().trim().required(),
-    transmission_type: Joi.string().trim().lowercase(),
-    description: Joi.string(),
+    // transmission_type: Joi.string().trim().lowercase().optional(),
+    // description: Joi.string().optional(),
   }),
 };
 

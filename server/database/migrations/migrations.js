@@ -27,9 +27,7 @@ const createTables = () => {
     manufacturer TEXT NOT NULL,
     model VARCHAR NOT NULL,
     body_type TEXT NOT NULL,
-    transmission_type TEXT NOT NULL,
-    image_url VARCHAR NOT NULL,
-    description TEXT NOT NULL
+    image_url VARCHAR NOT NULL
   );
 
   DROP TABLE IF EXISTS orders;
