@@ -7,7 +7,7 @@ dotenv.config();
 const storage = cloudStorage({
   cloudinary,
   folder: 'automart',
-  allowedFormats: ['jpg', 'png'],
+  allowedFormats: ['jpg', 'png', 'jpeg'],
 });
 
 const uploader = multer({ storage });
