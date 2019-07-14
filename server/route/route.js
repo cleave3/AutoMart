@@ -22,7 +22,7 @@ app.post('/auth/signup', validate(schemas.user, 'body'), signup);
 app.post('/auth/signin', validate(schemas.signin, 'body'), login);
 
 // CAR ROUTES
-app.post('/car', verifyUser, uploader.single('photo'), validate(schemas.car, 'body'), postCar);
+app.post('/car', verifyUser, uploader.single('image'), validate(schemas.car, 'body'), postCar);
 app.get('/car/:id', verifyUser, getACar);
 app.get('/car', getUnsoldCars);
 app.get('/car', getUnsoldCarsByPrice);
