@@ -68,14 +68,21 @@ const getAllCars = async (req, res, next) => {
   const {
     status, min_price, max_price, manufacturer,
   } = req.query;
-  if (status || min_price || max_price || manufacturer) {
-    return next();
+  try {
+    if (status || min_price || max_price || manufacturer) {
+      return next();
+    }
+    const allCars = await db.query(findAllCars);
+    return res.status(200).json({
+      status: 200,
+      data: allCars.rows,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
+    });
   }
-  const allCars = await db.query(findAllCars);
-  return res.status(200).json({
-    status: 200,
-    data: allCars.rows,
-  });
 };
 
 
@@ -86,18 +93,25 @@ const getAllCars = async (req, res, next) => {
  */
 const getACar = async (req, res) => {
   const car_id = [req.params.id];
-  const desiredCar = await db.query(findById, car_id);
-  const car = desiredCar.rows[0];
-  if (!car) {
-    return res.status(404).json({
-      status: 404,
-      error: 'car not found',
+  try {
+    const desiredCar = await db.query(findById, car_id);
+    const car = desiredCar.rows[0];
+    if (!car) {
+      return res.status(404).json({
+        status: 404,
+        error: 'car not found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: car,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  return res.status(200).json({
-    status: 200,
-    data: car,
-  });
 };
 
 /**
@@ -113,17 +127,24 @@ const getUnsoldCars = async (req, res, next) => {
   if (min_price || max_price || !status || manufacturer) {
     return next();
   }
-  const unsoldCars = await db.query(findAllByStatus);
-  if (unsoldCars.rows < 1) {
-    return res.status(404).json({
-      status: 404,
-      error: 'cars not found',
+  try {
+    const unsoldCars = await db.query(findAllByStatus);
+    if (unsoldCars.rows < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'cars not found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: unsoldCars.rows,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  return res.status(200).json({
-    status: 200,
-    data: unsoldCars.rows,
-  });
 };
 
 /**
@@ -138,17 +159,24 @@ const getUnsoldCarsByPrice = async (req, res, next) => {
     return next();
   }
   const values = [min_price, max_price];
-  const unsoldCarsByPrice = await db.query(findAllByStatusAndPrice, values);
-  if (unsoldCarsByPrice.rows < 1) {
-    return res.status(404).json({
-      status: 404,
-      error: 'No car found',
+  try {
+    const unsoldCarsByPrice = await db.query(findAllByStatusAndPrice, values);
+    if (unsoldCarsByPrice.rows < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'No car found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: unsoldCarsByPrice.rows,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  return res.status(200).json({
-    status: 200,
-    data: unsoldCarsByPrice.rows,
-  });
 };
 
 /**
@@ -163,17 +191,24 @@ const getUnsoldCarsByManufacturer = async (req, res, next) => {
     return next();
   }
   const value = [manufacturer];
-  const carsByMake = await db.query(findByManufacturer, value);
-  if (carsByMake.rows < 1) {
-    return res.status(404).json({
-      status: 404,
-      error: 'No car found',
+  try {
+    const carsByMake = await db.query(findByManufacturer, value);
+    if (carsByMake.rows < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'No car found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: carsByMake.rows,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  return res.status(200).json({
-    status: 200,
-    data: carsByMake.rows,
-  });
 };
 
 /**
@@ -184,31 +219,38 @@ const getUnsoldCarsByManufacturer = async (req, res, next) => {
 const updateCarStatus = async (req, res) => {
   const { email } = req.decoded;
   // const car_id = req.params.id;
-  const desiredCar = await db.query(findById, [req.params.id]);
-  const car = desiredCar.rows[0];
-  if (!car) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Car with given id not found',
+  try {
+    const desiredCar = await db.query(findById, [req.params.id]);
+    const car = desiredCar.rows[0];
+    if (!car) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Car with given id not found',
+      });
+    }
+    await db.query(updateStatus, [req.params.id]);
+    const updatedCar = await db.query(findById, [req.params.id]);
+    const data = updatedCar.rows[0];
+    return res.status(200).json({
+      status: 200,
+      data: {
+        id: data.car_id,
+        email,
+        created_on: data.created_on,
+        state: data.state,
+        status: data.status,
+        price: data.price,
+        manufacturer: data.manufacturer,
+        model: data.model,
+        body_type: data.body_type,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  await db.query(updateStatus, [req.params.id]);
-  const updatedCar = await db.query(findById, [req.params.id]);
-  const data = updatedCar.rows[0];
-  return res.status(200).json({
-    status: 200,
-    data: {
-      id: data.car_id,
-      email,
-      created_on: data.created_on,
-      state: data.state,
-      status: data.status,
-      price: data.price,
-      manufacturer: data.manufacturer,
-      model: data.model,
-      body_type: data.body_type,
-    },
-  });
 };
 
 /**
@@ -220,32 +262,39 @@ const updateCarPrice = async (req, res) => {
   const { price } = req.body;
   const { email } = req.decoded;
   // const carId = req.params.id;
-  const desiredCar = await db.query(findById, [req.params.id]);
-  const car = desiredCar.rows[0];
-  const values = [price, req.params.id];
-  if (!car) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Car with given id not found',
+  try {
+    const desiredCar = await db.query(findById, [req.params.id]);
+    const car = desiredCar.rows[0];
+    const values = [price, req.params.id];
+    if (!car) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Car with given id not found',
+      });
+    }
+    await db.query(updatePrice, values);
+    const updatedCar = await db.query(findById, [req.params.id]);
+    const data = updatedCar.rows[0];
+    return res.status(200).json({
+      status: 200,
+      data: {
+        car_id: data.id,
+        email,
+        created_on: data.created_on,
+        state: data.state,
+        status: data.status,
+        price: data.price,
+        manufacturer: data.manufacturer,
+        model: data.model,
+        body_type: data.body_type,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  await db.query(updatePrice, values);
-  const updatedCar = await db.query(findById, [req.params.id]);
-  const data = updatedCar.rows[0];
-  return res.status(200).json({
-    status: 200,
-    data: {
-      car_id: data.id,
-      email,
-      created_on: data.created_on,
-      state: data.state,
-      status: data.status,
-      price: data.price,
-      manufacturer: data.manufacturer,
-      model: data.model,
-      body_type: data.body_type,
-    },
-  });
 };
 
 /**
@@ -255,19 +304,26 @@ const updateCarPrice = async (req, res) => {
  */
 const deleteCarAd = async (req, res) => {
   // const carId = req.params.id;
-  const desiredCar = await db.query(findById, [req.params.id]);
-  const car = desiredCar.rows[0];
-  if (!car) {
-    return res.status(404).json({
-      status: 404,
-      error: 'car with the given id not found',
+  try {
+    const desiredCar = await db.query(findById, [req.params.id]);
+    const car = desiredCar.rows[0];
+    if (!car) {
+      return res.status(404).json({
+        status: 404,
+        error: 'car with the given id not found',
+      });
+    }
+    await db.query(deleteCar, [req.params.id]);
+    return res.json({
+      status: 200,
+      data: 'Car Ad successfully deleted',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal server error',
     });
   }
-  await db.query(deleteCar, [req.params.id]);
-  return res.json({
-    status: 200,
-    data: 'Car Ad successfully deleted',
-  });
 };
 
 /**
