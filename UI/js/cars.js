@@ -139,12 +139,25 @@ const searchByPrice = async () => {
  * @param {string} id
  */
 const viewCarDetails = async (id) => {
-  carDetails.innerHTML = '';
-  modal.style.display = 'block';
-  const payload = await fetch(`${url}/car/${id}`);
-  const car = await payload.json();
-  const { data } = car;
-  displayDetails(data);
+  fetch(`${url}/car/${id}`, {
+    method: 'GET',
+    headers: {
+      'x-access-token': `${token}`,
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+    },
+  })
+    .then(res => res.json())
+    .then((data) => {
+      if (data.error) {
+        alert(data.error);
+        window.location = 'login.html';
+        return;
+      }
+      carDetails.innerHTML = '';
+      modal.style.display = 'block';
+      displayDetails(data.data);
+    });
 };
 
 /**
@@ -160,7 +173,7 @@ const makeOrder = async (id) => {
       'Content-type': 'application/json',
     },
     body: JSON.stringify({
-      carId: id,
+      car_id: id,
     }),
   })
     .then(res => res.json())

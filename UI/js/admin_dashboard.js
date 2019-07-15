@@ -3,7 +3,6 @@ const spinner = document.querySelector('.loader');
 const response = document.querySelector('.result');
 const token = sessionStorage.getItem('token');
 const url = 'https://cleave-automart.herokuapp.com/api/v1';
-
 /**
  * ADS TEMPLATE TO DISPLAY ON PAGE
  * @param {object} data

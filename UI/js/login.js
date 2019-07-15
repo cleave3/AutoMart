@@ -19,7 +19,7 @@ const validateFields = () => {
       input.style.borderColor = 'rgb(235, 91, 86)';
       spinner.style.display = 'none';
       input.focus();
-      return false;
+      return;
     }
     input.style.borderColor = '';
   });

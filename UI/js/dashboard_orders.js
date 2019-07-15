@@ -3,7 +3,6 @@ const spinner = document.querySelector('.loader');
 const response = document.querySelector('.result');
 const token = sessionStorage.getItem('token');
 const url = 'https://cleave-automart.herokuapp.com/api/v1';
-
 /**
  * ADS TEMPLATE TO DISPLAY ON PAGE
  * @param {object} data
@@ -54,7 +53,7 @@ getMyAds();
  * @param {params} id
  * @param {number} offer
  */
-const updateOffer = (id, offer) => {
+const updateOffer = (id, price) => {
   fetch(`${url}/order/${id}/price`, {
     method: 'PATCH',
     headers: {
@@ -62,7 +61,7 @@ const updateOffer = (id, offer) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      offer,
+      price,
     }),
   })
     .then(res => res.json())
@@ -86,7 +85,6 @@ document.addEventListener('click', (e) => {
     }
     const sure = confirm('Please confirm');
     if (sure === true) {
-      console.log(id);
       updateOffer(id, offer);
     }
   }
