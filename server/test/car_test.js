@@ -50,8 +50,8 @@ describe('API ENDPOINTS FOR CARS', async () => {
         .field('manufacturer', 'toyota')
         .field('model', 'camry')
         .field('body_type', 'car')
-        .field('transmission_type', 'automatic')
-        .field('description', 'nice new car')
+        // .field('transmission_type', 'automatic')
+        // .field('description', 'nice new car')
         .end((error, res) => {
           res.should.have.status(201);
           res.body.should.be.an('object');
@@ -68,9 +68,9 @@ describe('API ENDPOINTS FOR CARS', async () => {
           manufacturer: 'toyota',
           model: 'camry',
           body_type: 'car',
-          transmission_type: 'automatic',
+          // transmission_type: 'automatic',
           image_url: 'google.com',
-          description: 'nice new car',
+          // description: 'nice new car',
         })
         .end((error, res) => {
           res.should.have.status(401);
@@ -87,9 +87,9 @@ describe('API ENDPOINTS FOR CARS', async () => {
           manufacturer: 'toyota',
           model: 'camry',
           body_type: 'car',
-          transmission_type: 'automatic',
+          // transmission_type: 'automatic',
           image_url: 'google.com',
-          description: 'nice new car',
+          // description: 'nice new car',
         })
         .end((error, res) => {
           res.should.have.status(403);
