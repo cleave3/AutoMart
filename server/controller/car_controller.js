@@ -21,17 +21,21 @@ const { deleteCar } = remove;
  */
 const postCar = async (req, res) => {
   const {
-    state, price, manufacturer, model, body_type,
+    state, price, manufacturer, model, body_type, transmission_type, description,
   } = req.body;
   const { user_id, email } = req.decoded;
   const carId = shortid.generate();
   const status = 'available';
   const owner = user_id;
-
+  let image_url;
+  if (!req.file) {
+    image_url = null;
+  } else {
+    const { secure_url } = req.file;
+    image_url = secure_url;
+  }
   try {
-    // const { secure_url } = req.file;
-    // const image_url = secure_url;
-    const values = [carId, owner, state, status, price, manufacturer, model, body_type];
+    const values = [carId, owner, state, status, price, manufacturer, model, body_type, transmission_type, image_url, description];
     await db.query(createAds, values);
     return res.status(201).json({
       status: 201,
@@ -46,14 +50,14 @@ const postCar = async (req, res) => {
         manufacturer,
         model,
         body_type,
-        // transmission_type,
-        // image_url,
-        // description,
+        transmission_type,
+        image_url,
+        description,
       },
     });
   } catch (error) {
     return res.status(400).json({
-      error: 'Oops ! Please select an image',
+      error: 'Oops ! something went wrong',
     });
   }
 };

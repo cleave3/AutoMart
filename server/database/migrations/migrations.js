@@ -1,6 +1,5 @@
 import pool from '../db';
 
-
 const createTables = () => {
   const tables = `
   DROP TABLE IF EXISTS users;
@@ -26,7 +25,10 @@ const createTables = () => {
     price FLOAT NOT NULL,
     manufacturer TEXT NOT NULL,
     model VARCHAR NOT NULL,
-    body_type TEXT NOT NULL
+    body_type TEXT NOT NULL,
+    transmission_type TEXT,
+    image_url VARCHAR,
+    description TEXT
   );
 
   DROP TABLE IF EXISTS orders;
