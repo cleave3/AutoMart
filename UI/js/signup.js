@@ -6,7 +6,6 @@ const lastName = document.getElementById('lastName');
 const userAddress = document.getElementById('user-address');
 const userEmail = document.getElementById('signup-email');
 const userPassword = document.getElementById('signup-password');
-const confirmUserPassword = document.getElementById('confirm-password');
 const signupBtn = document.getElementById('signup-button');
 const responseForm = document.getElementById('response-form');
 const spinner = document.querySelector('.loader');
@@ -53,17 +52,6 @@ const validateFields = () => {
   });
 };
 
-// verify matching passwords
-const verifyPassword = () => {
-  if (userPassword.value !== confirmUserPassword.value) {
-    confirmUserPassword.className = 'invalid';
-    spinner.style.display = 'none';
-    confirmUserPassword.focus();
-    return false;
-  }
-  confirmUserPassword.className = '';
-};
-
 // spinner
 const loading = () => {
   spinner.style.display = 'block';
@@ -92,7 +80,6 @@ const init = () => {
   responseForm.style.display = 'none';
   loading();
   validateFields();
-  verifyPassword();
   fetch(url, {
     method: 'POST',
     headers: {
@@ -105,7 +92,6 @@ const init = () => {
       address: userAddress.value,
       email: userEmail.value,
       password: userPassword.value,
-      confirmPassword: confirmUserPassword.value,
     }),
   })
     .then(res => res.json())
