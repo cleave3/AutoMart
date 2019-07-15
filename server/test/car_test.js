@@ -44,7 +44,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
         .set('x-access-token', userToken)
         .type('form')
         .set('enctype', 'multipart/formdata')
-        .attach('image', fs.readFileSync(filePath), 'nissan.jpeg')
+        .attach('image_url', fs.readFileSync(filePath), 'nissan.jpeg')
         .field('state', 'new')
         .field('price', 2000000)
         .field('manufacturer', 'toyota')

@@ -12,7 +12,8 @@ const validate = (schema, property) => (req, res, next) => {
 
   if (valid) {
     next();
-  } else {
+  } else { 
+    console.log(error.details[0].message);
     return res.status(400).json({
       error: error.details[0].message,
     });
