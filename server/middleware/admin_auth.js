@@ -16,17 +16,17 @@ const verifyAdmin = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, secret);
     const { is_admin } = decoded;
-    if (is_admin) {
-      return next();
+    if (is_admin === false) {
+      return res.status(401).json({
+        status: 401,
+        error: 'Access Denied',
+      });
     }
-    return res.status(401).json({
-      status: 401,
-      error: 'Access Denied',
-    });
+    return next();
   } catch (error) {
     return res.status(401).json({
       status: 401,
-      error: 'authentication failed',
+      error: 'Access Denied',
     });
   }
 };
