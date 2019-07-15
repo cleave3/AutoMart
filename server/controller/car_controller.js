@@ -218,7 +218,6 @@ const getUnsoldCarsByManufacturer = async (req, res, next) => {
  */
 const updateCarStatus = async (req, res) => {
   const { email } = req.decoded;
-  // const car_id = req.params.id;
   try {
     const desiredCar = await db.query(findById, [req.params.id]);
     const car = desiredCar.rows[0];
@@ -261,7 +260,6 @@ const updateCarStatus = async (req, res) => {
 const updateCarPrice = async (req, res) => {
   const { price } = req.body;
   const { email } = req.decoded;
-  // const carId = req.params.id;
   try {
     const desiredCar = await db.query(findById, [req.params.id]);
     const car = desiredCar.rows[0];
@@ -303,7 +301,6 @@ const updateCarPrice = async (req, res) => {
  * @param {object} res
  */
 const deleteCarAd = async (req, res) => {
-  // const carId = req.params.id;
   try {
     const desiredCar = await db.query(findById, [req.params.id]);
     const car = desiredCar.rows[0];
