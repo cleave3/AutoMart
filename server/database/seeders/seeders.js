@@ -39,7 +39,10 @@ const insertData = () => {
     price,
     manufacturer,
     model,
-    body_type
+    body_type,
+    transmission_type,
+    image_url,
+    description
     ) 
     VALUES (
         '123',
@@ -49,7 +52,10 @@ const insertData = () => {
         2500000,
         'toyota',
         'camry',
-        'car'
+        'car',
+        'automatic',
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
+        'Fairly used toyota camry with auto transmission'
       ),
       (
         '124',
@@ -59,7 +65,10 @@ const insertData = () => {
         3000000,
         'nissan',
         'nissan 2018',
-        'car'
+        'car',
+        'automatic',
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
+        'Brand new Benz GLK with latest functionalities'
       ),
       (
        '125',
@@ -69,7 +78,10 @@ const insertData = () => {
         4500000,
         'ford',
         'ford express',
-        'SUV'
+        'SUV',
+        'automatic',
+        'https://res.cloudinary.com/dqxyecesu/image/upload/v1559811651/automart/u6c37dcds14ejr1pydxj.jpg',
+        'Brand new ford express with latest functionalities'
       );
     TRUNCATE orders;
   INSERT INTO orders (
