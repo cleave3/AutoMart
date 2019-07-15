@@ -36,7 +36,7 @@ const postCar = async (req, res) => {
     res.status(201).json({
       status: 201,
       data: {
-        car_id: carId,
+        id: carId,
         owner,
         email,
         created_on: new Date(),
