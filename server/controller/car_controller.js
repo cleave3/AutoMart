@@ -33,7 +33,7 @@ const postCar = async (req, res) => {
     // const image_url = secure_url;
     const values = [carId, owner, state, status, price, manufacturer, model, body_type];
     await db.query(createAds, values);
-    res.status(201).json({
+    return res.status(201).json({
       status: 201,
       data: {
         id: carId,

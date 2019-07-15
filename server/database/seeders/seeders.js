@@ -13,13 +13,13 @@ const insertData = () => {
     is_admin
     ) 
     VALUES (
-      'f1e65b71-443a-4682-b934-4cabecfcb5b8',
+      'f1e65b71-443a-4682-b984-4cabecfcb5b8',
         'Cleave',
         'Owhiroro',
         'Warri, Nigeria',
-        'cleave3@gmail.com',
+        'cleave@gmail.com',
         '$2b$10$GkSG0.Pc0Nv.PzsonMHltuRvXcBHibfUudZ2a1RCLC8svxQRgdCke',
-        true
+        'true'
       ),
       (
         'f1e65b71-443a-4683-b984-4cabecfcb5b8',
