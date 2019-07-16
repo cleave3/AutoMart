@@ -221,16 +221,16 @@ const getUnsoldCarsByManufacturer = async (req, res, next) => {
  * @param {object} res
  */
 const updateCarStatus = async (req, res) => {
-  const { email } = req.decoded;
+  const { email, user_id } = req.decoded;
   try {
     const desiredCar = await db.query(findById, [req.params.id]);
-    const car = desiredCar.rows[0];
-    if (!car) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Car with given id not found',
+    const { owner } = desiredCar.rows[0];
+    if (user_id !== owner) {
+      return res.status(403).json({
+        status: 403,
+        error: 'You are not authorized to perform this operation',
       });
-    }
+    };
     await db.query(updateStatus, [req.params.id]);
     const updatedCar = await db.query(findById, [req.params.id]);
     const data = updatedCar.rows[0];
@@ -249,9 +249,9 @@ const updateCarStatus = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(500).json({
-      status: 500,
-      error: 'Internal server error',
+    return res.status(404).json({
+      status: 404,
+      error: 'Car with given id not found',
     });
   }
 };
