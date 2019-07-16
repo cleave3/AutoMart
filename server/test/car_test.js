@@ -201,6 +201,16 @@ describe('API ENDPOINTS FOR CARS', async () => {
           done();
         });
     });
+    it('should update a specific car status of a sold car', (done) => {
+      chai.request(app)
+        .patch('/api/v1/car/124/status')
+        .set('x-access-token', AdminToken)
+        .end((error, res) => {
+          res.should.have.status(409);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
     it('should not update a specific car status of another user', (done) => {
       chai.request(app)
         .patch('/api/v1/car/124/status')
