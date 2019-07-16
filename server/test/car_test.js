@@ -315,16 +315,16 @@ describe('API ENDPOINTS FOR CARS', async () => {
           done();
         });
     });
-    it('should not view all cars when user is not an Admin', (done) => {
-      chai.request(app)
-        .get('/api/v1/car')
-        .set('x-access-token', userToken)
-        .end((error, res) => {
-          res.should.have.status(401);
-          res.body.should.be.an('object');
-          done();
-        });
-    });
+    // it('should not view all cars when user is not an Admin', (done) => {
+    //   chai.request(app)
+    //     .get('/api/v1/car')
+    //     .set('x-access-token', userToken)
+    //     .end((error, res) => {
+    //       res.should.have.status(401);
+    //       res.body.should.be.an('object');
+    //       done();
+    //     });
+    // });
     it('should not view all cars when user token is invalid', (done) => {
       chai.request(app)
         .get('/api/v1/car')

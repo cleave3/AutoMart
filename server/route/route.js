@@ -27,7 +27,7 @@ app.get('/car/:id', verifyUser, getACar);
 app.get('/car', getUnsoldCars);
 app.get('/car', getUnsoldCarsByPrice);
 app.get('/car', getUnsoldCarsByManufacturer);
-app.get('/car', verifyAdmin, getAllCars);
+app.get('/car', verifyUser, getAllCars);
 app.get('/owner/car', verifyUser, getCarsByUser);
 app.patch('/car/:id/status', verifyUser, updateCarStatus);
 app.patch('/car/:id/price', verifyUser, updateCarPrice);
