@@ -87,9 +87,9 @@ describe('API ENDPOINTS FOR CARS', async () => {
           manufacturer: 'toyota',
           model: 'camry',
           body_type: 'car',
-          // transmission_type: 'automatic',
+          transmission_type: 'automatic',
           image_url: 'google.com',
-          // description: 'nice new car',
+          description: 'nice new car',
         })
         .end((error, res) => {
           res.should.have.status(401);
@@ -191,17 +191,27 @@ describe('API ENDPOINTS FOR CARS', async () => {
     });
   });
   describe('UPDATE A SPECIFIC A CAR STATUS', () => {
-    it('should update a specific car status when user is signedin', (done) => {
+    it('should update a specific car status of a logged in user', (done) => {
       chai.request(app)
         .patch('/api/v1/car/124/status')
-        .set('x-access-token', userToken)
+        .set('x-access-token', AdminToken)
         .end((error, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');
           done();
         });
     });
-    it('should not update a specific car status when user is signedin', (done) => {
+    it('should not update a specific car status of another user', (done) => {
+      chai.request(app)
+        .patch('/api/v1/car/124/status')
+        .set('x-access-token', userToken)
+        .end((error, res) => {
+          res.should.have.status(403);
+          res.body.should.be.an('object');
+          done();
+        });
+    });
+    it('should not update a specific car status when user is not signedin', (done) => {
       chai.request(app)
         .patch('/api/v1/car/124/status')
         .end((error, res) => {
@@ -213,7 +223,7 @@ describe('API ENDPOINTS FOR CARS', async () => {
     it('should not update a specific car status when car id is incorrect', (done) => {
       chai.request(app)
         .patch('/api/v1/car/fakeid/status')
-        .set('x-access-token', userToken)
+        .set('x-access-token', AdminToken)
         .end((error, res) => {
           res.should.have.status(404);
           res.body.should.be.an('object');

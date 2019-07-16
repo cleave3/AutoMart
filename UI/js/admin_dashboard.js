@@ -46,9 +46,8 @@ const getAllAds = async () => {
 getAllAds();
 
 /**
- *UPDATE OFFER
+ *DELETE ADS
  * @param {params} id
- * @param {number} offer
  */
 const deleteAd = (id) => {
   fetch(`${url}/car/${id}`, {

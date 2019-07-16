@@ -523,7 +523,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID of car to return",
+            "description": "ID of order to return",
             "required": true,
             "type": "string"
           },
