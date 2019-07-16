@@ -224,13 +224,19 @@ const updateCarStatus = async (req, res) => {
   const { email, user_id } = req.decoded;
   try {
     const desiredCar = await db.query(findById, [req.params.id]);
-    const { owner } = desiredCar.rows[0];
+    const { owner, status } = desiredCar.rows[0];
     if (user_id !== owner) {
       return res.status(403).json({
         status: 403,
-        error: 'You are not authorized to perform this operation',
+        error: 'Unathorized operation, car belongs to another user',
       });
     };
+    if ( status === 'sold') {
+      return res.status(409).json({
+        status: 409,
+        error: 'Can not update, car already sold'
+      })
+    }
     await db.query(updateStatus, [req.params.id]);
     const updatedCar = await db.query(findById, [req.params.id]);
     const data = updatedCar.rows[0];
