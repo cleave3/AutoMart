@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AutoMart ||Login</title>
     <link rel="stylesheet" href="css/signup-login.css">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 </head>
+
 <body>
     <div class="frame-login animate">
         <h3>Sign In</h3>
         <p id="response-form"></p>
-    <div class="loginForm">
-    <form>
-        <input id="login-email" type="email" name="" placeholder="email" required>
-        <input id="login-password" type="password" name="password" placeholder="password" required> 
-        <div class="loader"></div>
-        <div class="btn-container">
-            <button id="login-button" class="submit login" type="submit" >SIGNIN</button>
+        <div class="loginForm">
+            <form>
+                <input id="login-email" type="email" name="" placeholder="email" required>
+                <input id="login-password" type="password" name="password" placeholder="password" required>
+                <div class="loader"></div>
+                <div class="btn-container">
+                    <button id="login-button" class="submit login" type="submit">SIGNIN</button>
+                </div>
+                <div class="message">
+                    <div>Dont't have an account ? Signup <a href="./signup.html">here</a></div>
+                </div>
+            </form>
+            <a href="./index.html"><button class="cancel-botton">Cancel</button></a>
         </div>
-    <div class="message">
-        <div>Dont't have an account ? Signup <a href="./signup.html">here</a></div>   
-    </div>
-    </form>
-    <a href="./index.html"><button class="cancel-botton">Cancel</button></a>
-    </div>
     </div>
     <script src="./js/login.js"></script>
 </body>
+
 </html>

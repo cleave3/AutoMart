@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AutoMart || Siginup</title>
     <link rel="stylesheet" href="css/signup-login.css">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 </head>
+
 <body>
     <div class="frame-signup animate">
         <h3>Create Account</h3>
-        <div class="signupForm">      
-    <form id="form">
-        <input id="firstName" type="text" name="first_name" placeholder="First Name" required>
-        <p>First Name must be alphabets and contains 3 - 20 characters</p>
+        <div class="signupForm">
+            <form id="form">
+                <input id="firstName" type="text" name="first_name" placeholder="First Name" required>
+                <p>First Name must be alphabets and contains 3 - 20 characters</p>
 
-        <input id="lastName" type="text" name="last_name" placeholder="Last Name" required>
-        <p>Last Name must be alphabets and contains 3 - 20 characters</p>
+                <input id="lastName" type="text" name="last_name" placeholder="Last Name" required>
+                <p>Last Name must be alphabets and contains 3 - 20 characters</p>
 
-        <input id="user-address" type="text" name="address" placeholder="Address" required>
+                <input id="user-address" type="text" name="address" placeholder="Address" required>
 
-        <input id="signup-email" type="email" name="email" placeholder="email" required>
-        <p>Email must be a valid email e.g example@mail.com</p>
+                <input id="signup-email" type="email" name="email" placeholder="email" required>
+                <p>Email must be a valid email e.g example@mail.com</p>
 
-        <input id="signup-password" type="password" name="password" placeholder="password" min="8" max="20" required>
-        <p>Password must be aleast 8 characters long</p>
-        
-        <p id="response-form"></p>
-        <div class="loader"></div>
-        <div class="btn-container">
-            <button id="signup-button" class="submit signup" type="submit">SIGNUP</button>
+                <input id="signup-password" type="password" name="password" placeholder="password" min="8" max="20"
+                    required>
+                <p>Password must be aleast 8 characters long</p>
+
+                <p id="response-form"></p>
+                <div class="loader"></div>
+                <div class="btn-container">
+                    <button id="signup-button" class="submit signup" type="submit">SIGNUP</button>
+                </div>
+                <div class="message">
+                    Already have an account? Login
+                    <a href="./login.html" id="login">here</a>
+                </div>
+            </form>
+            <a href="./index.html"><button class="cancel-botton">Cancel</button></a>
         </div>
-        <div class="message">
-            Already have an account? Login
-        <a href="./login.html" id="login">here</a>
-        </div>
-    </form>
-    <a href="./index.html"><button class="cancel-botton">Cancel</button></a>
     </div>
-</div>
-<script src="./js/signup.js"></script>
+    <script src="./js/signup.js"></script>
 </body>
+
 </html>
