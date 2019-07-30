@@ -1,25 +1,27 @@
-html,body{
+html,
+body {
     height: 100%;
     box-sizing: border-box;
+    margin: 0;
 }
 
-.wrapper{
-    width: 98%;
+.wrapper {
+    /* width: 98%; */
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-template-areas:
-    "nav nav nav nav"
-    "searchbar searchbar searchbar searchbar"
-    "car-details car-details car-details car-details"
-    "adspost adspost adspost adspost"
-    "display display display display"
-    "footer footer footer footer"
+        "nav nav nav nav"
+        "searchbar searchbar searchbar searchbar"
+        "car-details car-details car-details car-details"
+        "adspost adspost adspost adspost"
+        "display display display display"
+        "footer footer footer footer"
 }
 
 /** SEARCH BAR ***/
-.search-bar{
+.search-bar {
     grid-area: searchbar;
     background-color: rgb(8, 191, 207);
     min-height: 50px;
@@ -27,63 +29,71 @@ html,body{
     font-size: 20px;
 }
 
-.price-container button{
+.price-container button {
     padding: 10px;
     width: 80px;
     border: none;
     background-color: rgb(216, 3, 39);
     color: white;
 }
-.price-container button:hover{
+
+.price-container button:hover {
     cursor: pointer;
     background-color: rgb(66, 4, 4);
 }
-.price-container{
+
+.price-container {
     margin: 5px auto 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     justify-items: center;
 }
-.price-container input{
+
+.price-container input {
     width: 100px;
     padding: 10px;
     margin: 5px;
     border: 1px solid rgb(192, 28, 7);
 }
+
 /***DISPLAY AREA***/
-.display-area{
+.display-area {
     grid-area: display;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     min-height: 85vh;
     margin: 10px auto;
 }
 
-.display-box{
+.display-box {
     width: 300px;
     height: 350px;
-    margin: 15px auto;
     text-align: center;
     box-shadow: 5px 5px 5px gray;
     cursor: pointer;
-    margin-right: 8px;
-}
-.display-box:hover{
-    box-shadow: 5px 5px 5px 5px gray;
+    border: 1px solid gray;
+    margin: 20px;
+    transition: all .3s ease-in-out;
 }
 
-.display-box img{
+.display-box:hover {
+    box-shadow: 5px 5px 5px 5px gray;
+    transform: scale(1.1);
+}
+
+.display-box img {
     width: 100%;
     height: 200px;
 }
 
-.display-box p{
+.display-box p {
     line-height: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.display-box button{
+.display-box button {
     padding: 10px;
     width: 50%;
     border: none;
@@ -92,20 +102,21 @@ html,body{
     font-weight: bold;
 }
 
-.display-box button:hover{
+.display-box button:hover {
     background-color: darkgreen;
     cursor: pointer;
 }
 
-.search-result{
+.search-result {
     grid-area: display;
     display: flex;
     flex-wrap: wrap;
     min-height: 85vh;
-    margin: 10px auto;  
+    margin: 10px auto;
 }
+
 /******CAR DETAILS ******/
-.car-details{
+.car-details {
     background-color: white;
     max-width: 500px;
     height: 550px;
@@ -114,24 +125,25 @@ html,body{
     grid-area: car-details;
     text-align: center;
 }
-.car-description-container{
+
+.car-description-container {
     max-width: 500px;
     margin: 20px auto;
     box-sizing: border-box;
 }
 
-#details-container{
+#details-container {
     background-color: white;
     max-width: 550px;
     margin: 10px auto;
 }
 
-#car-specs{
+#car-specs {
     text-align: left;
     margin-left: 30px;
 }
 
-.car-details .display-box{
+.car-details .display-box {
     box-shadow: none;
     height: 450px;
     max-width: 350px;
@@ -139,22 +151,25 @@ html,body{
     margin-bottom: 50px;
 }
 
-.car-details img{
+.car-details img {
     margin-top: 5px;
     width: 450px;
     height: 300px;
 }
-.car-details .buy-button{
+
+.car-details .buy-button {
     padding: 15px;
     border: none;
     background-color: rgb(160, 11, 11);
     color: white;
     font-weight: bold;
 }
-.car-details .buy-button:hover{
+
+.car-details .buy-button:hover {
     background-color: rgb(65, 3, 3);
     cursor: pointer;
 }
+
 .back-button {
     margin: 10px;
     background-color: rgb(245, 128, 18);
@@ -163,31 +178,34 @@ html,body{
     font-weight: bold;
     color: white;
 }
-.back-button:hover{
+
+.back-button:hover {
     background-color: orange;
     cursor: pointer;
 }
 
-.ads-post-container{
+.ads-post-container {
     grid-area: adspost;
     min-height: 125vh;
-    background: linear-gradient( rgba(0,0,0, 0.8), rgba(0,0,0,0.8)),url(../images/car3.jpg) no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../images/car3.jpg) no-repeat;
     width: 100%;
 }
 
-.post-form-container{
+.post-form-container {
     background-color: rgba(226, 212, 186, 0.774);
     width: 500px;
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 60px;
 }
+
 #sale-form,
-.post-button-container{
+.post-button-container {
     margin: 20px auto;
     width: 90%;
 }
-#sale-form label{
+
+#sale-form label {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, monospace;
     display: block;
     color: black;
@@ -197,9 +215,9 @@ html,body{
     width: 100%;
 }
 
-#sale-form input, 
+#sale-form input,
 #sale-form select,
-#sale-form textarea{
+#sale-form textarea {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -207,20 +225,22 @@ html,body{
     font-weight: bold;
     border: 1px solid rgba(226, 212, 186, 0.774);
 }
-#sale-form input:hover, 
+
+#sale-form input:hover,
 #sale-form select:hover,
 #sale-form textarea:hover,
-#sale-form input:focus, 
+#sale-form input:focus,
 #sale-form select:focus,
-#sale-form textarea:focus{
+#sale-form textarea:focus {
     background-color: rgba(245, 243, 243, 0.87);
     outline: 0;
 }
-#sale-form textarea{
+
+#sale-form textarea {
     height: 200px;
 }
 
-#cancel-button{
+#cancel-button {
     float: left;
     width: 100px;
     padding: 15px;
@@ -228,126 +248,137 @@ html,body{
     border: none;
     color: white;
 }
-#cancel-button:hover{
+
+#cancel-button:hover {
     cursor: pointer;
     background-color: rgb(121, 6, 6);
 }
-#post-button{
+
+#post-button {
     float: right;
     padding: 15px;
     background-color: rgb(12, 156, 12);
     border: none;
-    color: white;  
+    color: white;
     width: 100px;
 }
-#post-button:hover{
+
+#post-button:hover {
     cursor: pointer;
     background-color: rgb(4, 83, 4);
 }
+
 /*** MOBILE VIEW **/
 @media (max-width: 720px) {
-    .wrapper{
-        width: 98%;
+    .wrapper {
+        /* width: 98%; */
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: auto;
         grid-template-areas:
-        "nav nav nav nav"
-        "searchbar searchbar searchbar searchbar"
-        "car-details car-details car-details car-details"
-        "adspost adspost adspost adspost"
-        "display display display display"
-        "footer footer footer footer"
+            "nav nav nav nav"
+            "searchbar searchbar searchbar searchbar"
+            "car-details car-details car-details car-details"
+            "adspost adspost adspost adspost"
+            "display display display display"
+            "footer footer footer footer"
     }
-    .search-container{
+
+    .search-container {
         margin: 20px auto;
         width: 70%;
     }
-    .display-box{
+
+    .display-box {
         margin: 10px auto;
     }
-    .post-form-container{
+
+    .post-form-container {
         width: 400px;
         margin: 0 auto;
     }
-    #details-container{
+
+    #details-container {
         background-color: white;
         max-width: 500px;
         margin: 10px auto;
     }
-    
-    .car-details .display-box{
+
+    .car-details .display-box {
         box-shadow: none;
         height: 450px;
         max-width: 300px;
         margin: 20px auto;
         margin-bottom: 50px;
     }
-    
-    .car-details img{
+
+    .car-details img {
         margin-top: 5px;
         width: 400px;
         height: 250px;
     }
 }
-@media(max-width: 600px){
-    .post-form-container{
+
+@media(max-width: 600px) {
+    .post-form-container {
         width: 80%;
         margin: 0 auto;
     }
-    #details-container{
+
+    #details-container {
         background-color: white;
         max-width: 400px;
         margin: 10px auto;
     }
-    
-    .car-details .display-box{
+
+    .car-details .display-box {
         box-shadow: none;
         height: 450px;
         max-width: 350px;
         margin: 20px auto;
         margin-bottom: 50px;
     }
-    
-    .car-details img{
+
+    .car-details img {
         margin-top: 5px;
         width: 350px;
         height: 250px;
     }
-    
-    .car-details{
+
+    .car-details {
         margin: 0px auto;
     }
 }
 
 @media(max-width: 420px) {
-    #details-container{
+    #details-container {
         background-color: white;
         max-width: 310px;
         margin: 10px auto;
     }
-    
-    .car-details .display-box{
+
+    .car-details .display-box {
         box-shadow: none;
         height: 450px;
         max-width: 300px;
         margin: 20px auto;
         margin-bottom: 50px;
     }
-    
-    .car-details img{
+
+    .car-details img {
         margin-top: 5px;
         width: 300px;
         height: 200px;
     }
-    
-    .car-details{
+
+    .car-details {
         margin: 0px auto;
     }
 
 }
-.result{
+
+.result {
     margin: 50px auto;
     text-align: center;
     color: red;
@@ -356,9 +387,9 @@ html,body{
 }
 
 /**** MODAL ****/
-.modal{
-	display: none;
-	background: rgba(0,0,0, 0.8);
+.modal {
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
     position: fixed;
     z-index: 1;
     left: 0;
@@ -367,22 +398,22 @@ html,body{
     min-height: 100%;
 }
 
-.closeModal{
-	margin-top: 0;
-	margin-bottom: 0;
-	font-size: 25px;
-	float: right;
+.closeModal {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 25px;
+    float: right;
 }
 
-.closeModal:hover{
-	cursor: pointer;
-	color:white;
+.closeModal:hover {
+    cursor: pointer;
+    color: white;
     background: black;
-	text-decoration: none;
-	border-radius: 50%;
+    text-decoration: none;
+    border-radius: 50%;
 }
 
-.success{
+.success {
     z-index: 1;
     color: green;
     font-weight: bold;
@@ -394,7 +425,7 @@ html,body{
     display: none;
 }
 
-.car-loader{
+.car-loader {
     content: '';
     animation: spin .5s linear infinite;
     border: 2px solid white;

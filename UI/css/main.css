@@ -1,25 +1,28 @@
 /*** GLOBAL STYLES***/
-html,body{
+html,
+body {
     height: 100%;
     box-sizing: border-box;
+    margin: 0;
 }
 
-.container{
-    width: 98%;
-    margin: 0 auto;
+.container {
+    /* width: 98%; */
+    /* margin: 0 auto; */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-gap: 1px;
     grid-template-areas:
-    "nav nav nav nav"
-    "about-section about-section about-section contact-section"
-    "showcase showcase showcase showcase"
-    "main main main main"
-    "article article side side"
-    "footer footer footer footer"
+        "nav nav nav nav"
+        "about-section about-section about-section contact-section"
+        "showcase showcase showcase showcase"
+        "main main main main"
+        "article article side side"
+        "footer footer footer footer"
 }
-.button{
+
+.button {
     padding: 15px;
     border: none;
     width: 150px;
@@ -28,31 +31,35 @@ html,body{
     font-weight: bold;
 }
 
-.button:hover{
+.button:hover {
     cursor: pointer;
-    background-color:rgb(104, 16, 16);
+    background-color: rgb(104, 16, 16);
 }
 
 /*** NAVIGATION BAR ***/
-#toggle{
+#toggle {
     display: none;
 }
-label{
+
+label {
     font-size: 35px;
     display: none;
     width: 35px;
     color: white;
 }
-.nav{
+
+.nav {
     grid-area: nav;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(43, 41, 41);
 }
-#nav-hide{
+
+#nav-hide {
     display: none;
     float: none;
 }
-label:hover{
+
+label:hover {
     cursor: pointer;
     color: gray;
 }
@@ -61,33 +68,37 @@ label:hover{
     width: 99%;
     line-height: 40px;
     margin: 0 auto;
- 
+
 }
-.nav .logo-container{
+
+.nav .logo-container {
     float: left;
     margin-right: 20px;
 }
-.logo-container img{
+
+.logo-container img {
     width: 50px;
     height: 50px;
 }
-.nav a{
+
+.nav a {
     text-decoration: none;
     padding: 10px;
     color: white;
     margin: 0;
 }
 
-.signup-login-container{
+.signup-login-container {
     float: right;
 }
 
-.dropdown{
+.dropdown {
     float: right;
     width: 30px;
     margin: 5px;
 }
-.dropdown-content{
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
@@ -96,41 +107,47 @@ label:hover{
     border-radius: 4px;
     box-shadow: 5px 5px 5px black;
 }
-.dropdown-content a{
+
+.dropdown-content a {
     display: block;
     color: black;
     padding: 10px;
     text-decoration: none;
 }
-.dropdown:hover .dropdown-content{
+
+.dropdown:hover .dropdown-content {
     display: block;
 }
-.dropdown-content a:hover{ 
+
+.dropdown-content a:hover {
     background: black;
     color: white;
 }
-.dropdown img{ 
+
+.dropdown img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
 }
-.dropdown img:hover{
+
+.dropdown img:hover {
     cursor: pointer;
 }
 
-.menu a:hover{
+.menu a:hover {
     cursor: pointer;
     color: rgb(180, 17, 17);
 }
-.current{
+
+.current {
     border-bottom: 3px solid green;
 }
 
 /*** SHOWCASE ***/
-.showcase{
+.showcase {
     grid-area: showcase;
-    background: linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url(../images/car3.jpg) no-repeat 0 -150px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/car3.jpg) no-repeat 0 -150px;
     background-size: cover;
     text-align: center;
     color: white;
@@ -143,7 +160,7 @@ label:hover{
 }
 
 /*** MAIN AREA ***/
-.main{
+.main {
     grid-area: main;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -152,7 +169,7 @@ label:hover{
     background-color: rgb(219, 212, 212);
 }
 
-.ads-images{
+.ads-images {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -167,47 +184,49 @@ label:hover{
 }
 
 /*** ARTICLE ***/
-.article{
+.article {
     grid-area: article;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 30px;
     padding: 20px;
     text-align: center;
-    background: rgba(197,13,13,0.85);
+    background: rgba(197, 13, 13, 0.85);
     color: white;
 }
 
-.article button{
+.article button {
     padding: 10px;
     border: none;
 }
 
-.article button:hover{
+.article button:hover {
     background-color: black;
     color: white;
     cursor: pointer;
 }
 
 /*** SIDE ***/
-.side{
+.side {
     grid-area: side;
     line-height: 30px;
     padding: 20px;
-    background: linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url(../images/nissan.jpg) no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/nissan.jpg) no-repeat;
     background-size: cover;
     color: white;
     text-align: center;
 }
-.side h1{
+
+.side h1 {
     margin-top: 100px;
 }
-.side p{
+
+.side p {
     font-size: 20px;
     font-weight: bold;
 }
 
 /*** FOOTER ***/
-.footer{
+.footer {
     grid-area: footer;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
@@ -216,71 +235,80 @@ label:hover{
     width: 100%;
 }
 
-.footer-items{
+.footer-items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     justify-items: center;
 }
-.footer-items a{
+
+.footer-items a {
     text-decoration: none;
     margin: 10px;
     color: white;
 }
 
-.footer-items a:hover{
+.footer-items a:hover {
     color: gray;
 }
 
 /*****CONTACT *****/
-.contact-section{
+.contact-section {
     grid-area: contact-section;
     padding: 20px;
     text-align: center;
     background-color: rgb(129, 125, 125);
 }
-.contact-section p{
+
+.contact-section p {
     font-weight: bold;
     font-size: 20px;
 }
 
 /*** ABOUT ***/
-.about-section{
-    grid-area: about-section; 
+.about-section {
+    grid-area: about-section;
     padding: 20px;
     text-align: center;
     background-color: whitesmoke;
 }
-.about-section div{
+
+.about-section div {
     display: flex;
     padding: 20px;
     margin: 0 auto;
 }
-.about-section p{
+
+.about-section p {
     font-size: 20px;
 }
-.about-section img{
+
+.about-section img {
     width: 250px;
     height: 250px;
 }
-.about-menu{
+
+.about-menu {
     float: right;
 }
-.about-menu a:hover{
+
+.about-menu a:hover {
     cursor: pointer;
     color: rgb(87, 31, 31);
 }
-.contact-section p{
+
+.contact-section p {
     font-weight: 100;
 }
 
 /**** MOBILE VIEW ***/
 @media (max-width: 720px) {
-    .container{
+    .container {
         width: 100%;
     }
-    .container{
-        width: 98%;
+
+    .container {
+        /* width: 98%; */
         min-height: 100vh;
         margin: 0 auto;
         display: grid;
@@ -288,60 +316,69 @@ label:hover{
         grid-auto-rows: auto;
         grid-gap: 1px;
         grid-template-areas:
-        "nav nav nav nav"
-        "about-section about-section about-section about-section"
-        "contact-section contact-section contact-section contact-section"
-        "showcase showcase showcase showcase"
-        "main main main main"
-        "article article article article"
-        "side side side side"
-        "footer footer footer footer";
+            "nav nav nav nav"
+            "about-section about-section about-section about-section"
+            "contact-section contact-section contact-section contact-section"
+            "showcase showcase showcase showcase"
+            "main main main main"
+            "article article article article"
+            "side side side side"
+            "footer footer footer footer";
     }
-    .showcase{
+
+    .showcase {
         grid-area: showcase;
-        background: linear-gradient( rgba(0,0,0, 0.5), rgba(0,0,0,0.5)),url(../images/car3.jpg) no-repeat;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/car3.jpg) no-repeat;
         background-size: cover;
         text-align: center;
         color: white;
     }
+
     .each-car-img {
         height: 59px;
         width: 65px;
     }
-    .about-section img{
+
+    .about-section img {
         width: 180px;
         height: 180px;
     }
-    .about-menu .current{
+
+    .about-menu .current {
         border-left: none;
         border-right: none;
         border-bottom: 5px solid green;
-     }
+    }
 }
 
 @media (max-width: 600px) {
-    .menu{
+    .menu {
         display: none;
         width: 94%;
-        position: absolute; 
+        position: absolute;
         background-color: rgb(43, 41, 41);
     }
-    .menu a{
+
+    .menu a {
         display: block;
         text-align: center;
-        
+
     }
-    .signup-login-container{
+
+    .signup-login-container {
         float: none;
     }
-    label{
+
+    label {
         display: block;
     }
-    #toggle:checked + .menu {
+
+    #toggle:checked+.menu {
         display: block;
         transition: all .5s;
     }
-    .menu a:hover{
+
+    .menu a:hover {
         cursor: pointer;
         color: rgb(180, 17, 17);
         background-color: rgb(207, 198, 198);
@@ -349,31 +386,35 @@ label:hover{
         border-right: 3px solid rgb(180, 17, 17);
         border-bottom: none;
     }
-    .current{
+
+    .current {
         border-left: 5px solid green;
         border-right: 5px solid green;
         border-bottom: none;
     }
-    #nav-hide{
+
+    #nav-hide {
         display: block;
     }
-    .dropdown{
+
+    .dropdown {
         display: none;
     }
 }
 
 @media(max-width: 420px) {
-    .about-section div{
+    .about-section div {
         flex-wrap: wrap;
     }
-    .about-section img{
+
+    .about-section img {
         width: 150px;
         height: 150px;
     }
 }
 
 /** Spinner */
-.loader{
+.loader {
     content: '';
     animation: spin .5s linear infinite;
     border: 2px solid white;
@@ -387,35 +428,50 @@ label:hover{
 }
 
 /* RESPONSE FORM */
-#response-form{
+#response-form {
     display: none;
     text-transform: uppercase;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-	text-align: center;
-	color: green;
-	padding: 10px;
-	transition: all .5s ease-in-out;
-	width: 90%;
-	margin: 10px auto;
+    text-align: center;
+    color: green;
+    padding: 10px;
+    transition: all .5s ease-in-out;
+    width: 90%;
+    margin: 10px auto;
 }
 
 /** ANIMATIONS */
-@keyframes spin{
-    0% {transform: rotate(0deg);}
-    100%{transform: rotate(360deg)}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
 }
 
 .animate {
-	-webkit-animation: animatezoom 0.6s;
-	animation: animatezoom 0.6s;
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
 }
 
-@-webkit-keyframes animatezoom{
-	from {-webkit-transform: scale(0)}
-	to {-webkit-animation: scale(1)}
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-animation: scale(1)
+    }
 }
 
 @keyframes animatezoom {
-	from {transform: scale(0)}
-	to {transform: scale(1)}
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
 }
