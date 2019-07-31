@@ -189,6 +189,7 @@ body {
     min-height: 125vh;
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../images/car3.jpg) no-repeat;
     width: 100%;
+    margin-top: 30px;
 }
 
 .post-form-container {
