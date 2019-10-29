@@ -1,6 +1,6 @@
 # AutoMart
 [![Build Status](https://travis-ci.org/cleave3/AutoMart.svg?branch=develop)](https://travis-ci.org/cleave3/AutoMart)  [![Coverage Status](https://coveralls.io/repos/github/cleave3/AutoMart/badge.svg?branch=develop)](https://coveralls.io/github/cleave3/AutoMart?branch=develop)  [![Test Coverage](https://api.codeclimate.com/v1/badges/bef163d83d46aa2f539b/test_coverage)](https://codeclimate.com/github/cleave3/AutoMart/test_coverage)  [![Maintainability](https://api.codeclimate.com/v1/badges/bef163d83d46aa2f539b/maintainability)](https://codeclimate.com/github/cleave3/AutoMart/maintainability)  [![GitHub license](https://img.shields.io/github/license/cleave3/AutoMart.svg)](https://github.com/cleave3/AutoMart/blob/develop/LICENSE)  [![GitHub stars](https://img.shields.io/github/stars/cleave3/AutoMart.svg)](https://github.com/cleave3/AutoMart/stargazers)
-# What is AutoMart ?
+
 Auto Mart is an online market place for automobile of diverse make, model or body type. With Auto Mart, users can sell or buy from trusted dealerships of private sellers
 
 # Technologies
@@ -12,7 +12,17 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
 * cloudinary
 * Postgresql
 * pg
+* Swagger
 
+# How to Use the app
+* Click <a href="https://cleave3.github.io/AutoMart/UI">here</a> to view user interface
+* Click <a href="https://cleave-automart.herokuapp.com/api-docs/">here<a/> to view API documentation
+* clone repo
+* Run npm install
+* Running Tests : npm run test
+* Run npm start
+* On postman test the following enpoints
+    
 # Features
 1. User can sign up.
 2. User can sign in.
@@ -26,14 +36,6 @@ Auto Mart is an online market place for automobile of diverse make, model or bod
 10. User can view all unsold cars within a price range.
 11. Admin can delete a posted AD record.
 12. Admin can view all posted ads whether sold or unsold.
-
-# How to Use the app
-* Click <a href="https://cleave3.github.io/AutoMart/UI">here<a> to view user interface
-* clone repo
-* Run npm install
-* Running Tests : npm run test
-* Run npm start
-* On postman test the following enpoints
 <table>
     <tr>
         <th>Endpoint</th>
